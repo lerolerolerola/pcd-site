@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blackout Interface</title>
+ 
+  <style>
+    body {
+      background: white;
+      color: black;
+      font-family: "Times New Roman", serif;
+      padding: 40px;
+    }
+ 
+    nav {
+      margin-bottom: 30px;
+    }
+ 
+    button {
+      background: none;
+      border: 1px solid black;
+      color: black;
+      padding: 8px 16px;
+      margin-right: 10px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+ 
+    button:hover {
+      background: black;
+      color: white;
+    }
+ 
+    .text-box {
+      max-width: 900px;
+      line-height: 1.9;
+      font-size: 18px;
+    }
+ 
+    .text {
+      background-color: #0000FF;
+      color: #0000FF;
+      padding: 0.15em 0.2em;
+      transition: all 0.3s ease;
+    }
+ 
+    .text.visible {
+      background-color: transparent;
+      color: black;
+    }
+  </style>
+</head>
+ 
+<body>
+ 
+  <nav>
+    <button onclick="showCategory('about')">About</button>
+    <button onclick="showCategory('more')">More</button>
+    <button onclick="showCategory('citations')">Citations</button>
+    <button onclick="hideAll()">Blackout</button>
+  </nav>
+ 
+<div class="text-box">
+
+  <!-- PCD : BASIC INFORMATION -->
+  <span class="text pcd">PCD2026</span>
+  <span class="text pcd">—</span>
+  <span class="text pcd">Poetics</span>
+  <span class="text pcd">of</span>
+  <span class="text pcd">Computational</span>
+  <span class="text pcd">Design</span>
+
+  <span class="text pcd">PCD2026</span>
+  <span class="text pcd">marks</span>
+  <span class="text pcd">the</span>
+  <span class="text pcd">sixth</span>
+  <span class="text pcd">edition</span>
+  <span class="text pcd">of</span>
+  <span class="text pcd">an</span>
+  <span class="text pcd">event</span>
+  <span class="text pcd">that</span>
+  <span class="text pcd">originated</span>
+  <span class="text pcd">within</span>
+  <span class="text pcd">the</span>
+  <span class="text pcd">international</span>
+  <span class="text pcd">Processing</span>
+  <span class="text pcd">Community</span>
+  <span class="text pcd">Day</span>
+  <span class="text pcd">network</span>
+
+  <span class="text pcd">an</span>
+  <span class="text pcd">open-source,</span>
+  <span class="text pcd">community-driven</span>
+  <span class="text pcd">initiative</span>
+  <span class="text pcd">rooted</span>
+  <span class="text pcd">in</span>
+  <span class="text pcd">shared</span>
+  <span class="text pcd">learning,</span>
+  <span class="text pcd">experimentation,</span>
+  <span class="text pcd">and</span>
+  <span class="text pcd">creative</span>
+  <span class="text pcd">coding</span>
+  <span class="text pcd">practices.</span>
+
+  <!-- MORE : CONTEXT / DEVELOPMENT -->
+  <span class="text more">Over</span>
+  <span class="text more">the</span>
+  <span class="text more">years,</span>
+  <span class="text more">PCD@Porto</span>
+  <span class="text more">has</span>
+  <span class="text more">grown</span>
+  <span class="text more">and</span>
+  <span class="text more">expanded.</span>
+
+  <span class="text more">What</span>
+  <span class="text more">began</span>
+  <span class="text more">as</span>
+  <span class="text more">an</span>
+  <span class="text more">event</span>
+  <span class="text more">primarily</span>
+  <span class="text more">centred</span>
+  <span class="text more">on</span>
+  <span class="text more">Processing</span>
+  <span class="text more">and</span>
+  <span class="text more">p5.js</span>
+
+  <span class="text more">gradually</span>
+  <span class="text more">expanded</span>
+  <span class="text more">into</span>
+  <span class="text more">a</span>
+  <span class="text more">broader</span>
+  <span class="text more">space</span>
+  <span class="text more">for</span>
+  <span class="text more">artistic,</span>
+  <span class="text more">design-oriented,</span>
+  <span class="text more">and</span>
+  <span class="text more">critical</span>
+  <span class="text more">explorations</span>
+  <span class="text more">of</span>
+  <span class="text more">computation.</span>
+
+  <span class="text more">In</span>
+  <span class="text more">2026,</span>
+  <span class="text more">we</span>
+  <span class="text more">choose</span>
+  <span class="text more">to</span>
+  <span class="text more">preserve</span>
+  <span class="text more">the</span>
+  <span class="text more">acronym</span>
+  <span class="text more">PCD,</span>
+  <span class="text more">strongly</span>
+  <span class="text more">associated</span>
+  <span class="text more">with</span>
+  <span class="text more">the</span>
+  <span class="text more">event’s</span>
+  <span class="text more">identity</span>
+  <span class="text more">and</span>
+  <span class="text more">community,</span>
+
+  <span class="text more">while</span>
+  <span class="text more">redefining</span>
+  <span class="text more">its</span>
+  <span class="text more">meaning.</span>
+
+  <span class="text more">PCD</span>
+  <span class="text more">now</span>
+  <span class="text more">stands</span>
+  <span class="text more">for</span>
+  <span class="text more">Poetics</span>
+  <span class="text more">of</span>
+  <span class="text more">Computational</span>
+  <span class="text more">Design.</span>
+
+  <span class="text more">This</span>
+  <span class="text more">shift</span>
+  <span class="text more">does</span>
+  <span class="text more">not</span>
+  <span class="text more">represent</span>
+  <span class="text more">a</span>
+  <span class="text more">departure</span>
+  <span class="text more">from</span>
+  <span class="text more">our</span>
+  <span class="text more">origins,</span>
+  <span class="text more">but</span>
+  <span class="text more">rather</span>
+  <span class="text more">their</span>
+  <span class="text more">natural</span>
+  <span class="text more">development.</span>
+
+  <span class="text more">We</span>
+  <span class="text more">continue</span>
+  <span class="text more">to</span>
+  <span class="text more">share</span>
+  <span class="text more">the</span>
+  <span class="text more">foundational</span>
+  <span class="text more">values</span>
+  <span class="text more">of</span>
+  <span class="text more">the</span>
+  <span class="text more">Processing</span>
+  <span class="text more">Community</span>
+  <span class="text more">Day</span>
+
+  <span class="text more">openness,</span>
+  <span class="text more">inclusivity,</span>
+  <span class="text more">knowledge</span>
+  <span class="text more">sharing,</span>
+  <span class="text more">and</span>
+  <span class="text more">a</span>
+  <span class="text more">critical</span>
+  <span class="text more">spirit,</span>
+
+  <span class="text more">while</span>
+  <span class="text more">broadening</span>
+  <span class="text more">the</span>
+  <span class="text more">scope</span>
+  <span class="text more">to</span>
+  <span class="text more">embrace</span>
+  <span class="text more">diverse</span>
+  <span class="text more">tools,</span>
+  <span class="text more">methods,</span>
+  <span class="text more">and</span>
+  <span class="text more">computational</span>
+  <span class="text more">practices.</span>
+
+  <!-- THEME -->
+  <span class="text theme">2026</span>
+  <span class="text theme">theme</span>
+
+  <span class="text theme">Reflect</span>
+  <span class="text theme">·</span>
+  <span class="text theme">Resist</span>
+  <span class="text theme">·</span>
+  <span class="text theme">Reform</span>
+
+  <span class="text theme">In</span>
+  <span class="text theme">a</span>
+  <span class="text theme">time</span>
+  <span class="text theme">marked</span>
+  <span class="text theme">by</span>
+  <span class="text theme">technological</span>
+  <span class="text theme">acceleration,</span>
+  <span class="text theme">automation,</span>
+  <span class="text theme">and</span>
+  <span class="text theme">the</span>
+  <span class="text theme">increasing</span>
+  <span class="text theme">normalization</span>
+  <span class="text theme">of</span>
+  <span class="text theme">systems</span>
+  <span class="text theme">that</span>
+  <span class="text theme">shape</span>
+  <span class="text theme">behaviour,</span>
+  <span class="text theme">perception,</span>
+  <span class="text theme">and</span>
+  <span class="text theme">thought,</span>
+
+  <span class="text theme">PCD2026</span>
+  <span class="text theme">proposes</span>
+  <span class="text theme">a</span>
+  <span class="text theme">moment</span>
+  <span class="text theme">of</span>
+  <span class="text theme">pause</span>
+  <span class="text theme">and</span>
+  <span class="text theme">reconsideration.</span>
+
+  <!-- QUOTE -->
+  <span class="text quotes">“As</span>
+  <span class="text quotes">he</span>
+  <span class="text quotes">saw</span>
+  <span class="text quotes">it,</span>
+  <span class="text quotes">people</span>
+  <span class="text quotes">will</span>
+  <span class="text quotes">come</span>
+  <span class="text quotes">to</span>
+  <span class="text quotes">love</span>
+  <span class="text quotes">their</span>
+  <span class="text quotes">oppression,</span>
+  <span class="text quotes">to</span>
+  <span class="text quotes">adore</span>
+  <span class="text quotes">the</span>
+  <span class="text quotes">technologies</span>
+  <span class="text quotes">that</span>
+  <span class="text quotes">undo</span>
+  <span class="text quotes">their</span>
+  <span class="text quotes">capacities</span>
+  <span class="text quotes">to</span>
+  <span class="text quotes">think.”</span>
+
+  <span class="text citations">—</span>
+  <span class="text citations">Neil</span>
+  <span class="text citations">Postman,</span>
+  <span class="text citations">Amusing</span>
+  <span class="text citations">Ourselves</span>
+  <span class="text citations">to</span>
+  <span class="text citations">Death</span>
+
+</div>
+
+
+
+ 
+  <script>
+    function showCategory(category) {
+      const allText = document.querySelectorAll('.text');
+ 
+      allText.forEach(span => {
+        span.classList.remove('visible');
+        if (span.classList.contains(category)) {
+          span.classList.add('visible');
+        }
+      });
+    }
+ 
+    function hideAll() {
+      document.querySelectorAll('.text').forEach(span => {
+        span.classList.remove('visible');
+      });
+    }
+  </script>
+ 
+</body>
+</html>
