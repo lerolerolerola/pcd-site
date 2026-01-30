@@ -1,4 +1,6 @@
-/* RESET */
+/* ==========================================================================
+   1. CORE SETUP & RESET
+   ========================================================================== */
 * {
   box-sizing: border-box;
 }
@@ -7,9 +9,42 @@ body {
   margin: 0;
   background: #ffffff;
   color: #111;
+  overflow-x: hidden;
 }
 
-/* HERO */
+/* Global Blackout Text Utility */
+.text {
+  background-color: #0000FF;
+  color: #0000FF;
+  padding: 0.15em 0.2em;
+  transition: all 0.3s ease;
+}
+
+.text.visible {
+  background-color: transparent;
+  color: black;
+}
+
+/* ==========================================================================
+   2. NAVIGATION & MENU
+   ========================================================================== */
+#menu-circle {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.menu-item {
+  position: absolute;
+  color: #0033ff;
+  transition: none;
+  z-index: 1000;
+}
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
 .hero {
   position: relative;
   height: 100vh;
@@ -17,19 +52,6 @@ body {
   overflow: hidden;
 }
 
-    .text {
-      background-color: #0000FF;
-      color: #0000FF;
-      padding: 0.15em 0.2em;
-      transition: all 0.3s ease;
-    }
- 
-    .text.visible {
-      background-color: transparent;
-      color: black;
-    }
-
-/* CENTER */
 .hero-center {
   position: absolute;
   inset: 0;
@@ -65,117 +87,44 @@ body {
   font-style: italic;
 }
 
-/* NAV */
-.nav {
-  position: absolute;
-  top: 20%;
-  right: 5%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.nav a {
-  color: #0033ff;
-  text-decoration: none;
-  font-family: "Times New Roman", Georgia, serif;
-  font-size: 1.1rem;
-}
-
-/* Floating words */
+/* --- Floating Words (Radial Circle) --- */
 .word {
   position: absolute;
   font-size: 1.2rem;
   color: #111;
 }
 
-.reform { color: #111; }
-.resist { color: #111; }
-.reflect { color: #111; }
-
-/* Reform positions */
-.r1 { top: 16%; left: 39%; }
-.r2 { top: 19%; left: 32%; }
-.r3 { top: 23%; left: 25%; }
-.r4 { top: 28%; left: 19%; }
-.r5 { top: 34%; left: 13.5%; }
-.r6 { top: 39%; left: 10%; }
-.r7 { top: 44%; left: 8%; }
-.r8 { top: 49%; left: 7%; }
-.r9 { top: 54%; left: 8%; }
-.r10 { top: 59%; left: 10%; }
-.r11 { top: 64%; left: 13.5%; }
-.r12 { top: 70%; left: 19%; }
-.r13 { top: 75%; left: 25%; }
-.r14 { top: 79%; left: 32%; }
-.r15{ top: 82%; left: 39%; }
-
-.r16 { top: 16%; right: 39%; }
-.r17 { top: 19%; right: 32%; }
-.r18 { top: 23%; right: 25%; }
-.r19 { top: 28%; right: 19%; }
-.r20 { top: 34%; right: 13.5%; }
-.r21 { top: 39%; right: 10%; }
-.r22 { top: 44%; right: 8%; }
-.r23 { top: 49%; right: 7%; }
-.r24{ top: 54%; right: 8%; }
-.r25 { top: 59%; right: 10%; }
-.r26 { top: 64%; right: 13.5%; }
-.r27 { top: 70%; right: 19%; }
-.r28 { top: 75%; right: 25%; }
-.r29 { top: 79%; right: 32%; }
+/* Outer Circle (Reform) */
+.r1 { top: 16%; left: 39%; } .r2 { top: 19%; left: 32%; } .r3 { top: 23%; left: 25%; }
+.r4 { top: 28%; left: 19%; } .r5 { top: 34%; left: 13.5%; } .r6 { top: 39%; left: 10%; }
+.r7 { top: 44%; left: 8%; } .r8 { top: 49%; left: 7%; } .r9 { top: 54%; left: 8%; }
+.r10 { top: 59%; left: 10%; } .r11 { top: 64%; left: 13.5%; } .r12 { top: 70%; left: 19%; }
+.r13 { top: 75%; left: 25%; } .r14 { top: 79%; left: 32%; } .r15{ top: 82%; left: 39%; }
+.r16 { top: 16%; right: 39%; } .r17 { top: 19%; right: 32%; } .r18 { top: 23%; right: 25%; }
+.r19 { top: 28%; right: 19%; } .r20 { top: 34%; right: 13.5%; } .r21 { top: 39%; right: 10%; }
+.r22 { top: 44%; right: 8%; } .r23 { top: 49%; right: 7%; } .r24{ top: 54%; right: 8%; }
+.r25 { top: 59%; right: 10%; } .r26 { color: #0033ff; top: 64%; right: 13.5%; }
+.r27 { top: 70%; right: 19%; } .r28 { top: 75%; right: 25%; } .r29 { top: 79%; right: 32%; }
 .r30{ top: 82%; right: 39%; } 
 
-/* Resist positions */
-.s1 { top: 23%; left: 40%; }
-.s2 { top: 25%; left: 34%; }
-.s3 { top: 29%; left: 29%; }
-.s4 { top: 33%; left: 26%; }
-.s5 { top: 37%; left: 24%; }
-.s6 { top: 41%; left: 22%; }
-.s7 { top: 45%; left: 21%; }
-.s8 { top: 49%; left: 20.5%;}
-.s9 { top: 53%; left: 21%; }
-.s10 { top: 57%; left: 22%; }
-.s11 { top: 61%; left: 24%; }
-.s12 { top: 65%; left: 26%; }
-.s13 { top: 69%; left: 29%; }
-.s14 { top: 73%; left: 34%; }
-.s15 { top: 75%; left: 40%; }
+/* Middle Circle (Resist) */
+.s1 { top: 23%; left: 40%; } .s2 { top: 25%; left: 34%; } .s3 { top: 29%; left: 29%; }
+.s4 { top: 33%; left: 26%; } .s5 { top: 37%; left: 24%; } .s6 { top: 41%; left: 22%; }
+.s7 { top: 45%; left: 21%; } .s8 { top: 49%; left: 20.5%;} .s9 { top: 53%; left: 21%; }
+.s10 { top: 57%; left: 22%; } .s11 { top: 61%; left: 24%; } .s12 { top: 65%; left: 26%; }
+.s13 { top: 69%; left: 29%; } .s14 { top: 73%; left: 34%; } .s15 { top: 75%; left: 40%; }
 
-/* Reflect positions */
-.f1 { top: 23%; right: 40%; }
-.f2 { top: 25%; right: 34%; }
-.f3 { top: 29%; right: 29%; }
-.f4 { top: 33%; right: 26%; }
-.f5 { top: 37%; right: 24%; }
-.f6 { top: 41%; right: 22%; }
-.f7 { top: 45%; right: 21%; }
-.f8 { top: 49%; right: 20.5%; }
-.f9 { top: 53%; right: 21%; }
-.f10 { top: 57%; right: 22%; }
-.f11 { top: 61%; right: 24%; }
-.f12 { top: 65%; right: 26%; }
-.f13 { top: 69%; right: 29%; }
-.f14 { top: 73%; right: 34%; }
+/* Inner Circle (Reflect) */
+.f1 { top: 23%; right: 40%; } .f2 { top: 25%; right: 34%; } .f3 {color: #0033ff; top: 29%; right: 29%; }
+.f4 { top: 33%; right: 26%; } .f5 { top: 37%; right: 24%; } .f6 { top: 41%; right: 22%; }
+.f7 { top: 45%; right: 21%; } .f8 { color: #0033ff; top: 49%; right: 20.5%; }
+.f9 { top: 53%; right: 21%; } .f10 { top: 57%; right: 22%; } .f11 { top: 61%; right: 24%; }
+.f12 { top: 65%; right: 26%; } .f13 { top: 69%; right: 29%; } .f14 { top: 73%; right: 34%; }
 .f15 { top: 75%; right: 40%; }
 
-    button {
-      background: none;
-      color: black;
-      padding: 8px 10px;
-      margin-right: 10px;
-      cursor: pointer;
-      font-family: inherit;
-      border-style: none;
-      font-size: 13pt;
-    }
- 
-    button:hover {
-      color: rgb(0, 30, 255);
-    }
-
-/* QUOTE SECTION */
+/* ==========================================================================
+   4. QUOTE SECTION (BLACKOUT INTERFACE)
+   ========================================================================== */
 .quote-section {
   padding: 6rem 4rem;
   max-width: 1400px;
@@ -184,67 +133,247 @@ body {
 
 .quote-header {
   display: flex;
-  gap: 2rem;
-  font-family: "Times New Roman", Georgia, serif;
-  font-size: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-bottom: 4rem;
 }
 
-.quote-header a,
-.quote-header span {
-  color: #555;
+.quote-header button {
+  background: none;
+  color: black;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-family: "Times New Roman", serif;
+  border: none;
+  font-size: 1.5rem;
+  transition: color 0.2s;
 }
 
-.quote-header .active {
+.quote-header button:hover {
   color: #0033ff;
-  text-decoration: underline;
 }
 
 .quote-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 4rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  font-family: "Courier New", monospace;
+  line-height: 1.6;
 }
 
-/* TEXT */
-.quote-left,
-.quote-right {
-  font-family: "Courier New", Courier, monospace;
+.quote-col {
+  display: block;
   font-size: 0.95rem;
-  line-height: 1.7;
   color: #444;
 }
 
-.quote-left p {
-  margin-top: 1.5rem;
+/* ==========================================================================
+   5. THEME DISPLAY (REFLECT, RESIST, REFORM)
+   ========================================================================== */
+.theme-display {
+  background-color: #ffffff;
+  padding: 100px 4rem;
+  text-align: center;
+  border-top: 1px solid #eee;
 }
 
-/* HIGHLIGHT */
-.highlight span {
+.theme-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.theme-main-title {
+  color: #0033ff;
+  font-family: "Times New Roman", serif;
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+}
+
+.theme-intro-text {
+  color: #444;
+  font-family: "Courier New", monospace;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 5rem;
+}
+
+.theme-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.col-head {
+  color: #0033ff;
+  font-family: "Times New Roman", serif;
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.col-desc {
+  color: #0033ff;
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  line-height: 1.4;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   6. PLURAL PRACTICES (TEXT & DUOTONE IMAGES)
+   ========================================================================== */
+.plural-practices {
+  padding: 120px 0;
+  background-color: #fff;
+  position: relative;
+  overflow: visible;
+}
+
+.practices-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+}
+
+.practices-title {
+  font-family: "Times New Roman", serif;
+  font-size: 3.8rem;
+  color: #0033ff;
+  font-weight: 400;
+  margin-bottom: 60px;
+}
+
+.practices-layout {
+  position: relative;
+}
+
+.practices-column-text {
+  max-width: 700px;
+  font-family: "Courier New", monospace;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #111;
+  z-index: 2;
+  position: relative;
+}
+
+.practices-column-text p {
+  margin-bottom: 1.8rem;
+  text-align: justify;
+}
+
+/* --- Duotone Image Styling --- */
+.image-wrapper {
+  position: absolute;
+  z-index: 1;
+}
+
+.image-wrapper img {
+  width: 100%;
+  filter: grayscale(100%) contrast(1.2);
   display: block;
-  background: #0033ff;
-  color: #fff;
-  padding: 0.2rem 0.4rem;
-  width: fit-content;
-  margin-bottom: 0.3rem;
 }
 
-.author {
-  margin-top: 2rem;
+.image-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #0033ff;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.image-caption {
+  font-family: "Courier New", monospace;
+  font-size: 0.65rem;
+  color: #0033ff;
+  margin-top: 8px;
+  line-height: 1.2;
+  text-align: right;
+}
+
+/* Specific Positions */
+.img-max-mathews {
+  width: 320px;
+  right: -50px;
+  top: 100px;
+}
+
+.img-punch-card {
+  width: 380px;
+  left: 20%;
+  bottom: -150px;
+}
+
+/* ==========================================================================
+   7. PREVIOUS EDITIONS (OVAL ANIMATION)
+   ========================================================================== */
+.previous-editions {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #fff;
+}
+
+.editions-title {
+  position: absolute;
+  z-index: 10;
+  color: #0033ff;
+  font-family: "Times New Roman", serif;
+  font-size: 3rem;
+  text-align: center;
+  pointer-events: none;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rotating-links-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.edition-link {
+  position: absolute;
+  text-decoration: none;
   color: #666;
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  white-space: nowrap;
 }
 
-/* RESPONSIVE */
+.edition-link:hover {
+  color: #0033ff;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   8. FOOTER & GLOBAL RESPONSIVENESS
+   ========================================================================== */
+.main-footer {
+  height: 30vh;
+  background-color: #0033ff;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .practices-column-text { max-width: 100%; }
+  .image-wrapper { 
+    position: relative; 
+    margin: 40px auto; 
+    right: 0; left: 0; top: 0; bottom: 0; 
+    width: 100%; 
+  }
+}
+
 @media (max-width: 900px) {
-  .ellipse {
-    display: none;
-  }
-
-  .quote-grid {
+  .quote-grid, .theme-columns {
     grid-template-columns: 1fr;
-  }
-
-  .quote-section {
-    padding: 4rem 2rem;
   }
 }
