@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. CORE SETUP & RESET
-   ========================================================================== */
+/* 1. CORE SETUP & RESET */
 * {
   box-sizing: border-box;
 }
@@ -25,9 +23,7 @@ body {
   color: black;
 }
 
-/* ==========================================================================
-   2. NAVIGATION & MENU
-   ========================================================================== */
+/* 2. NAVIGATION & MENU */
 #menu-circle {
   position: absolute;
   width: 100%;
@@ -42,9 +38,7 @@ body {
   z-index: 1000;
 }
 
-/* ==========================================================================
-   3. HERO SECTION
-   ========================================================================== */
+/* 3. HERO SECTION */
 .hero {
   position: relative;
   height: 100vh;
@@ -87,7 +81,7 @@ body {
   font-style: italic;
 }
 
-/* --- Floating Words (Radial Circle) --- */
+/* Floating Words (Radial Circle)*/
 .word {
   position: absolute;
   font-size: 1.2rem;
@@ -122,9 +116,7 @@ body {
 .f12 { top: 65%; right: 26%; } .f13 { top: 69%; right: 29%; } .f14 { top: 73%; right: 34%; }
 .f15 { top: 75%; right: 40%; }
 
-/* ==========================================================================
-   4. QUOTE SECTION (BLACKOUT INTERFACE)
-   ========================================================================== */
+/* 4. QUOTE SECTION (BLACKOUT INTERFACE) */
 .quote-section {
   padding: 6rem 4rem;
   max-width: 1400px;
@@ -168,9 +160,7 @@ body {
   color: #444;
 }
 
-/* ==========================================================================
-   5. THEME DISPLAY (REFLECT, RESIST, REFORM)
-   ========================================================================== */
+/* 5. THEME DISPLAY (REFLECT, RESIST, REFORM) */
 .theme-display {
   background-color: #ffffff;
   padding: 100px 4rem;
@@ -220,9 +210,7 @@ body {
   margin: 0 auto;
 }
 
-/* ==========================================================================
-   6. PLURAL PRACTICES (TEXT & DUOTONE IMAGES)
-   ========================================================================== */
+/* 6. PLURAL PRACTICES (TEXT & DUOTONE IMAGES) */
 .plural-practices {
   padding: 120px 0;
   background-color: #fff;
@@ -307,9 +295,7 @@ body {
   bottom: -150px;
 }
 
-/* ==========================================================================
-   7. PREVIOUS EDITIONS (OVAL ANIMATION)
-   ========================================================================== */
+/* 7. PREVIOUS EDITIONS (OVAL ANIMATION)*/
 .previous-editions {
   position: relative;
   height: 100vh;
@@ -353,9 +339,7 @@ body {
   font-weight: bold;
 }
 
-/* ==========================================================================
-   8. FOOTER & GLOBAL RESPONSIVENESS
-   ========================================================================== */
+/* 8. FOOTER & GLOBAL RESPONSIVENESS*/
 .main-footer {
   height: 30vh;
   background-color: #0033ff;
