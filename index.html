@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Poetics of Computational Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -118,7 +121,7 @@
 
   <section class="plural-practices">
     <div class="practices-container">
-      <h2 class="practices-title">A space for plural computational practices</h2>
+      <h2 class="practices-title">A space for plural<br>computational practices</h2>
       
       <div class="practices-layout">
         <div class="practices-column-text">
@@ -128,15 +131,22 @@
           <p>Together, these contributions form a plural and intentional landscape of computational practices, where reflection leads to resistance, and resistance becomes a ground for reform – affirming computation as a situated, consequential, and poetic practice.</p>
         </div>
 
-        <div class="image-wrapper img-max-mathews">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Max_Mathews_playing_electronic_violin.jpg" alt="Max Mathews">
-          <p class="image-caption">Max Mathews playing an electronic violin (c. 1970)</p>
-        </div>
+        <div class="image-wrapper">
+          <figure class="duotone-item">
+            <div class="img-box">
+              <img src="images/violin.png" alt="Max Mathews">
+            </div>
+            <figcaption class="image-caption">Max Mathews playing an electronic violin (c. 1970)</figcaption>
+          </figure>
 
-        <div class="image-wrapper img-punch-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Hollerith_punch_card.jpg/1280px-Hollerith_punch_card.jpg" alt="Hollerith punch card">
-          <p class="image-caption">Hollerith punch card</p>
-        </div>
+          <figure class="duotone-item">
+            <div class="img-box">
+              <img src="images/hollerith.jpg" alt="Hollerith punch card">
+            </div>
+            <figcaption class="image-caption">Hollerith punch card</figcaption>
+          </figure>
+      </div>
+
       </div>
     </div>
   </section>
@@ -162,6 +172,33 @@
   <footer class="main-footer"></footer>
 
   <script>
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const practiceContainer = document.querySelector('.practices-column-text');
+        const paragraphs = practiceContainer.querySelectorAll('p');
+
+        // 1. Wrap words in spans for per-line control
+        paragraphs.forEach(p => {
+          const words = p.innerText.split(' ');
+          p.innerHTML = words.map(word => `<span>${word}</span>`).join(' ');
+        });
+
+        let isScrolling;
+
+        window.addEventListener('scroll', () => {
+          // 2. Add the class as soon as scroll starts
+          practiceContainer.classList.add('is-scrolling');
+
+          // 3. Clear the timeout so it doesn't remove the class while still moving
+          window.clearTimeout(isScrolling);
+
+          // 4. Remove the class after scrolling has stopped for 150ms
+          isScrolling = setTimeout(() => {
+            practiceContainer.classList.remove('is-scrolling');
+          }, 150);
+        }, false);
+      });
+
     document.addEventListener("DOMContentLoaded", () => {
       const menuItems = document.querySelectorAll('.menu-item');
       const hero = document.querySelector('.hero');
