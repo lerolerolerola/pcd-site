@@ -5,6 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Poetics of Computational Design</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* CSS additions for the Blackout Section alignment */
+    .quote-sticky-container {
+      align-items: flex-start !important; /* Forces top alignment */
+      padding-top: 15vh !important;       /* Adjusts how high the text sits */
+    }
+
+    .quote-header {
+      margin-top: 5px; /* Fine-tunes vertical alignment with first line of text */
+    }
+
+    /* Global Blackout Text Utility for the 'Redacted' look */
+    .text {
+      display: inline;
+      font-family: "Courier New", monospace;
+      transition: background-color 0.2s ease;
+      margin-right: 2px;
+      line-height: 1.6;
+    }
+
+    /* THE BLACKOUT BOX EFFECT: When NOT visible, it becomes a solid blue block */
+    .text:not(.visible) {
+      background-color: #0033ff !important;
+      color: #0033ff !important;
+      user-select: none;
+      border-radius: 1px;
+    }
+
+    .text.visible {
+      background-color: transparent !important;
+      color: black !important;
+    }
+
+    /* Sidebar Label Styling */
+.quote-header {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px; 
+  margin-top: 5px;
+  position: relative; /* Keeps titles stacked in the same spot */
+}
+
+.quote-header span {
+  /* Change: Remove display: none */
+  position: absolute; /* Stack them on top of each other */
+  top: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease; /* The Smooth Transition */
+  
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.quote-header span.active {
+  /* Change: Use opacity instead of display */
+  opacity: 1;
+  visibility: visible;
+}
+  </style>
 </head>
 
 <body>
@@ -17,10 +86,7 @@
 
   <section class="hero">
     <div class="hero-center">
-      <div class="hero-meta">
-        <span>Porto</span>
-        <span>2026</span>
-      </div>
+      <div class="hero-meta"><span>Porto</span><span>2026</span></div>
       <h1>Poetics of<br>Computational<br>Design</h1>
       <div class="hero-footer">
         <span>29 de Abril</span>
@@ -39,54 +105,51 @@
       <span class="word reform r22">reform</span><span class="word reform r23">reform</span><span class="word reform r24">reform</span>
       <span class="word reform r25">reform</span><span class="word reform r27">reform</span><span class="word reform r28">reform</span>
       <span class="word reform r29">reform</span><span class="word reform r30">reform</span>
-
       <span class="word resist s1">resist</span><span class="word resist s2">resist</span><span class="word resist s3">resist</span>
       <span class="word resist s4">resist</span><span class="word resist s5">resist</span><span class="word resist s6">resist</span>
       <span class="word resist s7">resist</span><span class="word resist s8">resist</span><span class="word resist s9">resist</span>
       <span class="word resist s10">resist</span><span class="word resist s11">resist</span><span class="word resist s12">resist</span>
       <span class="word resist s13">resist</span><span class="word resist s14">resist</span><span class="word resist s15">resist</span>
-
       <span class="word reflect f1">reflect</span><span class="word reflect f2">reflect</span><span class="word reflect f4">reflect</span>
       <span class="word reflect f5">reflect</span><span class="word reflect f6">reflect</span><span class="word reflect f7">reflect</span>
       <span class="word reflect f9">reflect</span><span class="word reflect f10">reflect</span><span class="word reflect f11">reflect</span>
-      <span class="word reflect f12">reflect</span><span class="word reflect f13">reflect</span><span class="word reflect f14">reflect</span><span class="word reflect f15">reflect</span>
+      <span class="word reflect f12">reflect</span><span class="word reflect f13">reflect</span><span class="word reflect f14">reflect</span>
+      <span class="word reflect f15">reflect</span>
     </div>
   </section>
 
   <section class="quote-section">
-    <header class="quote-header">
-      <button onclick="showCategory('about')">About</button>
-      <button onclick="showCategory('change')">Change</button> 
-      <button onclick="showCategory('quotes')">Quote</button>
-      <button onclick="hideAll()">Blackout</button>
-    </header>
+    <div class="quote-sticky-container">
+      <header class="quote-header">
+        <span id="label-quotes">QUOTE</span>
+        <span id="label-change">2026 EDITION</span>
+        <span id="label-about">INFO</span>
+      </header>
 
-    <div class="quote-grid">
-      <div class="quote-col">
-        <span class="text about">PCD2026 marks</span>
-        <span class="text quotes">“As [Aldous Huxley] saw it,</span>
-        <span class="text about">the sixth edition of an event</span>
-        <span class="text change">In 2026, we choose to preserve the acronym PCD,</span> 
-        <span class="text about">that originated within the international Processing Community Day network —</span>
-        <span class="text change">strongly associated with the event’s identity and community, while redefining its meaning.</span>
-        <span class="text about">an open-source, community-driven initiative rooted in shared learning, experimentation,</span>
-        <span class="text change">PCD now stands for Poetics of Computational Design.</span>
-        <span class="text about">and creative coding practices. Over the years,</span>
-        <span class="text change">This shift does not represent a departure from our origins, but rather their natural development.</span>
-        <span class="text quotes">people will come to love their oppression</span>
-        <span class="text about">PCD@Porto has grown and expanded. What began as an event primarily centred on</span>
-        <span class="text change">We continue to share the foundational values of the Processing Community Day — openness, inclusivity, knowledge sharing, and a critical spirit — while broadening the scope to embrace</span>
-        <span class="text quotes">to adore the technologies that</span>
-        <span class="text change">diverse tools, methods, and computational practices.</span>
-      </div>
-
-      <div class="quote-col">
-        <span class="text change">The emphasis shifts from technical procedure to purpose,</span>
-        <span class="text about">for artistic, design-oriented, and critical explorations of computation.</span>
-        <span class="text change">from execution to intention, opening space for reflection on what computation makes possible</span>
-        <span class="text quotes">undo their capacities to think.”</span>
-        <span class="text change">— and meaningful. – Computation is approached as a space of intention, questioning, and poetic possibility. Rather than privileging specific languages or platforms, PCD2026 highlights the poetic, cultural, and critical dimensions of computational art and design.</span>
-        <span class="text quotes">— Neil Postman, in Amusing Ourselves to Death</span>
+      <div class="quote-grid">
+        <div class="quote-col">
+          <span class="text about">PCD2026 marks</span>
+          <span class="text quotes">“As [Aldous Huxley] saw it,</span>
+          <span class="text about">the sixth edition of an event</span>
+          <span class="text change">In 2026, we choose to preserve the acronym PCD,</span> 
+          <span class="text about">that originated within the international Processing Community Day network —</span>
+          <span class="text change">strongly associated with the event’s identity and community, while redefining its meaning.</span>
+          <span class="text about">an open-source, community-driven initiative rooted in shared learning, experimentation,</span>
+          <span class="text change">PCD now stands for Poetics of Computational Design.</span>
+          <span class="text about">and creative coding practices. Over the years,</span>
+          <span class="text change">This shift does not represent a departure from our origins, but rather their natural development.</span>
+          <span class="text quotes">people will come to love their oppression</span>
+          <span class="text about">PCD@Porto has grown and expanded. What began as an event primarily centred on</span>
+          <span class="text change">We continue to share the foundational values of the Processing Community Day — openness, inclusivity, knowledge sharing, and a critical spirit — while broadening the scope to embrace</span>
+          <span class="text quotes">to adore the technologies that</span>
+          <span class="text change">diverse tools, methods, and computational practices.</span>
+          <span class="text change">The emphasis shifts from technical procedure to purpose,</span>
+          <span class="text about">for artistic, design-oriented, and critical explorations of computation.</span>
+          <span class="text change">from execution to intention, opening space for reflection on what computation makes possible</span>
+          <span class="text quotes">undo their capacities to think.”</span>
+          <span class="text change">— and meaningful. – Computation is approached as a space of intention, questioning, and poetic possibility. Rather than privileging specific languages or platforms, PCD2026 highlights the poetic, cultural, and critical dimensions of computational art and design.</span>
+          <span class="text quotes">— Neil Postman, in Amusing Ourselves to Death</span>
+        </div>
       </div>
     </div>
   </section>
@@ -95,23 +158,12 @@
     <div class="theme-container">
       <h1 class="theme-main-title">This year’s theme</h1>
       <p class="theme-intro-text">
-        In a time marked by technological acceleration, automation, and the<br>
-        increasing normalization of systems that shape behaviour, perception, and<br>
-        thought, PCD2026 proposes a moment of pause and reconsideration.
+        In a time marked by technological acceleration, automation, and the increasing normalization of systems that shape behaviour, perception, and thought, PCD2026 proposes a moment of pause and reconsideration.
       </p>
       <div class="theme-columns">
-        <div class="theme-col">
-          <h2 class="col-head">Reflect</h2>
-          <p class="col-desc">On invisible infrastructures, algorithmic logics, and normalized aesthetics.</p>
-        </div>
-        <div class="theme-col">
-          <h2 class="col-head">Resist</h2>
-          <p class="col-desc">Simplistic solutions, technological determinism, and the illusion of neutrality.</p>
-        </div>
-        <div class="theme-col">
-          <h2 class="col-head">Reform</h2>
-          <p class="col-desc">Alternative poetics, practices, and futures for computation in art and design.</p>
-        </div>
+        <div class="theme-col"><h2 class="col-head">Reflect</h2><p class="col-desc">On invisible infrastructures, algorithmic logics, and normalized aesthetics.</p></div>
+        <div class="theme-col"><h2 class="col-head">Resist</h2><p class="col-desc">Simplistic solutions, technological determinism, and the illusion of neutrality.</p></div>
+        <div class="theme-col"><h2 class="col-head">Reform</h2><p class="col-desc">Alternative poetics, practices, and futures for computation in art and design.</p></div>
       </div>
     </div>
   </section>
@@ -119,15 +171,14 @@
   <section class="plural-practices">
     <div class="practices-container">
       <h2 class="practices-title">A space for plural computational practices</h2>
-      
       <div class="practices-layout">
         <div class="practices-column-text">
           <p>PCD2026 is conceived as a shared space for engaging with multiple ways of thinking and working through computation in art and design. The programme of invited keynotes and selected workshops emerges as a direct response to the 2026 theme, articulating moments of reflection, forms of resistance, and gestures of reform through situated computational practices.</p>
-          <p>The invited contributions create spaces to reflect on the conditions under which computational systems operate – making visible their infrastructures, assumptions, aesthetics, and embedded values. They also propose ways to resist the apparent inevitablity of technological acceleration, challenging instrumental thinking, algorithmic determinism, and claims of neutrality.</p>
-          <p>Keynotes offer conceptual frameworks and critical distance, opening room for collective reflection on the cultural, political, and ethical dimensions of computation. Workshops function as spaces of active resistance and reform, where participants engage hands-on with alternative methods, protocols, and imaginaries.</p>
+          <p>The invited contributions create spaces to reflect on the conditions under which computational systems operate – making visible their infrastructures, assumptions, aesthetics, and embedded values.</p>
+          <p>Keynotes offer conceptual frameworks and critical distance, opening room for collective reflection on the cultural, political, and ethical dimensions of computation.</p>
           <p>Together, these contributions form a plural and intentional landscape of computational practices, where reflection leads to resistance, and resistance becomes a ground for reform – affirming computation as a situated, consequential, and poetic practice.</p>
         </div>
-
+        
         <div class="image-wrapper img-max-mathews">
           <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Max_Mathews_playing_electronic_violin.jpg" alt="Max Mathews">
           <p class="image-caption">Max Mathews playing an electronic violin (c. 1970)</p>
@@ -145,16 +196,11 @@
     <div class="editions-container">
       <h2 class="editions-title">Previous<br>Editions</h2>
       <div class="rotating-links-wrapper">
-        <a href="#" class="edition-link">PCD21@Porto</a>
-        <a href="#" class="edition-link">PCD22@Porto</a>
-        <a href="#" class="edition-link">PCD23@Porto</a>
-        <a href="#" class="edition-link">PCD24@Porto</a>
-        <a href="#" class="edition-link">PCD25@Porto</a>
-        <a href="#" class="edition-link">PCD21@Coimbra</a>
-        <a href="#" class="edition-link">PCD22@Coimbra</a>
-        <a href="#" class="edition-link">PCD23@Coimbra</a>
-        <a href="#" class="edition-link">PCD24@Coimbra</a>
-        <a href="#" class="edition-link">PCD25@Coimbra</a>
+        <a href="#" class="edition-link">PCD21@Porto</a><a href="#" class="edition-link">PCD22@Porto</a>
+        <a href="#" class="edition-link">PCD23@Porto</a><a href="#" class="edition-link">PCD24@Porto</a>
+        <a href="#" class="edition-link">PCD25@Porto</a><a href="#" class="edition-link">PCD21@Coimbra</a>
+        <a href="#" class="edition-link">PCD22@Coimbra</a><a href="#" class="edition-link">PCD23@Coimbra</a>
+        <a href="#" class="edition-link">PCD24@Coimbra</a><a href="#" class="edition-link">PCD25@Coimbra</a>
       </div>
     </div>
   </section>
@@ -168,25 +214,17 @@
       const circleWords = document.querySelectorAll(".reform, .resist, .reflect");
       const editionLinks = document.querySelectorAll('.edition-link');
       
-      /** 1. Menu Setup & Fix para o Canto Superior **/
+      /** 1. MENU SETUP **/
       let menuData = Array.from(menuItems).map(item => {
         const topPct = parseFloat(item.dataset.top);
         const rightPct = parseFloat(item.dataset.right);
-        
-        // Aplicar posição inicial IMEDIATAMENTE para evitar o salto
         item.style.top = topPct + '%';
         item.style.right = rightPct + '%';
         item.style.position = 'absolute';
-
-        return {
-          el: item,
-          topPct: topPct,
-          rightPct: rightPct,
-          initialY: (topPct / 100) * hero.offsetHeight
-        };
+        return { el: item, topPct, rightPct, initialY: (topPct / 100) * hero.offsetHeight };
       });
 
-      /** 2. Radial Explosion Setup **/
+      /** 2. RADIAL EXPLOSION **/
       const scrollFactor = 0.7; 
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
@@ -196,14 +234,10 @@
         return { el: word, angle: angle };
       });
 
-      /** 3. Oval Animation com Pausa no Hover **/
-      const radiusX = 420; // Raio aumentado para não sobrepor o título
-      const radiusY = 220; 
-      let angleOffset = 0;
-      const speed = 0.005; 
+      /** 3. OVAL ANIMATION **/
+      const radiusX = 350; const radiusY = 180; 
+      let angleOffset = 0; const speed = 0.005; 
       let isPaused = false;
-
-      // Adicionar detetores de rato para pausar
       editionLinks.forEach(link => {
         link.addEventListener('mouseenter', () => isPaused = true);
         link.addEventListener('mouseleave', () => isPaused = false);
@@ -216,8 +250,7 @@
             const currentAngle = spacing + angleOffset;
             const x = Math.cos(currentAngle) * radiusX;
             const y = Math.sin(currentAngle) * radiusY;
-            link.style.left = '50%';
-            link.style.top = '50%';
+            link.style.left = '50%'; link.style.top = '50%';
             link.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
           });
           angleOffset += speed;
@@ -226,49 +259,53 @@
       }
       animateOval();
 
-      /** 4. Master Scroll Event **/
+      /** 4. MASTER SCROLL LOGIC **/
       window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
 
-        // Sticky Menu Logic
         menuData.forEach((data) => {
           if (scrollY > (data.initialY - 16)) {
-            data.el.style.position = 'fixed';
-            data.el.style.top = '16px';
-            data.el.style.right = data.rightPct + '%';
+            data.el.style.position = 'fixed'; data.el.style.top = '16px';
           } else {
-            data.el.style.position = 'absolute';
-            data.el.style.top = data.topPct + '%';
-            data.el.style.right = data.rightPct + '%';
+            data.el.style.position = 'absolute'; data.el.style.top = data.topPct + '%';
           }
         });
 
-        // Explosion Update
         wordData.forEach(data => {
           const distance = scrollY * scrollFactor;
           data.el.style.transform = `translate(${Math.cos(data.angle) * distance}px, ${Math.sin(data.angle) * distance}px)`;
         });
+
+        const quoteSec = document.querySelector('.quote-section');
+        const rect = quoteSec.getBoundingClientRect();
+        
+        if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+          const progress = Math.abs(rect.top) / (rect.height - window.innerHeight);
+
+          // REORDERED: QUOTE (First), CHANGE (Second), ABOUT (Third)
+          if (progress < 0.33) updateBlackout('quotes');
+          else if (progress < 0.66) updateBlackout('change');
+          else updateBlackout('about');
+        } 
+        else if (rect.top > 0) {
+          // Default state: QUOTE visible
+          updateBlackout('quotes');
+        }
       });
 
-      /** 5. Resize Re-calculation **/
-      window.addEventListener('resize', () => {
-        menuData.forEach(data => {
-          data.initialY = (data.topPct / 100) * hero.offsetHeight;
+      function updateBlackout(cat) {
+        document.querySelectorAll('.text').forEach(t => {
+          t.classList.toggle('visible', t.classList.contains(cat));
         });
+        document.querySelectorAll('.quote-header span').forEach(s => {
+          s.classList.toggle('active', s.id === `label-${cat}`);
+        });
+      }
+
+      window.addEventListener('resize', () => {
+        menuData.forEach(d => d.initialY = (d.topPct / 100) * hero.offsetHeight);
       });
     });
-
-    /** Blackout UI Functions **/
-    function showCategory(cat) {
-      document.querySelectorAll('.text').forEach(s => {
-        s.classList.remove('visible');
-        if(s.classList.contains(cat)) s.classList.add('visible');
-      });
-    }
-    function hideAll() {
-      document.querySelectorAll('.text').forEach(s => s.classList.remove('visible'));
-    }
   </script>
-
 </body>
 </html>

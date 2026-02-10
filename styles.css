@@ -1,29 +1,42 @@
-/* 1. CORE SETUP & RESET */
+/* ==========================================================================
+   1. CORE SETUP & RESET
+   ========================================================================== */
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #ffffff;
+  background: #f0f0f0; /* Slightly lighter grey to match the image */
   color: #111;
   overflow-x: hidden;
 }
 
 /* Global Blackout Text Utility */
 .text {
-  background-color: #0000FF;
-  color: #0000FF;
-  padding: 0.15em 0.2em;
-  transition: all 0.3s ease;
+  display: inline;
+  font-family: "Courier New", monospace;
+  transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out;
+  margin-right: 2px; /* Small gap between blocks */
+  line-height: 1.6;
+}
+
+/* THE BLACKOUT BOX EFFECT: When NOT visible, it becomes a solid block */
+.text:not(.visible) {
+  background-color: #0033ff; /* Electric Blue */
+  color: #0033ff;            /* Hides text content */
+  user-select: none;
+  border-radius: 1px;
 }
 
 .text.visible {
-  background-color: transparent;
-  color: black;
+  background-color: transparent !important;
+  color: black !important;
 }
 
-/* 2. NAVIGATION & MENU */
+/* ==========================================================================
+   2. NAVIGATION & MENU
+   ========================================================================== */
 #menu-circle {
   position: absolute;
   width: 100%;
@@ -36,9 +49,12 @@ body {
   color: #0033ff;
   transition: none;
   z-index: 1000;
+  font-family: "Courier New", monospace;
 }
 
-/* 3. HERO SECTION */
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
 .hero {
   position: relative;
   height: 100vh;
@@ -63,8 +79,7 @@ body {
   margin: 2rem 0;
 }
 
-.hero-meta,
-.hero-footer {
+.hero-meta, .hero-footer {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -81,14 +96,9 @@ body {
   font-style: italic;
 }
 
-/* Floating Words (Radial Circle)*/
-.word {
-  position: absolute;
-  font-size: 1.2rem;
-  color: #111;
-}
+.word { position: absolute; font-size: 1.2rem; color: #111; font-family: "Courier New", monospace;}
 
-/* Outer Circle (Reform) */
+/* Radial Positions */
 .r1 { top: 16%; left: 39%; } .r2 { top: 19%; left: 32%; } .r3 { top: 23%; left: 25%; }
 .r4 { top: 28%; left: 19%; } .r5 { top: 34%; left: 13.5%; } .r6 { top: 39%; left: 10%; }
 .r7 { top: 44%; left: 8%; } .r8 { top: 49%; left: 7%; } .r9 { top: 54%; left: 8%; }
@@ -100,15 +110,11 @@ body {
 .r25 { top: 59%; right: 10%; } .r26 { color: #0033ff; top: 64%; right: 13.5%; }
 .r27 { top: 70%; right: 19%; } .r28 { top: 75%; right: 25%; } .r29 { top: 79%; right: 32%; }
 .r30{ top: 82%; right: 39%; } 
-
-/* Middle Circle (Resist) */
 .s1 { top: 23%; left: 40%; } .s2 { top: 25%; left: 34%; } .s3 { top: 29%; left: 29%; }
 .s4 { top: 33%; left: 26%; } .s5 { top: 37%; left: 24%; } .s6 { top: 41%; left: 22%; }
 .s7 { top: 45%; left: 21%; } .s8 { top: 49%; left: 20.5%;} .s9 { top: 53%; left: 21%; }
 .s10 { top: 57%; left: 22%; } .s11 { top: 61%; left: 24%; } .s12 { top: 65%; left: 26%; }
 .s13 { top: 69%; left: 29%; } .s14 { top: 73%; left: 34%; } .s15 { top: 75%; left: 40%; }
-
-/* Inner Circle (Reflect) */
 .f1 { top: 23%; right: 40%; } .f2 { top: 25%; right: 34%; } .f3 {color: #0033ff; top: 29%; right: 29%; }
 .f4 { top: 33%; right: 26%; } .f5 { top: 37%; right: 24%; } .f6 { top: 41%; right: 22%; }
 .f7 { top: 45%; right: 21%; } .f8 { color: #0033ff; top: 49%; right: 20.5%; }
@@ -116,126 +122,93 @@ body {
 .f12 { top: 65%; right: 26%; } .f13 { top: 69%; right: 29%; } .f14 { top: 73%; right: 34%; }
 .f15 { top: 75%; right: 40%; }
 
-/* 4. QUOTE SECTION (BLACKOUT INTERFACE) */
+/* ==========================================================================
+   4. QUOTE SECTION (SIDE-LABEL & GRID)
+   ========================================================================== */
 .quote-section {
-  padding: 6rem 4rem;
+  position: relative;
+  height: 300vh;
+  padding: 0;
+}
+/* Update these specific blocks in your styles.css */
+
+.quote-sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start; /* Aligns label and text to the top */
+  justify-content: center;
+  padding: 120px 10%; /* Added top padding to give it breathing room */
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .quote-header {
+  width: 60px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 4rem;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1px;
+  margin-top: 5px; /* Fine-tune this to align with the first line of text */
 }
 
-.quote-header button {
-  background: none;
-  color: black;
-  padding: 8px 10px;
-  cursor: pointer;
-  font-family: "Times New Roman", serif;
-  border: none;
-  font-size: 1.5rem;
-  transition: color 0.2s;
+.quote-header span {
+  display: none; /* Hide all by default */
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  font-size: 1 rem;
+  color: #000;
+  letter-spacing: 2px;
 }
 
-.quote-header button:hover {
-  color: #0033ff;
+/* Only show the active label as seen in the corner of your image */
+.quote-header span.active {
+  display: block;
 }
+
 
 .quote-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
-  font-family: "Courier New", monospace;
-  line-height: 1.6;
+  flex: 1;
+  text-align: justify;
+  margin: 0; /* Reset margins to ensure alignment */
 }
 
 .quote-col {
-  display: block;
-  font-size: 0.95rem;
-  color: #444;
+  font-size: 1.15rem;
+  color: #111;
 }
 
-/* 5. THEME DISPLAY (REFLECT, RESIST, REFORM) */
+/* ==========================================================================
+   5. THEME DISPLAY
+   ========================================================================== */
 .theme-display {
-  background-color: #ffffff;
   padding: 100px 4rem;
   text-align: center;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #ddd;
+  position: relative;
+  z-index: 10;
 }
 
-.theme-container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
+.theme-container { max-width: 1100px; margin: 0 auto; }
+.theme-main-title { color: #0033ff; font-family: "Times New Roman", serif; font-size: 3.5rem; }
+.theme-intro-text { color: #444; font-family: "Courier New", monospace; line-height: 1.6; margin-bottom: 5rem; }
+.theme-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+.col-head { color: #0033ff; font-family: "Times New Roman", serif; font-size: 2.8rem; }
+.col-desc { color: #0033ff; font-family: "Courier New", monospace; }
 
-.theme-main-title {
-  color: #0033ff;
-  font-family: "Times New Roman", serif;
-  font-size: 3.5rem;
-  margin-bottom: 2rem;
-}
-
-.theme-intro-text {
-  color: #444;
-  font-family: "Courier New", monospace;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 5rem;
-}
-
-.theme-columns {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-}
-
-.col-head {
-  color: #0033ff;
-  font-family: "Times New Roman", serif;
-  font-size: 2.8rem;
-  margin-bottom: 1.5rem;
-}
-
-.col-desc {
-  color: #0033ff;
-  font-family: "Courier New", monospace;
-  font-size: 1rem;
-  line-height: 1.4;
-  max-width: 280px;
-  margin: 0 auto;
-}
-
-/* 6. PLURAL PRACTICES (TEXT & DUOTONE IMAGES) */
+/* ==========================================================================
+   6. PLURAL PRACTICES
+   ========================================================================== */
 .plural-practices {
   padding: 120px 0;
-  background-color: #fff;
-  position: relative;
-  overflow: visible;
-}
-
-.practices-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 40px;
   position: relative;
 }
 
-.practices-title {
-  font-family: "Times New Roman", serif;
-  font-size: 3.8rem;
-  color: #0033ff;
-  font-weight: 400;
-  margin-bottom: 60px;
-}
-
-.practices-layout {
-  position: relative;
-}
+.practices-container { max-width: 1100px; margin: 0 auto; padding: 0 40px; position: relative; }
+.practices-title { font-family: "Times New Roman", serif; font-size: 3.8rem; color: #0033ff; margin-bottom: 60px; }
 
 .practices-column-text {
   max-width: 700px;
@@ -247,55 +220,20 @@ body {
   position: relative;
 }
 
-.practices-column-text p {
-  margin-bottom: 1.8rem;
-  text-align: justify;
-}
-
-/* --- Duotone Image Styling --- */
-.image-wrapper {
-  position: absolute;
-  z-index: 1;
-}
-
-.image-wrapper img {
-  width: 100%;
-  filter: grayscale(100%) contrast(1.2);
-  display: block;
-}
-
+/* Duotone Styling */
+.image-wrapper { position: absolute; z-index: 1; }
+.image-wrapper img { width: 100%; filter: grayscale(100%) contrast(1.2); }
 .image-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-color: #0033ff;
-  mix-blend-mode: screen;
-  pointer-events: none;
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #0033ff; mix-blend-mode: screen;
 }
 
-.image-caption {
-  font-family: "Courier New", monospace;
-  font-size: 0.65rem;
-  color: #0033ff;
-  margin-top: 8px;
-  line-height: 1.2;
-  text-align: right;
-}
+.img-max-mathews { width: 320px; right: 0; top: 100px; }
+.img-punch-card { width: 380px; left: 10%; bottom: -180px; }
 
-/* Specific Positions */
-.img-max-mathews {
-  width: 320px;
-  right: -50px;
-  top: 100px;
-}
-
-.img-punch-card {
-  width: 380px;
-  left: 20%;
-  bottom: -150px;
-}
-
-/* 7. PREVIOUS EDITIONS (OVAL ANIMATION)*/
+/* ==========================================================================
+   7. PREVIOUS EDITIONS (ANIMATION)
+   ========================================================================== */
 .previous-editions {
   position: relative;
   height: 100vh;
@@ -303,7 +241,6 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #fff;
 }
 
 .editions-title {
@@ -313,16 +250,7 @@ body {
   font-family: "Times New Roman", serif;
   font-size: 3rem;
   text-align: center;
-  pointer-events: none;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.rotating-links-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  top: 45%; left: 50%; transform: translate(-50%, -50%);
 }
 
 .edition-link {
@@ -330,34 +258,14 @@ body {
   text-decoration: none;
   color: #666;
   font-family: "Courier New", monospace;
-  font-size: 1rem;
-  white-space: nowrap;
-}
-
-.edition-link:hover {
-  color: #0033ff;
   font-weight: bold;
 }
 
-/* 8. FOOTER & GLOBAL RESPONSIVENESS*/
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
 .main-footer {
   height: 30vh;
   background-color: #0033ff;
   width: 100%;
-}
-
-@media (max-width: 1024px) {
-  .practices-column-text { max-width: 100%; }
-  .image-wrapper { 
-    position: relative; 
-    margin: 40px auto; 
-    right: 0; left: 0; top: 0; bottom: 0; 
-    width: 100%; 
-  }
-}
-
-@media (max-width: 900px) {
-  .quote-grid, .theme-columns {
-    grid-template-columns: 1fr;
-  }
 }
