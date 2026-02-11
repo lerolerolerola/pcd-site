@@ -1,0 +1,19 @@
+﻿DONE
+>Add 3rd image to "computational practices"
+>Align Porto 2026 on header
+>Figure out why the hero breaks after a while
+>Add links to all previous PCD sites
+>Change all header type
+>Change all body copy to IBM Plex
+
+------------------------
+
+To-do Site
+>Integrate Lara's blackout section
+>Integrate Ana's section (once she sends)
+>Edit blackout effect on "computational practices" section so it doesn't come from the sides
+>Anchor links should link to their respective sections
+>Add team section
+>Add correct logo on hero
+>Mobile version 
+>Footer design
