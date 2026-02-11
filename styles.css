@@ -420,6 +420,90 @@ duotone-item {
 
 
 /* ==========================================================================
+   MOBILE TEAM REFINEMENT
+   ========================================================================== */
+
+
+.team-section {
+  background-color: #f1f1f1;
+  padding: 8rem 0;
+}
+
+.team-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.team-title {
+  font-family: "editorial", serif;
+  font-size: 3em;
+  line-height: 1.2;
+  color: #0033ff;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+  color: var(--blue);
+}
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping to columns */
+  gap: 4rem 2rem; /* Vertical and Horizontal spacing */
+}
+
+.team-member {
+  flex: 0 0 calc(50% - 1rem); /* Precisely half the width minus half the gap */
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+/* 1. Name: Editorial, Blue */
+.member-name {
+  font-family: "editorial", serif;
+  font-size: 1.8rem;
+  color: var(--blue);
+  line-height: 1.1;
+}
+
+/* 2. Affiliation: IBM Plex, Small, Blue, All Caps */
+.member-affiliation {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.3rem;
+}
+
+/* 3. Role: Black, Body Size */
+.member-role {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem; /* Matches your 17px body size */
+  color: var(--black);
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   MOBILE TEAM REFINEMENT
+   ========================================================================== */
+@media (max-width: 768px) {
+  .team-grid {
+    flex-direction: column; /* Stacks to a single column on phones */
+    gap: 3rem;
+  }
+  
+  .team-member {
+    flex: 0 0 100%;
+  }
+
+  .member-name {
+    font-size: 1.5rem; /* Slightly smaller for mobile screens */
+  }
+}
+
+
+/* ==========================================================================
    7. PREVIOUS EDITIONS (ANIMATION) LARA
    ========================================================================== */
 
@@ -493,6 +577,7 @@ duotone-item {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.9rem;
   color: #f1f1f1;
+  padding-bottom: 2em;
 }
 
 .footer-text {
@@ -500,7 +585,7 @@ duotone-item {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.8rem;
   color: #f1f1f1;
-  padding: 3em 0 0;
+  padding: 1.5em 0 1.5em;
 }
 
 .footer-links {
@@ -530,6 +615,7 @@ duotone-item {
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   align-items: center;
+  padding: 1.5em 0 0;
 }
 
 .partner-logo img {
@@ -549,6 +635,11 @@ duotone-item {
    MOBILE FOOTER
    ========================================================================== */
 @media (max-width: 768px) {
+
+  .footer-logo img {
+    height: 1.2em; /* Adjust based on your SVG proportions */
+    width: auto;
+  }
   .footer-top {
     flex-direction: column;
     align-items: flex-start;
