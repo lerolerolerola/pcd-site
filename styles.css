@@ -459,11 +459,115 @@ duotone-item {
   text-decoration: underline;
 } 
 
-/* 8. FOOTER & GLOBAL RESPONSIVENESS*/
+/* ==========================================================================
+   BASE DESKTOP FOOTER
+   ========================================================================== */
+
 .main-footer {
-  height: 30vh;
-  background-color: #0033ff;
+  padding: 6rem 0 3rem;
+  border-top: 1px solid #ddd;
+  background-color: var(--blue);
+  color: #f1f1f1;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+.footer-logo img {
+  height: 2em; /* Adjust based on your SVG proportions */
+  width: auto;
+}
+
+.footer-contact {
+  text-align: right;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9rem;
+  color: #f1f1f1;
+}
+
+.footer-text {
+  text-align: left;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  color: #f1f1f1;
+  padding: 3em 0 0;
+}
+
+.footer-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-end;
+}
+
+.footer-links a {
+  color: #f1f1f1f1;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-divider {
+  border: 0;
+  border-top: 1px solid #f1f1f1;
+  margin: 2rem 0;
+}
+
+.footer-logos-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.partner-logo img {
   width: 100%;
+  max-width: 150px;
+  height: auto;
+  /* Poetic touch: Logos are grayscale/blue until hovered */
+  filter: grayscale(100%) opacity(0.6);
+  transition: all 0.3s ease;
+}
+
+.partner-logo:hover img {
+  filter: grayscale(0%) opacity(1);
+}
+
+/* ==========================================================================
+   MOBILE FOOTER
+   ========================================================================== */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  
+  .footer-contact {
+    text-align: left;
+  }
+  
+  .footer-links {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .footer-logos-row {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid on mobile */
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 1024px) {
