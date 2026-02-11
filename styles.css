@@ -94,17 +94,26 @@ body {
 
 /* Scroll Divs */
 .words-layer{
-  position: fixed;
+  position: sticky;
   top:0;
   left:0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background-color: pink;
 }
 
 #divGeral{
+  position: sticky;
   height: 400vh;
+  background-color: #0000FF;
 }
+
+/* #scroll{
+  position: fixed;
+  top:0;
+  height:400vh;
+  background-color: yellow;
+} */
 
 #spacerTeste{
   position: relative;
