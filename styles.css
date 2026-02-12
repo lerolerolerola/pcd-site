@@ -15,7 +15,7 @@ html {
 body {
   font-family: "IBM Plex Mono", monospace;
   font-size: 17px;
-  line-height: 1.5; 
+  line-height: 1.5;
   margin: 0;
   background: #f1f1f1;
   color: var(--black);
@@ -26,13 +26,13 @@ body {
   --blue: #0033ff;
   --light-blue: #66a3ff;
   --dark-blue: #001a99;
-  --black: #090C08;
+  --black: #090c08;
 }
 
 /* Global Blackout Text Utility */
 .text {
-  background-color: #0000FF;
-  color: #0000FF;
+  background-color: #0000ff;
+  color: #0000ff;
   padding: 0.15em 0.2em;
   transition: all 0.3s ease;
 }
@@ -63,10 +63,10 @@ body {
   text-decoration: none;
   color: inherit;
   display: inline-block; /* Or block */
-  pointer-events: auto;  /* Double-down on enabling clicks */
+  pointer-events: auto; /* Double-down on enabling clicks */
 }
 
-.menu-item:hover{
+.menu-item a:hover {
   text-decoration: underline;
   text-decoration-color: var(--blue);
 }
@@ -85,22 +85,32 @@ body {
   display: grid;
   /* place-items: center; */
   text-align: center;
-  grid-template-rows: 1fr auto 1fr; 
+  grid-template-rows: 1fr auto 1fr;
   align-items: center; /* Vertically centers content within those rows */
   justify-items: center;
 }
 
 /* Ensure children land in the right rows */
-.hero-meta { grid-row: 1; align-self: end; padding-bottom: 2rem; }
-.hero h1 { grid-row: 2; }
-.hero-footer { grid-row: 3; align-self: start; padding-top: 2rem; }
+.hero-meta {
+  grid-row: 1;
+  align-self: end;
+  padding-bottom: 2rem;
+}
+.hero h1 {
+  grid-row: 2;
+}
+.hero-footer {
+  grid-row: 3;
+  align-self: start;
+  padding-top: 2rem;
+}
 
 .hero h1 {
   font-family: "editorial", serif;
-  font-size: clamp(3rem, 6vw, 6rem);
+  font-size: clamp(3em, 6vw, 6em);
   font-weight: 500;
   line-height: 1.05;
-  color: #0033ff;
+  color: var(--blue);
   margin: 2rem 0;
 }
 
@@ -113,13 +123,26 @@ body {
   color: var(--blue);
 }
 
-.badge {
+/* .badge {
   margin-top: 0.8rem;
   background: #0033ff;
   color: #fff;
   padding: 0.3rem 0.9rem;
   font-size: 0.9rem;
   font-style: italic;
+} */
+
+.badge-container {
+  margin-top: 2em;
+  width: 10em; /* Control the exact size of your logo here */
+  height: auto;
+  line-height: 0; /* Prevents tiny extra space below the image */
+}
+
+.badge-svg-file {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Floating Words (Radial Circle)*/
@@ -130,32 +153,253 @@ body {
 }
 
 /* Outer Circle (Reform) */
-.r1 { top: 16%; left: 39%; } .r2 { top: 19%; left: 32%; } .r3 { top: 23%; left: 25%; }
-.r4 { top: 28%; left: 19%; } .r5 { top: 34%; left: 13.5%; } .r6 { top: 39%; left: 10%; }
-.r7 { top: 44%; left: 8%; } .r8 { top: 49%; left: 7%; } .r9 { top: 54%; left: 8%; }
-.r10 { top: 59%; left: 10%; } .r11 { top: 64%; left: 13.5%; } .r12 { top: 70%; left: 19%; }
-.r13 { top: 75%; left: 25%; } .r14 { top: 79%; left: 32%; } .r15{ top: 82%; left: 39%; }
-.r16 { top: 16%; right: 39%; } .r17 { top: 19%; right: 32%; } .r18 { top: 23%; right: 25%; }
-.r19 { top: 28%; right: 19%; } .r20 { top: 34%; right: 13.5%; } .r21 { top: 39%; right: 10%; }
-.r22 { top: 44%; right: 8%; } .r23 { top: 49%; right: 7%; } .r24{ top: 54%; right: 8%; }
-.r25 { top: 59%; right: 10%; } .r26 { color: #0033ff; top: 64%; right: 13.5%; }
-.r27 { top: 70%; right: 19%; } .r28 { top: 75%; right: 25%; } .r29 { top: 79%; right: 32%; }
-.r30{ top: 82%; right: 39%; } 
+.r1 {
+  top: 16%;
+  left: 39%;
+}
+.r2 {
+  top: 19%;
+  left: 32%;
+}
+.r3 {
+  top: 23%;
+  left: 25%;
+}
+.r4 {
+  top: 28%;
+  left: 19%;
+}
+.r5 {
+  top: 34%;
+  left: 13.5%;
+}
+.r6 {
+  top: 39%;
+  left: 10%;
+}
+.r7 {
+  top: 44%;
+  left: 8%;
+}
+.r8 {
+  top: 49%;
+  left: 7%;
+}
+.r9 {
+  top: 54%;
+  left: 8%;
+}
+.r10 {
+  top: 59%;
+  left: 10%;
+}
+.r11 {
+  top: 64%;
+  left: 13.5%;
+}
+.r12 {
+  top: 70%;
+  left: 19%;
+}
+.r13 {
+  top: 75%;
+  left: 25%;
+}
+.r14 {
+  top: 79%;
+  left: 32%;
+}
+.r15 {
+  top: 82%;
+  left: 39%;
+}
+.r16 {
+  top: 16%;
+  right: 39%;
+}
+.r17 {
+  top: 19%;
+  right: 32%;
+}
+.r18 {
+  top: 23%;
+  right: 25%;
+}
+.r19 {
+  top: 28%;
+  right: 19%;
+}
+.r20 {
+  top: 34%;
+  right: 13.5%;
+}
+.r21 {
+  top: 39%;
+  right: 10%;
+}
+.r22 {
+  top: 44%;
+  right: 8%;
+}
+.r23 {
+  top: 49%;
+  right: 7%;
+}
+.r24 {
+  top: 54%;
+  right: 8%;
+}
+.r25 {
+  top: 59%;
+  right: 10%;
+}
+.r26 {
+  color: #0033ff;
+  top: 64%;
+  right: 13.5%;
+}
+.r27 {
+  top: 70%;
+  right: 19%;
+}
+.r28 {
+  top: 75%;
+  right: 25%;
+}
+.r29 {
+  top: 79%;
+  right: 32%;
+}
+.r30 {
+  top: 82%;
+  right: 39%;
+}
 
 /* Middle Circle (Resist) */
-.s1 { top: 23%; left: 40%; } .s2 { top: 25%; left: 34%; } .s3 { top: 29%; left: 29%; }
-.s4 { top: 33%; left: 26%; } .s5 { top: 37%; left: 24%; } .s6 { top: 41%; left: 22%; }
-.s7 { top: 45%; left: 21%; } .s8 { top: 49%; left: 20.5%;} .s9 { top: 53%; left: 21%; }
-.s10 { top: 57%; left: 22%; } .s11 { top: 61%; left: 24%; } .s12 { top: 65%; left: 26%; }
-.s13 { top: 69%; left: 29%; } .s14 { top: 73%; left: 34%; } .s15 { top: 75%; left: 40%; }
+.s1 {
+  top: 23%;
+  left: 40%;
+}
+.s2 {
+  top: 25%;
+  left: 34%;
+}
+.s3 {
+  top: 29%;
+  left: 29%;
+}
+.s4 {
+  top: 33%;
+  left: 26%;
+}
+.s5 {
+  top: 37%;
+  left: 24%;
+}
+.s6 {
+  top: 41%;
+  left: 22%;
+}
+.s7 {
+  top: 45%;
+  left: 21%;
+}
+.s8 {
+  top: 49%;
+  left: 20.5%;
+}
+.s9 {
+  top: 53%;
+  left: 21%;
+}
+.s10 {
+  top: 57%;
+  left: 22%;
+}
+.s11 {
+  top: 61%;
+  left: 24%;
+}
+.s12 {
+  top: 65%;
+  left: 26%;
+}
+.s13 {
+  top: 69%;
+  left: 29%;
+}
+.s14 {
+  top: 73%;
+  left: 34%;
+}
+.s15 {
+  top: 75%;
+  left: 40%;
+}
 
 /* Inner Circle (Reflect) */
-.f1 { top: 23%; right: 40%; } .f2 { top: 25%; right: 34%; } .f3 {color: #0033ff; top: 29%; right: 29%; }
-.f4 { top: 33%; right: 26%; } .f5 { top: 37%; right: 24%; } .f6 { top: 41%; right: 22%; }
-.f7 { top: 45%; right: 21%; } .f8 { color: #0033ff; top: 49%; right: 20.5%; }
-.f9 { top: 53%; right: 21%; } .f10 { top: 57%; right: 22%; } .f11 { top: 61%; right: 24%; }
-.f12 { top: 65%; right: 26%; } .f13 { top: 69%; right: 29%; } .f14 { top: 73%; right: 34%; }
-.f15 { top: 75%; right: 40%; }
+.f1 {
+  top: 23%;
+  right: 40%;
+}
+.f2 {
+  top: 25%;
+  right: 34%;
+}
+.f3 {
+  color: #0033ff;
+  top: 29%;
+  right: 29%;
+}
+.f4 {
+  top: 33%;
+  right: 26%;
+}
+.f5 {
+  top: 37%;
+  right: 24%;
+}
+.f6 {
+  top: 41%;
+  right: 22%;
+}
+.f7 {
+  top: 45%;
+  right: 21%;
+}
+.f8 {
+  color: #0033ff;
+  top: 49%;
+  right: 20.5%;
+}
+.f9 {
+  top: 53%;
+  right: 21%;
+}
+.f10 {
+  top: 57%;
+  right: 22%;
+}
+.f11 {
+  top: 61%;
+  right: 24%;
+}
+.f12 {
+  top: 65%;
+  right: 26%;
+}
+.f13 {
+  top: 69%;
+  right: 29%;
+}
+.f14 {
+  top: 73%;
+  right: 34%;
+}
+.f15 {
+  top: 75%;
+  right: 40%;
+}
 
 /* 4. QUOTE SECTION (BLACKOUT INTERFACE) */
 .quote-section {
@@ -193,7 +437,7 @@ body {
   align-items: start; */
   line-height: 1.7;
   /* padding: 0em 4em 0; */
-} 
+}
 
 .quote-col {
   display: block;
@@ -205,9 +449,8 @@ body {
 /* 5. THEME DISPLAY (REFLECT, RESIST, REFORM) */
 .theme-display {
   background-color: #f1f1f1;
-  padding: 100px 4rem;
+  padding: 4em 4em;
   text-align: center;
-  border-top: 1px solid #eee;
   position: relative;
   z-index: 10;
 }
@@ -220,16 +463,18 @@ body {
 .theme-main-title {
   color: var(--blue);
   font-family: "editorial", serif;
-  font-size: 3.5rem;
+  font-size: 3em;
+  font-weight: 200;
   margin-bottom: 2rem;
 }
 
 .theme-intro-text {
-  color: #444;
+  color: var(--black);
   font-family: "IBM Plex Mono", monospace;
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 5rem;
+  
 }
 
 .theme-columns {
@@ -239,16 +484,18 @@ body {
 }
 
 .col-head {
-  color: #0033ff;
+  color: var(--blue);
   font-family: "editorial", serif;
-  font-size: 2.8rem;
-  margin-bottom: 1.5rem;
+  font-size: 2em;
+  line-height: 1.3;
+  font-weight: 200;
+  /* margin-bottom: 1em; */
 }
 
 .col-desc {
-  color: #0033ff;
+  color: var(--black);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 1rem;
+  font-size: 1em;
   line-height: 1.4;
   max-width: 280px;
   margin: 0 auto;
@@ -260,7 +507,7 @@ body {
 
 .plural-practices {
   padding: 6em 0;
-  background-color: #fff;
+  background-color: #f1f1f1;
   position: relative;
   overflow: visible;
 }
@@ -306,7 +553,7 @@ body {
 
 /* --- Duotone Image Styling --- */
 .image-wrapper {
-  flex: 0 0 350px;    /* Don't grow, don't shrink, stay 350px wide */
+  flex: 0 0 350px; /* Don't grow, don't shrink, stay 350px wide */
   position: relative; /* Changed from absolute */
   z-index: 1;
 }
@@ -322,14 +569,19 @@ duotone-item {
 .img-box {
   position: relative;
   width: 100%;
-  overflow: hidden; 
+  overflow: hidden;
+}
+
+.plural-practices.is-scrolling .img-box img {
+  filter: blur(20px) grayscale(100%) brightness(0.8);
 }
 
 .img-box img {
   width: 100%;
   height: auto;
   display: block; /* Removes tiny gap under images */
-  filter: grayscale(100%) contrast(1.4); 
+  filter: grayscale(100%) contrast(1.4);
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 .img-box::after {
   content: "";
@@ -339,7 +591,7 @@ duotone-item {
   width: 100%;
   height: 100%;
   background-color: #0033ff; /* The blue color */
-  mix-blend-mode: screen;    /* The duotone effect */
+  mix-blend-mode: screen; /* The duotone effect */
   pointer-events: none;
 }
 
@@ -357,7 +609,7 @@ duotone-item {
 /* The container for the redaction */
 .practices-column-text p {
   position: relative;
-  display: inline-block; 
+  display: inline-block;
   color: var(--black);
   transition: color 0.3s;
 }
@@ -387,13 +639,15 @@ duotone-item {
 .practices-column-text p span {
   background-color: transparent;
   color: var(--black); /* Visible text when stationary */
-  
+
   /* Remove the background-size and background-image properties from before */
-  transition: background-color 0.1s ease, color 0.1s ease;
-  
+  transition:
+    background-color 0.1s ease,
+    color 0.1s ease;
+
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-  
+
   /* Keep the padding to ensure the blocks have 'weight' around the words */
   padding: 2px 4px;
   margin: 0 -4px;
@@ -406,7 +660,10 @@ duotone-item {
 }
 
 /* Optional: Make the marker blue instead of black */
-.is-scrolling p span { background-image: linear-gradient(#0033ff, #0033ff); } */
+.is-scrolling p span {
+  background-image: linear-gradient(#0033ff, #0033ff);
+}
+*/
 
 /* END TEST */
 
@@ -416,13 +673,16 @@ duotone-item {
   position: relative;
 }
 
-.practices-container { max-width: 1100px; margin: 0 auto; padding: 0 40px; position: relative; }
-
+.practices-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+}
 
 /* ==========================================================================
    MOBILE TEAM REFINEMENT
    ========================================================================== */
-
 
 .team-section {
   background-color: #f1f1f1;
@@ -447,8 +707,8 @@ duotone-item {
 
 .team-grid {
   display: flex;
-  flex-wrap: wrap; /* Allows wrapping to columns */
-  gap: 4rem 2rem; /* Vertical and Horizontal spacing */
+  flex-wrap: wrap; 
+  gap: 4rem 2rem; 
 }
 
 .team-member {
@@ -469,11 +729,11 @@ duotone-item {
 /* 2. Affiliation: IBM Plex, Small, Blue, All Caps */
 .member-affiliation {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.75rem;
+  font-size: 0.9em;
   color: var(--blue);
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-top: 0.3rem;
+  /* margin-top: 0.3rem; */
 }
 
 /* 3. Role: Black, Body Size */
@@ -492,7 +752,7 @@ duotone-item {
     flex-direction: column; /* Stacks to a single column on phones */
     gap: 3rem;
   }
-  
+
   .team-member {
     flex: 0 0 100%;
   }
@@ -501,7 +761,6 @@ duotone-item {
     font-size: 1.5rem; /* Slightly smaller for mobile screens */
   }
 }
-
 
 /* ==========================================================================
    7. PREVIOUS EDITIONS (ANIMATION) LARA
@@ -524,7 +783,9 @@ duotone-item {
   font-family: "editorial";
   font-size: 3rem;
   text-align: center;
-  top: 45%; left: 50%; transform: translate(-50%, -50%);
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .edition-link {
@@ -533,7 +794,9 @@ duotone-item {
   color: var(--black);
   font-family: "IBM Plex Mono", monospace;
   text-transform: uppercase;
-  transition: color 0.2s, transform 0.1s ease-out;
+  transition:
+    color 0.2s,
+    transform 0.1s ease-out;
   /* font-weight: bold; */
 }
 
@@ -541,7 +804,7 @@ duotone-item {
   color: var(--blue);
   font-weight: bold;
   text-decoration: underline;
-} 
+}
 
 /* ==========================================================================
    BASE DESKTOP FOOTER
@@ -563,7 +826,7 @@ duotone-item {
 .footer-top {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   margin-bottom: 2rem;
 }
 
@@ -635,9 +898,8 @@ duotone-item {
    MOBILE FOOTER
    ========================================================================== */
 @media (max-width: 768px) {
-
   .footer-logo img {
-    height: 1.2em; /* Adjust based on your SVG proportions */
+    height: 1.5em; /* Adjust based on your SVG proportions */
     width: auto;
   }
   .footer-top {
@@ -645,16 +907,16 @@ duotone-item {
     align-items: flex-start;
     gap: 2rem;
   }
-  
+
   .footer-contact {
     text-align: left;
   }
-  
+
   .footer-links {
     justify-content: flex-start;
     flex-wrap: wrap;
   }
-  
+
   .footer-logos-row {
     grid-template-columns: repeat(2, 1fr); /* 2x2 grid on mobile */
     gap: 1.5rem;
@@ -665,7 +927,7 @@ duotone-item {
   .practices-layout {
     flex-direction: column; /* Stacks images under text */
   }
-  
+
   .image-wrapper {
     flex: 0 0 auto;
     width: 100%;
@@ -675,7 +937,8 @@ duotone-item {
 }
 
 @media (max-width: 900px) {
-  .quote-grid, .theme-columns {
+  .quote-grid,
+  .theme-columns {
     grid-template-columns: 1fr;
   }
 }
@@ -719,7 +982,7 @@ duotone-item {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.6s ease;
-  
+
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-family: "IBM Plex Mono", monospace;
@@ -810,7 +1073,6 @@ duotone-item {
 }
 
 @media (max-width: 768px) {
-
   h2,
   .theme-main-title,
   .col-head,
@@ -831,7 +1093,7 @@ duotone-item {
   .words-layer {
     display: none !important;
   }
-  
+
   /* Center the title more aggressively since the 'halo' is gone */
   .hero-center {
     padding: 0 1rem;
@@ -855,17 +1117,17 @@ duotone-item {
   /* 2. QUOTE SECTION (DISABLE STICKY ON MOBILE) */
   .quote-section {
     /* Force the section to only be as tall as its content */
-    height: auto !important; 
+    height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
     padding: 3rem 1.5rem !important;
     /* Ensure it doesn't try to overlap anything */
-    display: block !important; 
+    display: block !important;
   }
 
   .quote-sticky-container {
     /* Kill the sticky behavior entirely */
-    position: relative !important; 
+    position: relative !important;
     height: auto !important;
     padding: 0 !important;
     display: flex;
@@ -894,7 +1156,9 @@ duotone-item {
     font-size: 0.75rem !important;
     cursor: pointer;
     pointer-events: auto; /* Ensure they are clickable */
-    transition: opacity 0.3s ease, color 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      color 0.3s ease;
   }
 
   .quote-header span.active {
@@ -903,7 +1167,7 @@ duotone-item {
     text-decoration: underline;
     text-underline-offset: 8px;
   }
-  
+
   /* Hide progress bar on mobile as it's not scroll-based anymore */
   .scroll-progress-container {
     display: none;
@@ -935,7 +1199,7 @@ duotone-item {
   .rotating-links-wrapper {
     position: relative;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: flex-start; /* CRITICAL: Valid flexbox property for left alignment */
     gap: 1.5rem;
     height: auto !important;

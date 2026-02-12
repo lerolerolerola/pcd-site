@@ -4,7 +4,7 @@
   const hero = document.querySelector(".hero");
   const circleWords = document.querySelectorAll(".word");
   const editionLinks = document.querySelectorAll(".edition-link");
-  const practiceContainer = document.querySelector(".practices-column-text");
+  const practiceContainer = document.querySelector(".plural-practices");
   const quoteSec = document.querySelector(".quote-section");
   const progressBar = document.getElementById("quote-progress-bar");
 
@@ -29,51 +29,51 @@
 
   /** 2. INITIAL CALCULATIONS & WORD WRAPPING **/
   function init() {
-        // A. Hero Explosion Math (Radial Center)
-        // radiusX = window.innerWidth < 768 ? 150 : 420;
-        // radiusY = window.innerWidth < 768 ? 250 : 220;
-        radiusX = window.innerWidth < 768 ? window.innerWidth * 0.45 : 420;
-        radiusY = window.innerWidth < 768 ? window.innerHeight * 0.35 : 220;
-        if (hero) {
-            centerX = window.innerWidth / 2;
-            centerY = hero.offsetHeight / 2;
+    // A. Hero Explosion Math (Radial Center)
+    // radiusX = window.innerWidth < 768 ? 150 : 420;
+    // radiusY = window.innerWidth < 768 ? 250 : 220;
+    radiusX = window.innerWidth < 768 ? window.innerWidth * 0.45 : 420;
+    radiusY = window.innerWidth < 768 ? window.innerHeight * 0.35 : 220;
+    if (hero) {
+      centerX = window.innerWidth / 2;
+      centerY = hero.offsetHeight / 2;
 
-            wordData = Array.from(circleWords).map((word) => {
-                // Use static offset relative to hero to prevent "lifting together" bug
-                const wordX = word.offsetLeft + word.offsetWidth / 2;
-                const wordY = word.offsetTop + word.offsetHeight / 2;
-                const angle = Math.atan2(wordY - centerY, wordX - centerX);
-                return { el: word, angle: angle };
-            });
-        }
-
-        // B. Sticky Menu Initial Positions
-        menuData = Array.from(menuItems).map((item) => {
-            const topPct = parseFloat(item.dataset.top);
-            const rightPct = parseFloat(item.dataset.right);
-
-            item.style.top = topPct + "%";
-            item.style.right = rightPct + "%";
-            item.style.position = "absolute";
-
-            return {
-                el: item,
-                topPct: topPct,
-                rightPct: rightPct,
-                initialY: (topPct / 100) * (hero ? hero.offsetHeight : 0),
-            };
-        });
-
-        // C. Redaction Word Wrapping (Plural Practices)
-        if (practiceContainer && !practiceContainer.dataset.wrapped) {
-            const paragraphs = practiceContainer.querySelectorAll("p");
-            paragraphs.forEach((p) => {
-                const words = p.innerText.split(" ");
-                p.innerHTML = words.map((word) => `<span>${word}</span>`).join(" ");
-            });
-            practiceContainer.dataset.wrapped = "true";
-        }
+      wordData = Array.from(circleWords).map((word) => {
+        // Use static offset relative to hero to prevent "lifting together" bug
+        const wordX = word.offsetLeft + word.offsetWidth / 2;
+        const wordY = word.offsetTop + word.offsetHeight / 2;
+        const angle = Math.atan2(wordY - centerY, wordX - centerX);
+        return { el: word, angle: angle };
+      });
     }
+
+    // B. Sticky Menu Initial Positions
+    menuData = Array.from(menuItems).map((item) => {
+      const topPct = parseFloat(item.dataset.top);
+      const rightPct = parseFloat(item.dataset.right);
+
+      item.style.top = topPct + "%";
+      item.style.right = rightPct + "%";
+      item.style.position = "absolute";
+
+      return {
+        el: item,
+        topPct: topPct,
+        rightPct: rightPct,
+        initialY: (topPct / 100) * (hero ? hero.offsetHeight : 0),
+      };
+    });
+
+    // C. Redaction Word Wrapping (Plural Practices)
+    if (practiceContainer && !practiceContainer.dataset.wrapped) {
+      const paragraphs = practiceContainer.querySelectorAll("p");
+      paragraphs.forEach((p) => {
+        const words = p.innerText.split(" ");
+        p.innerHTML = words.map((word) => `<span>${word}</span>`).join(" ");
+      });
+      practiceContainer.dataset.wrapped = "true";
+    }
+  }
 
   /** 3. OVAL ANIMATION (Previous Editions) **/
   //   const radiusX = 420;
@@ -90,23 +90,23 @@
     link.addEventListener("mouseleave", () => (isPaused = false));
   });
 
-//   function animateOval() {
-//     // Logic inside if ensures the spin stops when isPaused is true
-//     if (!isPaused && editionLinks.length > 0) {
-//       editionLinks.forEach((link, i) => {
-//         const spacing = (i / editionLinks.length) * (Math.PI * 2);
-//         const currentAngle = spacing + angleOffset;
-//         const x = Math.cos(currentAngle) * radiusX;
-//         const y = Math.sin(currentAngle) * radiusY;
+  //   function animateOval() {
+  //     // Logic inside if ensures the spin stops when isPaused is true
+  //     if (!isPaused && editionLinks.length > 0) {
+  //       editionLinks.forEach((link, i) => {
+  //         const spacing = (i / editionLinks.length) * (Math.PI * 2);
+  //         const currentAngle = spacing + angleOffset;
+  //         const x = Math.cos(currentAngle) * radiusX;
+  //         const y = Math.sin(currentAngle) * radiusY;
 
-//         link.style.left = "50%";
-//         link.style.top = "50%";
-//         link.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
-//       });
-//       angleOffset += speed;
-//     }
-//     requestAnimationFrame(animateOval);
-//   }
+  //         link.style.left = "50%";
+  //         link.style.top = "50%";
+  //         link.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+  //       });
+  //       angleOffset += speed;
+  //     }
+  //     requestAnimationFrame(animateOval);
+  //   }
 
   function animateOval() {
     // 1. Check if we are on Desktop
@@ -171,29 +171,6 @@
         data.el.style.transform = `translate(${tx}px, ${ty}px)`;
       });
     }
-
-    // D. Quote Section: Sticky Blackout Logic & Progress Bar
-    // if (quoteSec) {
-    //   const rect = quoteSec.getBoundingClientRect();
-
-    //   // If the section is "locked" in view
-    //   if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
-    //     const totalHeight = rect.height - window.innerHeight;
-    //     const progress = Math.abs(rect.top) / totalHeight;
-
-    //     // Update Progress Bar
-    //     if (progressBar) progressBar.style.height = progress * 100 + "%";
-
-    //     // Switch categories based on scroll depth
-    //     if (progress < 0.33) updateBlackout("quotes");
-    //     else if (progress < 0.66) updateBlackout("change");
-    //     else updateBlackout("about");
-    //   }
-    //   // Reset to first state if user scrolls back up
-    //   else if (rect.top > 0) {
-    //     updateBlackout("quotes");
-    //   }
-    // }
 
     if (quoteSec && window.innerWidth > 768) {
       const rect = quoteSec.getBoundingClientRect();
