@@ -1,0 +1,48 @@
+Olá equipa, bom dia!
+
+Seguem atualizações sobre o projeto após a reunião de hoje. Vou mandar primeiro as notas do site de depois dos Materiais de comunicação.
+
+Site
+
+Em geral acham que está a funcionar bem. Tem mais coisas a afinar, nomeadamente:
+
+-O piscar na secção do tema. Gostaram da versão que a Lara fez que pisca em azul, mas sugeriram que se limitasse ao texto para não ser muito confuso. Sugeriram também que o formato do piscar fosse mais curvo (como um olho).
+
+-Falta o nome do Fabrício no Team. Verificar que todos os nomes lá estão corretos.
+
+- Scroll da censura poderia ser adicionado a outras partes. 
+
+- Remover a animação do Previous editions (acham que não se conecta bem ao resto e cria outras associações.)
+
+-Há um bug na secção logo após o hero na versão mobile em que começa sempre em blackout (deveria começar no quote).
+
+Outras coisas que não foram mencionadas mas que sei de tem der vistas:
+- Na versão mobile o hero está muito básico. Acho que poderiamos adicionar um fundo com reflect resist reform mesmo que seja só estático.
+
+-Na secção do tema que a Lara enviou está faltando uma parte do texto e os tamanho dos temas está demasiado grande.
+
+-Precisamos de um favicon.
+
+-No hero o local, data e logo não respondem bem a mudanças de tamanho.
+
+-Revisar hierarquias de texto e tamanhos para garantir que está tudo correto. 
+
+-Adicionar logo do ID+
+
+-Há um bug no tamanho 768 e maiores em que o texto da info desaparece em baixo
+
+Lara e Ana, tem disponibilidade nesta próxima semana para dividirmos estas tarefas e revisarmos isto? Vou continuar a seguir com isto mas proponho que nos encontremos na quarta feira. O site tem de estar no ar entre o 19 e o 20 de fevereiro. Acredito que é exequível, faltam apenas estes ajustes. 
+
+
+Materiais de Comunicação
+
+A Camila enviou uma lista de materiais que teremos de publicar e suas datas. Partilho aqui o link para o drive e a versão pdf. Temos ai ao mínimo um post por semana até Abril que precisaremos de desenvolver. 
+
+Para esta primeira semana o necessário é:
+-Banner do Sigarra
+-Reel animado para Instagram
+-Poster impresso 50x70 (deve estar impresso no dia 23/02)
+
+Nos documentos enviados existem descrições do que é necessário para cada post.
+
+Ana, imagino que poder resolver o reel animado? Mariana consegues avançar com um poster impresso? Fica então o banner do Sigarra, quem poderia resolver isto?

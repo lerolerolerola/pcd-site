@@ -73,6 +73,28 @@
       });
       practiceContainer.dataset.wrapped = "true";
     }
+
+    // MOBILE TEXTURE GENERATOR
+    if (window.innerWidth <= 768 && !hero.dataset.multiplied) {
+      const layer = document.querySelector(".words-layer");
+      const originalWords = Array.from(circleWords);
+
+      // Clear and create a 'track' for the ticker
+      layer.innerHTML = "";
+      const tickerTrack = document.createElement("div");
+      tickerTrack.classList.add("ticker-track");
+
+      // Multiply to ensure the line is long enough to loop
+      for (let i = 0; i < 8; i++) {
+        originalWords.forEach((word) => {
+          const clone = word.cloneNode(true);
+          tickerTrack.appendChild(clone);
+        });
+      }
+      // Mark as multiplied so it doesn't double-up on resize
+      layer.appendChild(tickerTrack);
+      hero.dataset.multiplied = "true";
+    }
   }
 
   /** 3. OVAL ANIMATION (Previous Editions) **/
@@ -90,53 +112,33 @@
     link.addEventListener("mouseleave", () => (isPaused = false));
   });
 
-  //   function animateOval() {
-  //     // Logic inside if ensures the spin stops when isPaused is true
-  //     if (!isPaused && editionLinks.length > 0) {
-  //       editionLinks.forEach((link, i) => {
-  //         const spacing = (i / editionLinks.length) * (Math.PI * 2);
-  //         const currentAngle = spacing + angleOffset;
-  //         const x = Math.cos(currentAngle) * radiusX;
-  //         const y = Math.sin(currentAngle) * radiusY;
-
-  //         link.style.left = "50%";
-  //         link.style.top = "50%";
-  //         link.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
-  //       });
-  //       angleOffset += speed;
-  //     }
-  //     requestAnimationFrame(animateOval);
-  //   }
-
-  function animateOval() {
-    // 1. Check if we are on Desktop
+  function positionLinks() {
     const isDesktop = window.innerWidth > 768;
+    const radX = isDesktop ? 420 : 150;
+    const radY = isDesktop ? 220 : 250;
 
-    // 2. Only run the oval math if we are on desktop AND not paused
-    if (isDesktop && !isPaused && editionLinks.length > 0) {
+    if (isDesktop && editionLinks.length > 0) {
       editionLinks.forEach((link, i) => {
+        // Calculate a fixed position based on the index
         const spacing = (i / editionLinks.length) * (Math.PI * 2);
-        const currentAngle = spacing + angleOffset;
-        const x = Math.cos(currentAngle) * radiusX;
-        const y = Math.sin(currentAngle) * radiusY;
+        // We remove the angleOffset to keep it static
+        const x = Math.cos(spacing) * radX;
+        const y = Math.sin(spacing) * radY;
 
         link.style.left = "50%";
         link.style.top = "50%";
         link.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
       });
-      angleOffset += speed;
-    }
-    // 3. If we are on mobile, clear the inline styles so the CSS can take over
-    else if (!isDesktop) {
+    } else {
+      // Clear styles for mobile stack
       editionLinks.forEach((link) => {
         link.style.left = "";
         link.style.top = "";
         link.style.transform = "";
       });
     }
-
-    requestAnimationFrame(animateOval);
   }
+ 
 
   /** 4. MASTER SCROLL EVENT **/
   window.addEventListener("scroll", () => {
@@ -194,7 +196,9 @@
 
   /** 5. EXECUTION **/
   init();
-  animateOval();
+  positionLinks();
+
+  updateBlackout("quotes");
 
   window.addEventListener("resize", () => {
     init(); // Recalculate center points and initialY triggers

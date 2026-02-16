@@ -91,19 +91,19 @@ body {
 }
 
 /* Ensure children land in the right rows */
-.hero-meta {
+/* .hero-meta {
   grid-row: 1;
   align-self: end;
   padding-bottom: 2rem;
-}
+} */
 .hero h1 {
   grid-row: 2;
 }
-.hero-footer {
+/* .hero-footer {
   grid-row: 3;
   align-self: start;
   padding-top: 2rem;
-}
+} */
 
 .hero h1 {
   font-family: "editorial", serif;
@@ -116,27 +116,43 @@ body {
 
 .hero-meta,
 .hero-footer {
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 5;
   gap: 0.3em;
   font-family: "IBM Plex Mono", monospace;
   color: var(--blue);
 }
 
-/* .badge {
-  margin-top: 0.8rem;
-  background: #0033ff;
-  color: #fff;
-  padding: 0.3rem 0.9rem;
-  font-size: 0.9rem;
-  font-style: italic;
-} */
+.hero-meta {
+  top: 16%; 
+}
+
+.hero-meta-text{
+  background-color: #f1f1f1;
+  box-shadow: 0 0 0 10px #f1f1f1;
+  opacity: 0.9;
+  background-blend-mode: overlay;
+  /* padding: 0.5em; */
+}
+
+
+.hero-footer {
+  bottom: 14%; /* Stays relative to bottom height */
+}
 
 .badge-container {
   margin-top: 2em;
-  width: 10em; /* Control the exact size of your logo here */
+  width: 10em; 
   height: auto;
-  line-height: 0; /* Prevents tiny extra space below the image */
+  line-height: 0;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 0 10px #f1f1f1;
 }
 
 .badge-svg-file {
@@ -149,7 +165,7 @@ body {
 .word {
   position: absolute;
   font-size: 1.2rem;
-  color: #111;
+  color: var(--black);
 }
 
 /* Outer Circle (Reform) */
@@ -474,7 +490,6 @@ body {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 5rem;
-  
 }
 
 .theme-columns {
@@ -581,7 +596,9 @@ duotone-item {
   height: auto;
   display: block; /* Removes tiny gap under images */
   filter: grayscale(100%) contrast(1.4);
-  transition: filter 0.3s ease, transform 0.3s ease;
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
 }
 .img-box::after {
   content: "";
@@ -707,8 +724,8 @@ duotone-item {
 
 .team-grid {
   display: flex;
-  flex-wrap: wrap; 
-  gap: 4rem 2rem; 
+  flex-wrap: wrap;
+  gap: 4rem 2rem;
 }
 
 .team-member {
@@ -731,7 +748,7 @@ duotone-item {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.9em;
   color: var(--blue);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 1px;
   /* margin-top: 0.3rem; */
 }
@@ -782,6 +799,8 @@ duotone-item {
   color: #0033ff;
   font-family: "editorial";
   font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 300;
   text-align: center;
   top: 45%;
   left: 50%;
@@ -1065,14 +1084,61 @@ duotone-item {
    ========================================================================== */
 
 @media (max-width: 1024px) {
-  /* Reduce radius of previous editions links so they don't clip off-screen */
-  /* Note: We will also need a small JS tweak for this */
+  
   .editions-title {
     font-size: 2.2rem;
   }
 }
 
 @media (max-width: 768px) {
+
+  /* hero mobile test */
+
+
+  .words-layer {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    /* gap: 15px; */
+    gap: 8px 15px;
+    padding: 20px;
+    
+    /* Place it behind everything */
+    position: absolute;
+    inset: -10%;
+    z-index: 1; 
+    opacity: 0.6;
+    pointer-events: none;
+
+    animation: drift 10s linear infinite; 
+  }
+
+  @keyframes drift {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+
+  /* 2. Neutralize the individual word positions */
+  .word {
+    /* This 'all: unset' is a shortcut to kill all desktop coordinates (top, left, etc.) */
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    
+    /* Ensure they are visible and sized correctly */
+    display: inline-block !important;
+    font-size: 0.9em !important;
+    line-height: 0.7 !important;
+    color: var(--black) !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+
   h2,
   .theme-main-title,
   .col-head,
@@ -1090,9 +1156,9 @@ duotone-item {
   }
 
   /* Hide the exploding words entirely */
-  .words-layer {
+  /* .words-layer {
     display: none !important;
-  }
+  } */
 
   /* Center the title more aggressively since the 'halo' is gone */
   .hero-center {
@@ -1100,7 +1166,16 @@ duotone-item {
   }
 
   .hero h1 {
-    font-size: 3rem; /* Scaled down for mobile */
+    display: inline-block !important;
+    font-size: 3rem;
+    background-color: #f1f1f1;
+    opacity: 0.9;
+    background-blend-mode: overlay;
+    /* box-shadow: 0 0 0 10px #f1f1f1; */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    line-height: 1.2;
+    z-index: 2;
   }
 
   /* Hide the radial 'word-layer' on very small screens to keep it clean */
