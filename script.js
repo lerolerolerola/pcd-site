@@ -2,11 +2,25 @@
   // --- 1. Selectors ---
   const menuItems = document.querySelectorAll(".menu-item");
   const hero = document.querySelector(".hero");
-  const circleWords = document.querySelectorAll(".word");
+  const circleWords = document.querySelectorAll(".hero .word");
   const editionLinks = document.querySelectorAll(".edition-link");
   const practiceContainer = document.querySelector(".plural-practices");
   const quoteSec = document.querySelector(".quote-section");
   const progressBar = document.getElementById("quote-progress-bar");
+
+  const blocks = document.querySelectorAll(".theme-content-block");
+  let currentIndex = 0;
+
+  function cycleThemeText() {
+    // Remove active class from current
+    blocks[currentIndex].classList.remove("active");
+
+    // Move to next (loop back to 0 at the end)
+    currentIndex = (currentIndex + 1) % blocks.length;
+
+    // Add active class to next
+    blocks[currentIndex].classList.add("active");
+  }
 
   // Variables for shared calculations
   let menuData = [];
@@ -199,6 +213,8 @@
   positionLinks();
 
   updateBlackout("quotes");
+
+  setInterval(cycleThemeText, 4000);
 
   window.addEventListener("resize", () => {
     init(); // Recalculate center points and initialY triggers

@@ -27,8 +27,10 @@ To-do Site
 ⁠O piscar na secção do tema. Gostaram da versão que a Lara fez que pisca em azul, mas sugeriram que se limitasse ao 
 texto para não ser muito confuso. Sugeriram também que o formato do piscar fosse mais curvo (como um olho).
 
+. Secção do tema
+•⁠  ⁠Há um bug no tamanho 768 e maiores em que o texto da info desaparece em baixo
+
+Revisar
 •⁠  ⁠Scroll da censura poderia ser adicionado a outras partes. 
-•⁠  ⁠Na secção do tema que a Lara enviou está faltando uma parte do texto e os tamanho dos temas está demasiado grande.
 •⁠  ⁠Revisar hierarquias de texto e tamanhos para garantir que está tudo correto. 
 •⁠  ⁠⁠Revisar padding entre secções. Creio que há espaços díspares.
-•⁠  ⁠Há um bug no tamanho 768 e maiores em que o texto da info desaparece em baixo

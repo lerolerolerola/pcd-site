@@ -7,6 +7,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section {
+  padding: 4em 0;
+} 
+
 @font-face {
   font-family: "editorial";
   src: url(fonts/editorial.otf) format("opentype");
@@ -14,8 +18,8 @@ html {
 
 body {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: 18px;
+  line-height: 1.65;
   margin: 0;
   background: #f1f1f1;
   color: var(--black);
@@ -451,24 +455,61 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: start; */
-  line-height: 1.7;
+  line-height: 1.65;
   /* padding: 0em 4em 0; */
 }
 
 .quote-col {
   display: block;
   font-size: 1em;
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--black);
 }
 
 /* 5. THEME DISPLAY (REFLECT, RESIST, REFORM) */
+
+@keyframes blink-flicker {
+  0% { opacity: 0; background-color: var(--blue);}
+  50% { opacity: 1; color: red; }
+  100% { opacity: 0; color: var(--blue); }
+}
+
+/* @-webkit-keyframes text-focus-in{
+  0%{-webkit-filter:blur(12px);filter:blur(12px);opacity:0}
+  100%{-webkit-filter:blur(0);filter:blur(0);opacity:1}
+} */
+
+@keyframes text-focus-in {
+  0%{-webkit-filter:blur(12px);filter:blur(12px);opacity:0}
+  100%{-webkit-filter:blur(0);filter:blur(0);opacity:1; backdrop-filter: blur(10px);}
+}
+
+
 .theme-display {
   background-color: #f1f1f1;
-  padding: 4em 4em;
+  padding: 6em 0em;
   text-align: center;
   position: relative;
   z-index: 10;
+  /* border: 1px red solid;  */
+}
+
+.theme-header {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 0;
+}
+
+.theme-visual-zone {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 600px;
+  /* height: 600px;  */
+  /* margin: 0 auto; */
+  /* border: 1px solid red; */
+  margin-top: -6em;
+  margin-bottom: -6em;
 }
 
 .theme-container {
@@ -480,16 +521,23 @@ body {
   color: var(--blue);
   font-family: "editorial", serif;
   font-size: 3em;
+  line-height: 1.2;
   font-weight: 200;
-  margin-bottom: 2rem;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 .theme-intro-text {
   color: var(--black);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 5rem;
+  text-align: center;
+  font-size: 1em;
+  max-width: 550px;
+  margin: 0 auto 1em auto;
+  position: relative;
+  /* padding: 0 10em 0; */
+  /* margin-bottom: 5rem; */
 }
 
 .theme-columns {
@@ -502,8 +550,10 @@ body {
   color: var(--blue);
   font-family: "editorial", serif;
   font-size: 2em;
-  line-height: 1.3;
+  line-height: 0.9;
   font-weight: 200;
+  margin: 0;
+  padding-bottom: 0.25em;
   /* margin-bottom: 1em; */
 }
 
@@ -511,7 +561,7 @@ body {
   color: var(--black);
   font-family: "IBM Plex Mono", monospace;
   font-size: 1em;
-  line-height: 1.4;
+  line-height: 1.45;
   max-width: 280px;
   margin: 0 auto;
 }
@@ -538,7 +588,7 @@ body {
   font-family: "editorial", serif;
   font-size: 3em;
   line-height: 1.2;
-  color: #0033ff;
+  color: var(--blue);
   font-weight: 400;
   margin-bottom: 0.5em;
 }
@@ -556,7 +606,7 @@ body {
   z-index: 2;
   font-family: "IBM Plex Mono", monospace;
   font-size: 1em;
-  line-height: 2;
+  line-height: 1.65;
   color: var(--black);
   position: relative;
 }
@@ -617,7 +667,7 @@ duotone-item {
   font-size: 0.65rem;
   color: #0033ff;
   margin-top: 8px;
-  line-height: 1.2;
+  line-height: 1.65;
   text-align: right;
 }
 
@@ -1092,8 +1142,61 @@ duotone-item {
 
 @media (max-width: 768px) {
 
-  /* hero mobile test */
+  
+  .theme-display .words-layer {
+    display: none !important; /* Hides the radial words on mobile */
+  }
+  
+  /* TEST */
+  .theme-visual-zone {
+    height: auto !important;
+    margin-top: 0 !important; /* Remove negative margins if you had them */
+    padding: 2rem 0;
+  }
 
+  /* 2. Turn the 'Stage' into a simple vertical wrapper */
+  .theme-center-stage {
+    position: static !important;
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Spacing between Reflect, Resist, and Reform */
+    max-width: 100%;
+    min-height: 0;
+  }
+
+  /* 3. Force all blocks to stay visible and sit in the flow */
+  .theme-content-block {
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    text-align: left; /* Optional: Align text left for easier reading on phones */
+    animation: none !important; /* Disable the blink effect */
+  }
+
+  .theme-container {
+    padding: 0 10%; /* Uses 10% of the screen width as a gutter */
+    width: 100%;
+  }
+
+
+  /* END TEST */
+
+  .col-desc {
+    text-align: left;
+    margin: 0;
+  }
+
+  .theme-header {
+    margin-bottom: 0;
+    /* padding: 0 1em 0; */
+  }
+
+  .theme-intro-text {
+    text-align: left;
+    padding: 0 0 0;
+  }
 
   .words-layer {
     display: flex !important;
@@ -1298,4 +1401,55 @@ duotone-item {
     margin-bottom: 2rem;
     text-align: left; /* Ensures the 'Previous Editions' text is left-aligned */
   }
+}
+
+/* TEST */
+
+.theme-word {
+  position: absolute;
+  font-size: 1.2rem;
+  color: rgba(9, 12, 8, 0.3); /* Slightly faded so text is readable */
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.1s ease-out;
+}
+
+/* TEST02 */
+
+.theme-center-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 600px; /* Limits width to fit inside the circle */
+  /* margin: 0 auto; */
+  min-height: 400px; /* Creates a stable vertical box for the blocks to sit in */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-content-block {
+  position: absolute;
+  /* 1. Center the block exactly */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* This pulls the block back by half its own height/width */
+  
+  /* 2. Fix the alignment */
+  width: 100%;
+  text-align: center; /* Ensures the H2 and P tags inside are centered */
+  
+  /* 3. Visibility logic */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.theme-content-block.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) translateY(0);
+  animation: text-focus-in 0.4s ease-out;
 }
