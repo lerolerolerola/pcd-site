@@ -12,12 +12,14 @@
   
   // Theme section
   const blocks = document.querySelectorAll(".theme-content-block");
+  const themeEllipse = document.querySelectorAll(".theme-word");
   let currentIndex = 0;
   let isBlinking = false;
 
   function performBlinkTransition() {
     if (isBlinking) return;
     isBlinking = true;
+    let newText = "";
 
     // 1. Close Lids
     document.body.classList.add("blinking");
@@ -33,6 +35,10 @@
 
       // Show next
       blocks[currentIndex].style.display = "block";
+        themeEllipse.forEach(el => {
+    el.innerHTML = newText;
+  });
+
       // Force a reflow so the browser notices the display change
       void blocks[currentIndex].offsetWidth;
       blocks[currentIndex].classList.add("active");
@@ -47,18 +53,27 @@
         isBlinking = false;
       }, 600);
     }, 800);
+
+  // Texto elipses tema
+  if (currentIndex === 0) {
+    newText = "resist";
+  } else if (currentIndex === 1) {
+    newText = "reform";
+  } else {
+    newText = "reflect";
+  }
   }
 
-  function cycleThemeText() {
-    // Remove active class from current
-    blocks[currentIndex].classList.remove("active");
+  // function cycleThemeText() {
+  //   // Remove active class from current
+  //   blocks[currentIndex].classList.remove("active");
 
-    // Move to next (loop back to 0 at the end)
-    currentIndex = (currentIndex + 1) % blocks.length;
+  //   // Move to next (loop back to 0 at the end)
+  //   currentIndex = (currentIndex + 1) % blocks.length;
 
-    // Add active class to next
-    blocks[currentIndex].classList.add("active");
-  }
+  //   // Add active class to next
+  //   blocks[currentIndex].classList.add("active");
+  // }
 
   // Variables for shared calculations
   let menuData = [];
