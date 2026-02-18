@@ -8,8 +8,46 @@
   const quoteSec = document.querySelector(".quote-section");
   const progressBar = document.getElementById("quote-progress-bar");
 
+  
+  
+  // Theme section
   const blocks = document.querySelectorAll(".theme-content-block");
   let currentIndex = 0;
+  let isBlinking = false;
+
+  function performBlinkTransition() {
+    if (isBlinking) return;
+    isBlinking = true;
+
+    // 1. Close Lids
+    document.body.classList.add("blinking");
+
+    // 2. Mid-blink: Swap the text (Wait 600ms for lids to meet)
+    setTimeout(() => {
+      // Hide current
+      blocks[currentIndex].classList.remove("active");
+      blocks[currentIndex].style.display = "none";
+
+      // Calculate next index
+      currentIndex = (currentIndex + 1) % blocks.length;
+
+      // Show next
+      blocks[currentIndex].style.display = "block";
+      // Force a reflow so the browser notices the display change
+      void blocks[currentIndex].offsetWidth;
+      blocks[currentIndex].classList.add("active");
+    }, 600);
+
+    // 3. Open Lids (Wait slightly longer so swap is invisible)
+    setTimeout(() => {
+      document.body.classList.remove("blinking");
+
+      // Allow next blink only after lids are fully open
+      setTimeout(() => {
+        isBlinking = false;
+      }, 600);
+    }, 800);
+  }
 
   function cycleThemeText() {
     // Remove active class from current
@@ -46,6 +84,22 @@
     // A. Hero Explosion Math (Radial Center)
     // radiusX = window.innerWidth < 768 ? 150 : 420;
     // radiusY = window.innerWidth < 768 ? 250 : 220;
+    if (hero) {
+      // 1. Reset words to 0 to get their "natural" position for math
+      circleWords.forEach((el) => (el.style.transform = "none"));
+
+      centerX = window.innerWidth / 2;
+      centerY = hero.offsetHeight / 2;
+
+      wordData = Array.from(circleWords).map((word) => {
+        // Measurement is now accurate because transform is 'none'
+        const wordX = word.offsetLeft + word.offsetWidth / 2;
+        const wordY = word.offsetTop + word.offsetHeight / 2;
+        const angle = Math.atan2(wordY - centerY, wordX - centerX);
+        return { el: word, angle: angle };
+      });
+    }
+
     radiusX = window.innerWidth < 768 ? window.innerWidth * 0.45 : 420;
     radiusY = window.innerWidth < 768 ? window.innerHeight * 0.35 : 220;
     if (hero) {
@@ -214,7 +268,9 @@
 
   updateBlackout("quotes");
 
-  setInterval(cycleThemeText, 4000);
+  // setInterval(cycleThemeText, 4000);
+
+  setInterval(performBlinkTransition, 5000);
 
   window.addEventListener("resize", () => {
     init(); // Recalculate center points and initialY triggers

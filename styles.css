@@ -160,8 +160,10 @@ body {
 }
 
 .badge-svg-file {
-  width: 100%;
+  width: 105%;
   height: auto;
+  max-height: 6em;
+  /* height: auto; */
   display: block;
 }
 
@@ -968,7 +970,7 @@ duotone-item {
    ========================================================================== */
 @media (max-width: 768px) {
   .footer-logo img {
-    height: 1.5em; /* Adjust based on your SVG proportions */
+    height: 1.3em; /* Adjust based on your SVG proportions */
     width: auto;
   }
   .footer-top {
@@ -988,7 +990,7 @@ duotone-item {
 
   .footer-logos-row {
     grid-template-columns: repeat(2, 1fr); /* 2x2 grid on mobile */
-    gap: 1.5rem;
+    gap: 2.5em;
   }
 }
 
@@ -1250,7 +1252,7 @@ duotone-item {
     font-size: 2.2rem !important; /* Forces the size across all sections */
     line-height: 1.2;
     text-align: left; /* Ensures they all align to the left on mobile */
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
   }
 
   /* 1. HERO SECTION REFINEMENTS */
@@ -1403,7 +1405,7 @@ duotone-item {
   }
 }
 
-/* TEST */
+/* Theme stuff */
 
 .theme-word {
   position: absolute;
@@ -1452,4 +1454,83 @@ duotone-item {
   visibility: visible;
   transform: translate(-50%, -50%) translateY(0);
   animation: text-focus-in 0.4s ease-out;
+}
+
+/* Piscar */
+.theme-display {
+position: relative;
+/* height: 400vh; */
+}
+
+.theme-container {
+/* position: sticky; */
+top: 0;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.theme-visual-zone {
+position: relative;
+overflow: hidden;
+clip-path: ellipse(50% 48% at 50% 50%);
+}
+
+.theme-eye-portal {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: 100;
+}
+
+.eye-lid {
+position: absolute;
+left: 0;
+width: 100%;
+height: 52%;
+background: #f1f1f1;
+transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.eye-lid.top {
+top: 0;
+transform: translateY(-100%);
+clip-path: ellipse(100% 100% at 50% 0%);
+}
+
+.eye-lid.bottom {
+bottom: 0;
+transform: translateY(100%);
+clip-path: ellipse(100% 100% at 50% 100%);
+}
+
+
+body.blinking .eye-lid.top,
+body.blinking .eye-lid.bottom {
+transform: translateY(0);
+}
+
+
+.theme-content-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+
+
+  display: none; 
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 50;
+  text-align: center; 
+}
+
+.theme-content-block.active {
+  display: block; 
+  opacity: 1;
 }
