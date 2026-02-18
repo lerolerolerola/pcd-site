@@ -303,7 +303,7 @@ body {
   left: 40%;
 }
 .s2 {
-  top: 25%;
+  top: 26%;
   left: 34%;
 }
 .s3 {
@@ -351,7 +351,7 @@ body {
   left: 29%;
 }
 .s14 {
-  top: 73%;
+  top: 72%;
   left: 34%;
 }
 .s15 {
@@ -365,7 +365,7 @@ body {
   right: 40%;
 }
 .f2 {
-  top: 25%;
+  top: 26%;
   right: 34%;
 }
 .f3 {
@@ -415,7 +415,7 @@ body {
   right: 29%;
 }
 .f14 {
-  top: 73%;
+  top: 72%;
   right: 34%;
 }
 .f15 {
@@ -1143,12 +1143,29 @@ duotone-item {
 }
 
 @media (max-width: 768px) {
+  section {
+  padding: 1em 0;
+} 
+.theme-content-block h2{
+  text-align: center !important;
+}
+  .theme-content-block p{
+    text-align: center;
+  }
 
-  
+.theme-content-block{
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
   .theme-display .words-layer {
     display: none !important; /* Hides the radial words on mobile */
   }
   
+  .theme-eye-portal{
+    display: none !important;
+  }
+
   /* TEST */
   .theme-visual-zone {
     height: auto !important;
@@ -1465,10 +1482,9 @@ position: relative;
 .theme-container {
 /* position: sticky; */
 top: 0;
-height: 100vh;
+height: auto;
 display: flex;
 flex-direction: column;
-justify-content: center;
 }
 
 .theme-visual-zone {

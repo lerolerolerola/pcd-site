@@ -11,15 +11,16 @@
   
   
   // Theme section
-  const blocks = document.querySelectorAll(".theme-content-block");
-  const themeEllipse = document.querySelectorAll(".theme-word");
-  let currentIndex = 0;
-  let isBlinking = false;
+const blocks = document.querySelectorAll(".theme-content-block");
+const themeEllipse = document.querySelectorAll(".theme-word");
+let currentIndex = 0;
+let isBlinking = false;
 
-  function performBlinkTransition() {
-    if (isBlinking) return;
-    isBlinking = true;
-    let newText = "";
+function performBlinkTransition() {
+  // EXIT if mobile or already animating
+  if (window.innerWidth <= 768 || isBlinking) return;
+
+  isBlinking = true;
 
     // 1. Close Lids
     document.body.classList.add("blinking");
