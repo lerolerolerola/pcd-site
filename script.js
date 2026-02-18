@@ -49,16 +49,16 @@
     }, 800);
   }
 
-  function cycleThemeText() {
-    // Remove active class from current
-    blocks[currentIndex].classList.remove("active");
+  // function cycleThemeText() {
+  //   // Remove active class from current
+  //   blocks[currentIndex].classList.remove("active");
 
-    // Move to next (loop back to 0 at the end)
-    currentIndex = (currentIndex + 1) % blocks.length;
+  //   // Move to next (loop back to 0 at the end)
+  //   currentIndex = (currentIndex + 1) % blocks.length;
 
-    // Add active class to next
-    blocks[currentIndex].classList.add("active");
-  }
+  //   // Add active class to next
+  //   blocks[currentIndex].classList.add("active");
+  // }
 
   // Variables for shared calculations
   let menuData = [];
