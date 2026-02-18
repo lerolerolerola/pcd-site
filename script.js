@@ -16,6 +16,65 @@ const themeEllipse = document.querySelectorAll(".theme-word");
 let currentIndex = 0;
 let isBlinking = false;
 
+//EYE SPAWNER LOGIC Script
+
+let idleTimer;
+let spawnInterval;
+
+
+const IDLE_WAIT = 6000; 
+const SPAWN_GAP = 10000;
+
+function clearAllImages() {
+    const images = document.querySelectorAll('.spawned-image');
+    images.forEach(img => {
+        img.style.opacity = '0';
+        img.style.transform = 'scale(0.8) translateY(20px)';
+        setTimeout(() => img.remove(), 500);
+    });
+}
+function resetActivity() {
+    clearTimeout(idleTimer);
+    clearInterval(spawnInterval);
+    
+    clearAllImages();
+    
+    idleTimer = setTimeout(startSpawning, IDLE_WAIT);
+}
+
+function startSpawning() {
+ 
+    createImage();
+    
+    clearInterval(spawnInterval);
+    spawnInterval = setInterval(createImage, SPAWN_GAP);
+}
+
+function createImage() {
+    const img = document.createElement('img');
+    
+    const randomId = Math.floor(Math.random() * 1000);
+    img.src = "images/OLHO.png";
+    img.className = 'spawned-image';
+
+    const maxX = window.innerWidth - 150;
+    const maxY = window.innerHeight - 150;
+    
+    img.style.left = `${Math.random() * maxX}px`;
+    img.style.top = `${Math.random() * maxY}px`;
+
+    document.body.appendChild(img);
+}
+
+window.addEventListener('mousemove', resetActivity);
+window.addEventListener('scroll', resetActivity);
+window.addEventListener('keydown', resetActivity);
+window.addEventListener('click', resetActivity);
+
+resetActivity();
+
+// PISCAR THEME
+
 function performBlinkTransition() {
   // EXIT if mobile or already animating
   if (window.innerWidth <= 768 || isBlinking) return;
