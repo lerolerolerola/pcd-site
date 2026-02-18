@@ -1,0 +1,36 @@
+﻿DONE
+>Add 3rd image to "computational practices"
+>Align Porto 2026 on header
+>Figure out why the hero breaks after a while
+>Add links to all previous PCD sites
+>Change all header type
+>Change all body copy to IBM Plex
+>Edit blackout effect on "computational practices" section so it doesn't come from the sides
+>Anchor links should link to their respective sections
+>Add team section
+>Add correct logo on hero
+>Mobile version 
+>Footer design
+>Integrate Lara's blackout section
+>⁠Falta o nome do Fabrício no Team. Verificar que todos os nomes lá estão corretos.
+>⁠Na versão mobile o hero está muito básico. Acho que poderiamos adicionar um fundo com reflect resist reform mesmo que seja só estático.
+>⁠Precisamos de um favicon.
+>⁠No hero o local, data e logo não respondem bem a mudanças de tamanho.
+>⁠Adicionar logo do ID+
+>⁠Há um bug na secção logo após o hero na versão mobile em que começa sempre em blackout (deveria começar no quote).
+>⁠Remover a animação do Previous editions (acham que não se conecta bem ao resto e cria outras associações.)
+
+------------------------
+
+To-do Site
+
+⁠O piscar na secção do tema. Gostaram da versão que a Lara fez que pisca em azul, mas sugeriram que se limitasse ao 
+texto para não ser muito confuso. Sugeriram também que o formato do piscar fosse mais curvo (como um olho).
+
+. Secção do tema
+•⁠  ⁠Há um bug no tamanho 768 e maiores em que o texto da info desaparece em baixo
+
+Revisar
+•⁠  ⁠Scroll da censura poderia ser adicionado a outras partes. 
+•⁠  ⁠Revisar hierarquias de texto e tamanhos para garantir que está tudo correto. 
+•⁠  ⁠⁠Revisar padding entre secções. Creio que há espaços díspares.

@@ -3,24 +3,47 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  padding: 4em 0;
+} 
+
+@font-face {
+  font-family: "editorial";
+  src: url(fonts/editorial.otf) format("opentype");
+}
+
 body {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 18px;
+  line-height: 1.65;
   margin: 0;
-  background: #ffffff;
-  color: #111;
+  background: #f1f1f1;
+  color: var(--black);
   overflow-x: hidden;
+}
+
+:root {
+  --blue: #0033ff;
+  --light-blue: #66a3ff;
+  --dark-blue: #001a99;
+  --black: #090c08;
 }
 
 /* Global Blackout Text Utility */
 .text {
-  background-color: #0000FF;
-  color: #0000FF;
+  background-color: #0000ff;
+  color: #0000ff;
   padding: 0.15em 0.2em;
   transition: all 0.3s ease;
 }
 
 .text.visible {
   background-color: transparent;
-  color: black;
+  color: var(--black);
 }
 
 /* 2. NAVIGATION & MENU */
@@ -29,13 +52,27 @@ body {
   width: 100%;
   height: 100vh;
   pointer-events: none;
+  z-index: 999;
 }
 
 .menu-item {
   position: absolute;
-  color: #0033ff;
+  color: var(--blue);
   transition: none;
   z-index: 1000;
+  pointer-events: auto;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block; /* Or block */
+  pointer-events: auto; /* Double-down on enabling clicks */
+}
+
+.menu-item a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--blue);
 }
 
 /* 3. HERO SECTION */
@@ -50,71 +87,341 @@ body {
   position: absolute;
   inset: 0;
   display: grid;
-  place-items: center;
+  /* place-items: center; */
   text-align: center;
+  grid-template-rows: 1fr auto 1fr;
+  align-items: center; /* Vertically centers content within those rows */
+  justify-items: center;
 }
 
+/* Ensure children land in the right rows */
+/* .hero-meta {
+  grid-row: 1;
+  align-self: end;
+  padding-bottom: 2rem;
+} */
 .hero h1 {
-  font-family: "Times New Roman", Georgia, serif;
-  font-size: clamp(3rem, 6vw, 6rem);
+  grid-row: 2;
+}
+/* .hero-footer {
+  grid-row: 3;
+  align-self: start;
+  padding-top: 2rem;
+} */
+
+.hero h1 {
+  font-family: "editorial", serif;
+  font-size: clamp(3em, 6vw, 6em);
   font-weight: 500;
   line-height: 1.05;
-  color: #0033ff;
+  color: var(--blue);
   margin: 2rem 0;
 }
 
 .hero-meta,
 .hero-footer {
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  font-family: "Times New Roman", Georgia, serif;
-  color: #0033ff;
+  align-items: center;
+  text-align: center;
+  z-index: 5;
+  gap: 0.3em;
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--blue);
 }
 
-.badge {
-  margin-top: 0.8rem;
-  background: #0033ff;
-  color: #fff;
-  padding: 0.3rem 0.9rem;
-  font-size: 0.9rem;
-  font-style: italic;
+.hero-meta {
+  top: 16%; 
+}
+
+.hero-meta-text{
+  background-color: #f1f1f1;
+  box-shadow: 0 0 0 10px #f1f1f1;
+  opacity: 0.9;
+  background-blend-mode: overlay;
+  /* padding: 0.5em; */
+}
+
+
+.hero-footer {
+  bottom: 14%; /* Stays relative to bottom height */
+}
+
+.badge-container {
+  margin-top: 2em;
+  width: 10em; 
+  height: auto;
+  line-height: 0;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 0 10px #f1f1f1;
+}
+
+.badge-svg-file {
+  width: 105%;
+  height: auto;
+  max-height: 6em;
+  /* height: auto; */
+  display: block;
 }
 
 /* Floating Words (Radial Circle)*/
 .word {
   position: absolute;
   font-size: 1.2rem;
-  color: #111;
+  color: var(--black);
 }
 
 /* Outer Circle (Reform) */
-.r1 { top: 16%; left: 39%; } .r2 { top: 19%; left: 32%; } .r3 { top: 23%; left: 25%; }
-.r4 { top: 28%; left: 19%; } .r5 { top: 34%; left: 13.5%; } .r6 { top: 39%; left: 10%; }
-.r7 { top: 44%; left: 8%; } .r8 { top: 49%; left: 7%; } .r9 { top: 54%; left: 8%; }
-.r10 { top: 59%; left: 10%; } .r11 { top: 64%; left: 13.5%; } .r12 { top: 70%; left: 19%; }
-.r13 { top: 75%; left: 25%; } .r14 { top: 79%; left: 32%; } .r15{ top: 82%; left: 39%; }
-.r16 { top: 16%; right: 39%; } .r17 { top: 19%; right: 32%; } .r18 { top: 23%; right: 25%; }
-.r19 { top: 28%; right: 19%; } .r20 { top: 34%; right: 13.5%; } .r21 { top: 39%; right: 10%; }
-.r22 { top: 44%; right: 8%; } .r23 { top: 49%; right: 7%; } .r24{ top: 54%; right: 8%; }
-.r25 { top: 59%; right: 10%; } .r26 { color: #0033ff; top: 64%; right: 13.5%; }
-.r27 { top: 70%; right: 19%; } .r28 { top: 75%; right: 25%; } .r29 { top: 79%; right: 32%; }
-.r30{ top: 82%; right: 39%; } 
+.r1 {
+  top: 16%;
+  left: 39%;
+}
+.r2 {
+  top: 19%;
+  left: 32%;
+}
+.r3 {
+  top: 23%;
+  left: 25%;
+}
+.r4 {
+  top: 28%;
+  left: 19%;
+}
+.r5 {
+  top: 34%;
+  left: 13.5%;
+}
+.r6 {
+  top: 39%;
+  left: 10%;
+}
+.r7 {
+  top: 44%;
+  left: 8%;
+}
+.r8 {
+  top: 49%;
+  left: 7%;
+}
+.r9 {
+  top: 54%;
+  left: 8%;
+}
+.r10 {
+  top: 59%;
+  left: 10%;
+}
+.r11 {
+  top: 64%;
+  left: 13.5%;
+}
+.r12 {
+  top: 70%;
+  left: 19%;
+}
+.r13 {
+  top: 75%;
+  left: 25%;
+}
+.r14 {
+  top: 79%;
+  left: 32%;
+}
+.r15 {
+  top: 82%;
+  left: 39%;
+}
+.r16 {
+  top: 16%;
+  right: 39%;
+}
+.r17 {
+  top: 19%;
+  right: 32%;
+}
+.r18 {
+  top: 23%;
+  right: 25%;
+}
+.r19 {
+  top: 28%;
+  right: 19%;
+}
+.r20 {
+  top: 34%;
+  right: 13.5%;
+}
+.r21 {
+  top: 39%;
+  right: 10%;
+}
+.r22 {
+  top: 44%;
+  right: 8%;
+}
+.r23 {
+  top: 49%;
+  right: 7%;
+}
+.r24 {
+  top: 54%;
+  right: 8%;
+}
+.r25 {
+  top: 59%;
+  right: 10%;
+}
+.r26 {
+  color: #0033ff;
+  top: 64%;
+  right: 13.5%;
+}
+.r27 {
+  top: 70%;
+  right: 19%;
+}
+.r28 {
+  top: 75%;
+  right: 25%;
+}
+.r29 {
+  top: 79%;
+  right: 32%;
+}
+.r30 {
+  top: 82%;
+  right: 39%;
+}
 
 /* Middle Circle (Resist) */
-.s1 { top: 23%; left: 40%; } .s2 { top: 25%; left: 34%; } .s3 { top: 29%; left: 29%; }
-.s4 { top: 33%; left: 26%; } .s5 { top: 37%; left: 24%; } .s6 { top: 41%; left: 22%; }
-.s7 { top: 45%; left: 21%; } .s8 { top: 49%; left: 20.5%;} .s9 { top: 53%; left: 21%; }
-.s10 { top: 57%; left: 22%; } .s11 { top: 61%; left: 24%; } .s12 { top: 65%; left: 26%; }
-.s13 { top: 69%; left: 29%; } .s14 { top: 73%; left: 34%; } .s15 { top: 75%; left: 40%; }
+.s1 {
+  top: 23%;
+  left: 40%;
+}
+.s2 {
+  top: 25%;
+  left: 34%;
+}
+.s3 {
+  top: 29%;
+  left: 29%;
+}
+.s4 {
+  top: 33%;
+  left: 26%;
+}
+.s5 {
+  top: 37%;
+  left: 24%;
+}
+.s6 {
+  top: 41%;
+  left: 22%;
+}
+.s7 {
+  top: 45%;
+  left: 21%;
+}
+.s8 {
+  top: 49%;
+  left: 20.5%;
+}
+.s9 {
+  top: 53%;
+  left: 21%;
+}
+.s10 {
+  top: 57%;
+  left: 22%;
+}
+.s11 {
+  top: 61%;
+  left: 24%;
+}
+.s12 {
+  top: 65%;
+  left: 26%;
+}
+.s13 {
+  top: 69%;
+  left: 29%;
+}
+.s14 {
+  top: 73%;
+  left: 34%;
+}
+.s15 {
+  top: 75%;
+  left: 40%;
+}
 
 /* Inner Circle (Reflect) */
-.f1 { top: 23%; right: 40%; } .f2 { top: 25%; right: 34%; } .f3 {color: #0033ff; top: 29%; right: 29%; }
-.f4 { top: 33%; right: 26%; } .f5 { top: 37%; right: 24%; } .f6 { top: 41%; right: 22%; }
-.f7 { top: 45%; right: 21%; } .f8 { color: #0033ff; top: 49%; right: 20.5%; }
-.f9 { top: 53%; right: 21%; } .f10 { top: 57%; right: 22%; } .f11 { top: 61%; right: 24%; }
-.f12 { top: 65%; right: 26%; } .f13 { top: 69%; right: 29%; } .f14 { top: 73%; right: 34%; }
-.f15 { top: 75%; right: 40%; }
+.f1 {
+  top: 23%;
+  right: 40%;
+}
+.f2 {
+  top: 25%;
+  right: 34%;
+}
+.f3 {
+  color: #0033ff;
+  top: 29%;
+  right: 29%;
+}
+.f4 {
+  top: 33%;
+  right: 26%;
+}
+.f5 {
+  top: 37%;
+  right: 24%;
+}
+.f6 {
+  top: 41%;
+  right: 22%;
+}
+.f7 {
+  top: 45%;
+  right: 21%;
+}
+.f8 {
+  color: #0033ff;
+  top: 49%;
+  right: 20.5%;
+}
+.f9 {
+  top: 53%;
+  right: 21%;
+}
+.f10 {
+  top: 57%;
+  right: 22%;
+}
+.f11 {
+  top: 61%;
+  right: 24%;
+}
+.f12 {
+  top: 65%;
+  right: 26%;
+}
+.f13 {
+  top: 69%;
+  right: 29%;
+}
+.f14 {
+  top: 73%;
+  right: 34%;
+}
+.f15 {
+  top: 75%;
+  right: 40%;
+}
 
 /* 4. QUOTE SECTION (BLACKOUT INTERFACE) */
 .quote-section {
@@ -135,37 +442,76 @@ body {
   color: black;
   padding: 8px 10px;
   cursor: pointer;
-  font-family: "Times New Roman", serif;
+  font-family: "editorial", serif;
   border: none;
   font-size: 1.5rem;
   transition: color 0.2s;
 }
 
 .quote-header button:hover {
-  color: #0033ff;
+  color: var(--blue);
 }
 
 .quote-grid {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: start;
-  font-family: "Courier New", monospace;
-  line-height: 1.6;
+  align-items: start; */
+  line-height: 1.65;
+  /* padding: 0em 4em 0; */
 }
 
 .quote-col {
   display: block;
-  font-size: 0.95rem;
-  color: #444;
+  font-size: 1em;
+  line-height: 1.65;
+  color: var(--black);
 }
 
 /* 5. THEME DISPLAY (REFLECT, RESIST, REFORM) */
+
+@keyframes blink-flicker {
+  0% { opacity: 0; background-color: var(--blue);}
+  50% { opacity: 1; color: red; }
+  100% { opacity: 0; color: var(--blue); }
+}
+
+/* @-webkit-keyframes text-focus-in{
+  0%{-webkit-filter:blur(12px);filter:blur(12px);opacity:0}
+  100%{-webkit-filter:blur(0);filter:blur(0);opacity:1}
+} */
+
+@keyframes text-focus-in {
+  0%{-webkit-filter:blur(12px);filter:blur(12px);opacity:0}
+  100%{-webkit-filter:blur(0);filter:blur(0);opacity:1; backdrop-filter: blur(10px);}
+}
+
+
 .theme-display {
-  background-color: #ffffff;
-  padding: 100px 4rem;
+  background-color: #f1f1f1;
+  padding: 6em 0em;
   text-align: center;
-  border-top: 1px solid #eee;
+  position: relative;
+  z-index: 10;
+  /* border: 1px red solid;  */
+}
+
+.theme-header {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 0;
+}
+
+.theme-visual-zone {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 600px;
+  /* height: 600px;  */
+  /* margin: 0 auto; */
+  /* border: 1px solid red; */
+  margin-top: -6em;
+  margin-bottom: -6em;
 }
 
 .theme-container {
@@ -174,18 +520,26 @@ body {
 }
 
 .theme-main-title {
-  color: #0033ff;
-  font-family: "Times New Roman", serif;
-  font-size: 3.5rem;
-  margin-bottom: 2rem;
+  color: var(--blue);
+  font-family: "editorial", serif;
+  font-size: 3em;
+  line-height: 1.2;
+  font-weight: 200;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 .theme-intro-text {
-  color: #444;
-  font-family: "Courier New", monospace;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 5rem;
+  color: var(--black);
+  font-family: "IBM Plex Mono", monospace;
+  text-align: center;
+  font-size: 1em;
+  max-width: 550px;
+  margin: 0 auto 1em auto;
+  position: relative;
+  /* padding: 0 10em 0; */
+  /* margin-bottom: 5rem; */
 }
 
 .theme-columns {
@@ -195,25 +549,32 @@ body {
 }
 
 .col-head {
-  color: #0033ff;
-  font-family: "Times New Roman", serif;
-  font-size: 2.8rem;
-  margin-bottom: 1.5rem;
+  color: var(--blue);
+  font-family: "editorial", serif;
+  font-size: 2em;
+  line-height: 0.9;
+  font-weight: 200;
+  margin: 0;
+  padding-bottom: 0.25em;
+  /* margin-bottom: 1em; */
 }
 
 .col-desc {
-  color: #0033ff;
-  font-family: "Courier New", monospace;
-  font-size: 1rem;
-  line-height: 1.4;
+  color: var(--black);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1em;
+  line-height: 1.45;
   max-width: 280px;
   margin: 0 auto;
 }
 
-/* 6. PLURAL PRACTICES (TEXT & DUOTONE IMAGES) */
+/* ==========================================================================
+   PLURAL PRACTICES
+   ========================================================================== */
+
 .plural-practices {
-  padding: 120px 0;
-  background-color: #fff;
+  padding: 6em 0;
+  background-color: #f1f1f1;
   position: relative;
   overflow: visible;
 }
@@ -226,138 +587,950 @@ body {
 }
 
 .practices-title {
-  font-family: "Times New Roman", serif;
-  font-size: 3.8rem;
-  color: #0033ff;
+  font-family: "editorial", serif;
+  font-size: 3em;
+  line-height: 1.2;
+  color: var(--blue);
   font-weight: 400;
-  margin-bottom: 60px;
+  margin-bottom: 0.5em;
 }
 
 .practices-layout {
+  display: flex;
+  gap: 3.5em; /* Space between text and images */
+  align-items: flex-start;
   position: relative;
 }
 
 .practices-column-text {
-  max-width: 700px;
-  font-family: "Courier New", monospace;
-  font-size: 1.05rem;
-  line-height: 1.5;
-  color: #111;
+  max-width: 600px;
+  flex: 1; /* Takes up remaining space */
   z-index: 2;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1em;
+  line-height: 1.65;
+  color: var(--black);
   position: relative;
 }
 
 .practices-column-text p {
   margin-bottom: 1.8rem;
-  text-align: justify;
+  text-align: left;
 }
 
 /* --- Duotone Image Styling --- */
 .image-wrapper {
-  position: absolute;
+  flex: 0 0 350px; /* Don't grow, don't shrink, stay 350px wide */
+  position: relative; /* Changed from absolute */
   z-index: 1;
 }
 
-.image-wrapper img {
+duotone-item {
+  margin: 0 0 2.5rem 0; /* Adds space below each image/caption pair */
   width: 100%;
-  filter: grayscale(100%) contrast(1.2);
-  display: block;
+}
+.duotone-item:last-child {
+  margin-bottom: 0;
 }
 
-.image-wrapper::after {
+.img-box {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.plural-practices.is-scrolling .img-box img {
+  filter: blur(20px) grayscale(100%) brightness(0.8);
+}
+
+.img-box img {
+  width: 100%;
+  height: auto;
+  display: block; /* Removes tiny gap under images */
+  filter: grayscale(100%) contrast(1.4);
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
+}
+.img-box::after {
   content: "";
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-color: #0033ff;
-  mix-blend-mode: screen;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0033ff; /* The blue color */
+  mix-blend-mode: screen; /* The duotone effect */
   pointer-events: none;
 }
 
 .image-caption {
-  font-family: "Courier New", monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.65rem;
   color: #0033ff;
   margin-top: 8px;
-  line-height: 1.2;
+  line-height: 1.65;
   text-align: right;
 }
 
-/* Specific Positions */
-.img-max-mathews {
-  width: 320px;
-  right: -50px;
-  top: 100px;
+/* TEST */
+
+/* The container for the redaction */
+.practices-column-text p {
+  position: relative;
+  display: inline-block;
+  color: var(--black);
+  transition: color 0.3s;
 }
 
-.img-punch-card {
-  width: 380px;
-  left: 20%;
-  bottom: -150px;
+/* The "Blackout" bar */
+.practices-column-text p::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%; /* Start empty */
+  height: 100%;
+  background-color: var(--blue); /* Or #0033ff if you want blue redaction */
+  transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
 }
 
-/* 7. PREVIOUS EDITIONS (OVAL ANIMATION)*/
+/* When the 'redacted' class is added via JS */
+.practices-column-text p.redacted::after {
+  width: 100%;
+}
+
+.practices-column-text p.redacted {
+  color: transparent; /* Hide text under the bar */
+}
+
+.practices-column-text p span {
+  background-color: transparent;
+  color: var(--black); /* Visible text when stationary */
+
+  /* Remove the background-size and background-image properties from before */
+  transition:
+    background-color 0.1s ease,
+    color 0.1s ease;
+
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+
+  /* Keep the padding to ensure the blocks have 'weight' around the words */
+  padding: 2px 4px;
+  margin: 0 -4px;
+}
+
+/* When the container is in 'scrolling' mode */
+.is-scrolling p span {
+  background-color: var(--blue); /* Or #111 for black */
+  color: transparent; /* Hides the text instantly */
+}
+
+/* Optional: Make the marker blue instead of black */
+.is-scrolling p span {
+  background-image: linear-gradient(#0033ff, #0033ff);
+}
+*/
+
+/* END TEST */
+
+
+.plural-practices {
+  padding: 120px 0;
+  position: relative;
+}
+
+.practices-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+}
+
+/* ==========================================================================
+   MOBILE TEAM REFINEMENT
+   ========================================================================== */
+
+.team-section {
+  background-color: #f1f1f1;
+  padding: 8rem 0;
+}
+
+.team-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.team-title {
+  font-family: "editorial", serif;
+  font-size: 3em;
+  line-height: 1.2;
+  color: #0033ff;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+  color: var(--blue);
+}
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem 2rem;
+}
+
+.team-member {
+  flex: 0 0 calc(50% - 1rem); /* Precisely half the width minus half the gap */
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+/* 1. Name: Editorial, Blue */
+.member-name {
+  font-family: "editorial", serif;
+  font-size: 1.8rem;
+  color: var(--blue);
+  line-height: 1.1;
+}
+
+/* 2. Affiliation: IBM Plex, Small, Blue, All Caps */
+.member-affiliation {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9em;
+  color: var(--blue);
+  /* text-transform: uppercase; */
+  letter-spacing: 1px;
+  /* margin-top: 0.3rem; */
+}
+
+/* 3. Role: Black, Body Size */
+.member-role {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem; /* Matches your 17px body size */
+  color: var(--black);
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   MOBILE TEAM REFINEMENT
+   ========================================================================== */
+@media (max-width: 768px) {
+  .team-grid {
+    flex-direction: column; /* Stacks to a single column on phones */
+    gap: 3rem;
+  }
+
+  .team-member {
+    flex: 0 0 100%;
+  }
+
+  .member-name {
+    font-size: 1.5rem; /* Slightly smaller for mobile screens */
+  }
+}
+
+/* ==========================================================================
+   7. PREVIOUS EDITIONS (ANIMATION) LARA
+   ========================================================================== */
+
 .previous-editions {
   position: relative;
   height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #fff;
 }
 
 .editions-title {
   position: absolute;
   z-index: 10;
   color: #0033ff;
-  font-family: "Times New Roman", serif;
+  font-family: "editorial";
   font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 300;
   text-align: center;
-  pointer-events: none;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.rotating-links-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .edition-link {
   position: absolute;
   text-decoration: none;
-  color: #666;
-  font-family: "Courier New", monospace;
-  font-size: 1rem;
-  white-space: nowrap;
+  color: var(--black);
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  transition:
+    color 0.2s,
+    transform 0.1s ease-out;
+  /* font-weight: bold; */
 }
 
 .edition-link:hover {
-  color: #0033ff;
+  color: var(--blue);
   font-weight: bold;
+  text-decoration: underline;
 }
 
-/* 8. FOOTER & GLOBAL RESPONSIVENESS*/
+/* ==========================================================================
+   BASE DESKTOP FOOTER
+   ========================================================================== */
+
 .main-footer {
-  height: 30vh;
-  background-color: #0033ff;
+  padding: 6rem 0 3rem;
+  border-top: 1px solid #ddd;
+  background-color: var(--blue);
+  color: #f1f1f1;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.footer-logo img {
+  height: 2em; /* Adjust based on your SVG proportions */
+  width: auto;
+}
+
+.footer-contact {
+  text-align: right;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9rem;
+  color: #f1f1f1;
+  padding-bottom: 2em;
+}
+
+.footer-text {
+  text-align: left;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  color: #f1f1f1;
+  padding: 1.5em 0 1.5em;
+}
+
+.footer-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-end;
+}
+
+.footer-links a {
+  color: #f1f1f1f1;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-divider {
+  border: 0;
+  border-top: 1px solid #f1f1f1;
+  margin: 2rem 0;
+}
+
+.footer-logos-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5em 0 0;
+}
+
+.partner-logo img {
   width: 100%;
+  max-width: 150px;
+  height: auto;
+  /* Poetic touch: Logos are grayscale/blue until hovered */
+  filter: grayscale(100%) opacity(0.6);
+  transition: all 0.3s ease;
+}
+
+.partner-logo:hover img {
+  filter: grayscale(0%) opacity(1);
+}
+
+/* ==========================================================================
+   MOBILE FOOTER
+   ========================================================================== */
+@media (max-width: 768px) {
+  .footer-logo img {
+    height: 1.3em; /* Adjust based on your SVG proportions */
+    width: auto;
+  }
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .footer-contact {
+    text-align: left;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .footer-logos-row {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid on mobile */
+    gap: 2.5em;
+  }
 }
 
 @media (max-width: 1024px) {
-  .practices-column-text { max-width: 100%; }
-  .image-wrapper { 
-    position: relative; 
-    margin: 40px auto; 
-    right: 0; left: 0; top: 0; bottom: 0; 
-    width: 100%; 
+  .practices-layout {
+    flex-direction: column; /* Stacks images under text */
+  }
+
+  .image-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 500px; /* Prevents images from getting too huge on tablets */
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 900px) {
-  .quote-grid, .theme-columns {
+  .quote-grid,
+  .theme-columns {
     grid-template-columns: 1fr;
   }
+}
+
+/* SCROLLING POST HERO */
+
+.quote-section {
+  position: relative;
+  height: 300vh; /* 3 screens worth of scrolling */
+  padding: 3em 4em 0;
+  z-index: 1;
+}
+
+/* 2. The container that stays visible */
+.quote-sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  /* padding: 15vh 10%;  */
+  padding: 80px 10% 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* 3. Vertical Sidebar Labels */
+.quote-header {
+  /* width: 60px; */
+  display: flex;
+  flex-direction: column;
+  /* margin-right: 40px; */
+  /* position: relative;  */
+}
+
+.quote-header span {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease;
+
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.quote-header span.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* QUOTE SECTION AFTER HEADER */
+
+/* 2. Fix the Quote Section height and stickiness */
+.quote-section {
+  position: relative;
+  height: 300vh; /* This defines the 'length' of the scroll effect */
+  background-color: #f1f1f1;
+}
+
+.quote-sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  padding: 15vh 10%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* 3. Progress Bar Styling */
+.scroll-progress-container {
+  width: 2px;
+  height: 80px;
+  background: rgba(0, 51, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+#quote-progress-bar {
+  width: 100%;
+  height: 0%;
+  background: #0033ff;
+  transition: height 0.1s linear;
+}
+
+/* 4. Ensure Vertical Labels don't overlap */
+.quote-header {
+  width: 80px;
+  flex-shrink: 0;
+  position: relative;
+  height: 200px; /* Give the vertical labels space to swap */
+}
+
+.quote-header span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  transition: opacity 0.4s ease;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.quote-header span.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================================================
+   MOBILE & TABLET REFINEMENTS
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  
+  .editions-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  
+  .theme-display .words-layer {
+    display: none !important; /* Hides the radial words on mobile */
+  }
+  
+  /* TEST */
+  .theme-visual-zone {
+    height: auto !important;
+    margin-top: 0 !important; /* Remove negative margins if you had them */
+    padding: 2rem 0;
+  }
+
+  /* 2. Turn the 'Stage' into a simple vertical wrapper */
+  .theme-center-stage {
+    position: static !important;
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Spacing between Reflect, Resist, and Reform */
+    max-width: 100%;
+    min-height: 0;
+  }
+
+  /* 3. Force all blocks to stay visible and sit in the flow */
+  .theme-content-block {
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    text-align: left; /* Optional: Align text left for easier reading on phones */
+    animation: none !important; /* Disable the blink effect */
+  }
+
+  .theme-container {
+    padding: 0 10%; /* Uses 10% of the screen width as a gutter */
+    width: 100%;
+  }
+
+
+  /* END TEST */
+
+  .col-desc {
+    text-align: left;
+    margin: 0;
+  }
+
+  .theme-header {
+    margin-bottom: 0;
+    /* padding: 0 1em 0; */
+  }
+
+  .theme-intro-text {
+    text-align: left;
+    padding: 0 0 0;
+  }
+
+  .words-layer {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    /* gap: 15px; */
+    gap: 8px 15px;
+    padding: 20px;
+    
+    /* Place it behind everything */
+    position: absolute;
+    inset: -10%;
+    z-index: 1; 
+    opacity: 0.6;
+    pointer-events: none;
+
+    animation: drift 10s linear infinite; 
+  }
+
+  @keyframes drift {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+
+  /* 2. Neutralize the individual word positions */
+  .word {
+    /* This 'all: unset' is a shortcut to kill all desktop coordinates (top, left, etc.) */
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    
+    /* Ensure they are visible and sized correctly */
+    display: inline-block !important;
+    font-size: 0.9em !important;
+    line-height: 0.7 !important;
+    color: var(--black) !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+
+  h2,
+  .theme-main-title,
+  .col-head,
+  .practices-title,
+  .editions-title {
+    font-size: 2.2rem !important; /* Forces the size across all sections */
+    line-height: 1.2;
+    text-align: left; /* Ensures they all align to the left on mobile */
+    /* margin-bottom: 1.5rem; */
+  }
+
+  /* 1. HERO SECTION REFINEMENTS */
+  .hero {
+    padding: 2rem;
+  }
+
+  /* Hide the exploding words entirely */
+  /* .words-layer {
+    display: none !important;
+  } */
+
+  /* Center the title more aggressively since the 'halo' is gone */
+  .hero-center {
+    padding: 0 1rem;
+  }
+
+  .hero h1 {
+    display: inline-block !important;
+    font-size: 3rem;
+    background-color: #f1f1f1;
+    opacity: 0.9;
+    background-blend-mode: overlay;
+    /* box-shadow: 0 0 0 10px #f1f1f1; */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    line-height: 1.2;
+    z-index: 2;
+  }
+
+  /* Hide the radial 'word-layer' on very small screens to keep it clean */
+  /* Or reduce their font-size if you want to keep the 'dust' effect */
+  .word {
+    font-size: 0.8rem;
+    opacity: 0.5;
+  }
+
+  #menu-circle {
+    display: none !important;
+  }
+
+  /* 2. QUOTE SECTION (DISABLE STICKY ON MOBILE) */
+  .quote-section {
+    /* Force the section to only be as tall as its content */
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 3rem 1.5rem !important;
+    /* Ensure it doesn't try to overlap anything */
+    display: block !important;
+  }
+
+  .quote-sticky-container {
+    /* Kill the sticky behavior entirely */
+    position: relative !important;
+    height: auto !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    overflow: visible !important;
+  }
+
+  /* 2. Style labels as 'Tabs' */
+  .quote-header {
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 51, 255, 0.2);
+    padding-bottom: 10px;
+  }
+
+  .quote-header span {
+    position: static !important;
+    opacity: 0.4 !important; /* Dim unselected tabs */
+    visibility: visible !important;
+    writing-mode: horizontal-tb !important;
+    transform: none !important;
+    font-size: 0.75rem !important;
+    cursor: pointer;
+    pointer-events: auto; /* Ensure they are clickable */
+    transition:
+      opacity 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .quote-header span.active {
+    opacity: 1 !important;
+    color: var(--blue) !important;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+  }
+
+  /* Hide progress bar on mobile as it's not scroll-based anymore */
+  .scroll-progress-container {
+    display: none;
+  }
+
+  /* 3. PLURAL PRACTICES (STACKING) */
+  .practices-layout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .practices-column-text {
+    max-width: 100%;
+  }
+
+  .image-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  /* 3. PREVIOUS EDIITIONS (STACKING) */
+
+  .previous-editions {
+    height: auto !important;
+    padding: 6rem 1.5rem; /* Adjusted padding for better mobile edge alignment */
+    display: block; /* Ensure it behaves as a normal block */
+  }
+
+  .rotating-links-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* CRITICAL: Valid flexbox property for left alignment */
+    gap: 1.5rem;
+    height: auto !important;
+    width: 100%;
+  }
+
+  .edition-link {
+    position: static !important;
+    transform: none !important;
+    font-size: 1.1rem;
+    text-align: left; /* Aligns the text itself left */
+    display: block;
+    border-bottom: 1px solid rgba(0, 51, 255, 0.2);
+    padding-bottom: 5px;
+    width: 100%; /* Spans the width for easier tapping */
+  }
+
+  .editions-title {
+    position: static !important;
+    transform: none !important;
+    margin-bottom: 2rem;
+    text-align: left; /* Ensures the 'Previous Editions' text is left-aligned */
+  }
+}
+
+/* Theme stuff */
+
+.theme-word {
+  position: absolute;
+  font-size: 1.2rem;
+  color: rgba(9, 12, 8, 0.3); /* Slightly faded so text is readable */
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.1s ease-out;
+}
+
+/* TEST02 */
+
+.theme-center-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 600px; /* Limits width to fit inside the circle */
+  /* margin: 0 auto; */
+  min-height: 400px; /* Creates a stable vertical box for the blocks to sit in */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-content-block {
+  position: absolute;
+  /* 1. Center the block exactly */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* This pulls the block back by half its own height/width */
+  
+  /* 2. Fix the alignment */
+  width: 100%;
+  text-align: center; /* Ensures the H2 and P tags inside are centered */
+  
+  /* 3. Visibility logic */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.theme-content-block.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) translateY(0);
+  animation: text-focus-in 0.4s ease-out;
+}
+
+/* Piscar */
+.theme-display {
+position: relative;
+/* height: 400vh; */
+}
+
+.theme-container {
+/* position: sticky; */
+top: 0;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.theme-visual-zone {
+position: relative;
+overflow: hidden;
+clip-path: ellipse(50% 48% at 50% 50%);
+}
+
+.theme-eye-portal {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: 100;
+}
+
+.eye-lid {
+position: absolute;
+left: 0;
+width: 100%;
+height: 52%;
+background: #f1f1f1;
+transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.eye-lid.top {
+top: 0;
+transform: translateY(-100%);
+clip-path: ellipse(100% 100% at 50% 0%);
+}
+
+.eye-lid.bottom {
+bottom: 0;
+transform: translateY(100%);
+clip-path: ellipse(100% 100% at 50% 100%);
+}
+
+
+body.blinking .eye-lid.top,
+body.blinking .eye-lid.bottom {
+transform: translateY(0);
+}
+
+
+.theme-content-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+
+
+  display: none; 
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 50;
+  text-align: center; 
+}
+
+.theme-content-block.active {
+  display: block; 
+  opacity: 1;
 }
