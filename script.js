@@ -169,7 +169,7 @@ function performBlinkTransition() {
       tickerTrack.classList.add("ticker-track");
 
       // Multiply to ensure the line is long enough to loop
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 19; i++) {
         originalWords.forEach((word) => {
           const clone = word.cloneNode(true);
           tickerTrack.appendChild(clone);

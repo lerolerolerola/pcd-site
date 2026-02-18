@@ -727,6 +727,11 @@ duotone-item {
   background-color: var(--blue); /* Or #111 for black */
   color: transparent; /* Hides the text instantly */
 }
+.is-scrolling figcaption{
+  width: auto;
+  background-color: var(--blue);
+  color: transparent;
+}
 
 /* Optional: Make the marker blue instead of black */
 .is-scrolling p span {
@@ -1225,6 +1230,7 @@ duotone-item {
     /* gap: 15px; */
     gap: 8px 15px;
     padding: 20px;
+    height: 100vh;
     
     /* Place it behind everything */
     position: absolute;
