@@ -296,14 +296,43 @@ function performBlinkTransition() {
       }, 150);
     }
 
-    // B. Sticky Menu Logic
+    // MENU STICKY/  HERO PC
     menuData.forEach((data) => {
       if (scrollY > data.initialY - 16) {
         data.el.style.position = "fixed";
         data.el.style.top = "16px";
+        
+        if (data.isCentered) {
+          data.el.style.left = "50%";
+          data.el.style.transform = "translateX(-50%)";
+        } else if (data.rightPct) {
+          data.el.style.right = data.rightPct + "%";
+          data.el.style.left = "auto";
+        }
       } else {
+        // Return to original Hero position
         data.el.style.position = "absolute";
         data.el.style.top = data.topPct + "%";
+        
+        if (data.isCentered) {
+          data.el.style.left = "50%";
+          data.el.style.transform = "translateX(-50%)";
+        } else if (data.rightPct) {
+          data.el.style.right = data.rightPct + "%";
+          data.el.style.left = "auto";
+        }
+      }
+
+      // Hide Logo ONLY when hitting the footer
+      if (data.isCentered && footer) {
+        const footerRect = footer.getBoundingClientRect();
+        if (footerRect.top < 100) {
+          data.el.style.opacity = "0";
+          data.el.style.pointerEvents = "none";
+        } else {
+          data.el.style.opacity = "1";
+          data.el.style.pointerEvents = "auto";
+        }
       }
     });
 
