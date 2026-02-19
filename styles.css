@@ -195,7 +195,7 @@ body {
 
 
 .hero-footer {
-  bottom: 14%; /* Stays relative to bottom height */
+  bottom: 17%; /* Stays relative to bottom height */
 }
 
 .badge-container {
@@ -497,10 +497,12 @@ body {
 
 .theme-display {
   background-color: #f1f1f1;
-  padding: 10% 0em;
+  padding-top: 10%;
+  padding-bottom: -10%;
   text-align: center;
   position: relative;
   z-index: 10;
+  width: 100%;
   /* border: 1px red solid;  */
 }
 
@@ -768,7 +770,8 @@ duotone-item {
 
 .team-section {
   background-color: #f1f1f1;
-  padding: 8rem 0;
+  padding-top: 8em;
+  padding-bottom: 0;
 }
 
 .team-container {
@@ -1035,7 +1038,11 @@ duotone-item {
   height: 200vh;
   /* min-height: 200vh;  */
   /* padding: 3em 4em 0; */
-  padding: 0 3%;
+  /* padding: 0 3%; */
+  /* padding-top: 3%; */
+  padding-bottom: 5%;
+  padding-left: 10%;
+  padding-right: 10%;
   z-index: 1;
 } 
 
@@ -1051,7 +1058,7 @@ duotone-item {
   padding-top: 10%;
   margin: 0 auto;
   /* font-size: clamp(1.4vw, 1.5vw, 1.3vw); */
-  font-size: calc(8px + 0.85vw);
+  font-size: calc(8px + 0.75vw);
   /* line-height: calc(1.2em + 0.5vw); */
 } 
 
