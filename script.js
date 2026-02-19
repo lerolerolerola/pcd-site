@@ -356,8 +356,8 @@ function performBlinkTransition() {
         if (progressBar) progressBar.style.height = progress * 100 + "%";
 
         if (progress < 0.33) updateBlackout("quotes");
-        else if (progress < 0.66) updateBlackout("change");
-        else updateBlackout("about");
+        else if (progress < 0.66) updateBlackout("about");
+        else updateBlackout("change");
       } else if (rect.top > 0) {
         // Hide progress if we are above the section
         if (progressBar) progressBar.style.height = "0%";
