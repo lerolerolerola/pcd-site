@@ -475,50 +475,6 @@ body {
   right: 40%;
 }
 
-/* 4. QUOTE SECTION (BLACKOUT INTERFACE) */
-.quote-section {
-  padding: 6rem 4rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.quote-header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 4rem;
-}
-
-.quote-header button {
-  background: none;
-  color: black;
-  padding: 8px 10px;
-  cursor: pointer;
-  font-family: "editorial", serif;
-  border: none;
-  font-size: 1.5rem;
-  transition: color 0.2s;
-}
-
-.quote-header button:hover {
-  color: var(--blue);
-}
-
-.quote-grid {
-  /* display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start; */
-  line-height: 1.65;
-  /* padding: 0em 4em 0; */
-}
-
-.quote-col {
-  display: block;
-  font-size: 1em;
-  line-height: 1.65;
-  color: var(--black);
-}
 
 /* 5. THEME DISPLAY (REFLECT, RESIST, REFORM) */
 
@@ -541,7 +497,7 @@ body {
 
 .theme-display {
   background-color: #f1f1f1;
-  padding: 6em 0em;
+  padding: 10% 0em;
   text-align: center;
   position: relative;
   z-index: 10;
@@ -894,12 +850,13 @@ duotone-item {
 
 .previous-editions {
   position: relative;
-  height: 100vh;
+  min-height: 800px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  contain: paint;
 }
 
 .editions-title {
@@ -1073,36 +1030,31 @@ duotone-item {
 
 /* SCROLLING POST HERO */
 
-.quote-section {
+ .quote-section {
   position: relative;
-  height: 300vh; /* 3 screens worth of scrolling */
-  padding: 3em 4em 0;
+  height: 200vh;
+  /* min-height: 200vh;  */
+  /* padding: 3em 4em 0; */
+  padding: 0 3%;
   z-index: 1;
-}
+} 
 
 /* 2. The container that stays visible */
 .quote-sticky-container {
   position: sticky;
   top: 0;
-  height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  /* padding: 15vh 10%;  */
-  padding: 80px 10% 40px;
   max-width: 1400px;
+  padding-top: 10%;
   margin: 0 auto;
-  overflow: hidden;
-}
+  /* font-size: clamp(1.4vw, 1.5vw, 1.3vw); */
+  font-size: calc(8px + 0.85vw);
+  /* line-height: calc(1.2em + 0.5vw); */
+} 
 
-/* 3. Vertical Sidebar Labels */
-.quote-header {
-  /* width: 60px; */
-  display: flex;
-  flex-direction: column;
-  /* margin-right: 40px; */
-  /* position: relative;  */
-}
 
 .quote-header span {
   position: absolute;
@@ -1130,22 +1082,53 @@ duotone-item {
 /* QUOTE SECTION AFTER HEADER */
 
 /* 2. Fix the Quote Section height and stickiness */
-.quote-section {
+/* .quote-section {
   position: relative;
-  height: 300vh; /* This defines the 'length' of the scroll effect */
+  height: 300vh; 
   background-color: #f1f1f1;
-}
+} */
 
-.quote-sticky-container {
+/* .quote-sticky-container {
   position: sticky;
   top: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: flex-start;
   padding: 15vh 10%;
   max-width: 1400px;
   margin: 0 auto;
-}
+}  */
+
+ /* .quote-section {
+  position: relative;
+  padding: 6rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: auto;
+}  */
+
+/* .quote-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 4rem;
+} */
+
+/* .quote-header button {
+  background: none;
+  color: black;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-family: "editorial", serif;
+  border: none;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+} */
+
+/* .quote-header button:hover {
+  color: var(--blue);
+} */
+
 
 /* 3. Progress Bar Styling */
 .scroll-progress-container {
@@ -1381,7 +1364,6 @@ duotone-item {
   }
 
   .quote-sticky-container {
-    /* Kill the sticky behavior entirely */
     position: relative !important;
     height: auto !important;
     padding: 0 !important;
