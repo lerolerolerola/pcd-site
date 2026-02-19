@@ -1377,6 +1377,7 @@ duotone-item {
     display: flex;
     flex-direction: column;
     overflow: visible !important;
+    font-size: 1em !important; 
   }
 
   /* 2. Style labels as 'Tabs' */
