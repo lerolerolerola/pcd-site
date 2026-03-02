@@ -9,7 +9,7 @@ html {
 
 section {
   padding: 4em 0;
-} 
+}
 
 @font-face {
   font-family: "editorial";
@@ -35,18 +35,52 @@ body {
 
 /* SCREENSAVER */
 .spawned-image {
-  width: 10%;
-  height: 10%;
-    position: fixed;
-    object-fit: cover;
-    z-index: 999;
-    pointer-events: none;
+  /* width: 10%;
+  height: 10%; */
+  position: fixed;
+  object-fit: contain;
+  z-index: 999;
+  pointer-events: none;
+  animation:
+    slowPop 0.5s ease-out,
+    eyeBlinkClose 3s ease-in-out 0.5s infinite;
 }
 
 @keyframes slowPop {
-    from { opacity: 0; transform: scale(0.2) rotate(-10deg); }
-    to { opacity: 1; transform: scale(1) rotate(0deg); }
+  from {
+    opacity: 0;
+    transform: scale(0.2) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
 }
+
+@keyframes eyeBlinkClose {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 1; /* Fully open */
+  }
+  45% {
+    transform: scaleY(1);
+    opacity: 1; /* Stay open for most of the loop */
+  }
+  50% {
+    transform: scaleY(0.01);
+    opacity: 0; /* Snap shut to a thin line */
+  }
+  55% {
+    transform: scaleY(1);
+    opacity: 1; /* Snap back open */
+  }
+}
+
+/* @keyframes stampBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; } 
+} */
 
 /* Global Blackout Text Utility */
 .text {
@@ -73,9 +107,8 @@ body {
 }
 
 #main-logo-badge a:hover {
-  transform: scale(1.02); 
+  transform: scale(1.02);
 }
-
 
 #main-logo-badge {
   pointer-events: auto !important;
@@ -97,7 +130,7 @@ body {
   z-index: 999;
 }
 
-#menu-circle a{
+#menu-circle a {
   padding-right: 5px;
   padding-left: 5px;
 }
@@ -169,7 +202,7 @@ body {
 .hero-meta,
 .hero-footer {
   position: absolute;
-  left:50%;
+  left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -182,17 +215,16 @@ body {
 }
 
 .hero-meta {
-  top: 16%; 
+  top: 16%;
 }
 
-.hero-meta-text{
+.hero-meta-text {
   background-color: #f1f1f1;
   box-shadow: 0 0 0 10px #f1f1f1;
   opacity: 0.9;
   background-blend-mode: overlay;
   /* padding: 0.5em; */
 }
-
 
 .hero-footer {
   bottom: 17%; /* Stays relative to bottom height */
@@ -204,7 +236,7 @@ body {
   transform: translateX(-50%) !important;
   width: 15em;
   line-height: 0;
-  background-color: transparent !important; 
+  background-color: transparent !important;
   box-shadow: none !important;
   z-index: 2000;
   pointer-events: auto;
@@ -214,7 +246,7 @@ body {
 .badge-svg-file {
   width: 100%;
   padding: 3px 5px;
-  background-color: #f1f1f1 ;
+  background-color: #f1f1f1;
   height: auto;
   display: block;
 }
@@ -475,13 +507,21 @@ body {
   right: 40%;
 }
 
-
 /* 5. THEME DISPLAY (REFLECT, RESIST, REFORM) */
 
 @keyframes blink-flicker {
-  0% { opacity: 0; background-color: var(--blue);}
-  50% { opacity: 1; color: red; }
-  100% { opacity: 0; color: var(--blue); }
+  0% {
+    opacity: 0;
+    background-color: var(--blue);
+  }
+  50% {
+    opacity: 1;
+    color: red;
+  }
+  100% {
+    opacity: 0;
+    color: var(--blue);
+  }
 }
 
 /* @-webkit-keyframes text-focus-in{
@@ -490,14 +530,22 @@ body {
 } */
 
 @keyframes text-focus-in {
-  0%{-webkit-filter:blur(12px);filter:blur(12px);opacity:0}
-  100%{-webkit-filter:blur(0);filter:blur(0);opacity:1; backdrop-filter: blur(10px);}
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
 }
-
 
 .theme-display {
   background-color: #f1f1f1;
-  padding-top: 10%;
+  padding-top: 5%;
   padding-bottom: -10%;
   text-align: center;
   position: relative;
@@ -737,7 +785,7 @@ duotone-item {
   background-color: var(--blue); /* Or #111 for black */
   color: transparent; /* Hides the text instantly */
 }
-.is-scrolling figcaption{
+.is-scrolling figcaption {
   width: auto;
   background-color: var(--blue);
   color: transparent;
@@ -864,6 +912,9 @@ duotone-item {
 
 .editions-title {
   position: absolute;
+  width: 300px;
+  margin: 0;
+
   z-index: 10;
   color: #0033ff;
   font-family: "editorial";
@@ -871,9 +922,44 @@ duotone-item {
   line-height: 1.1;
   font-weight: 300;
   text-align: center;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Desktop only media query to make previous editions break into 2 lines */
+
+@media (min-width: 769px) {
+  .editions-title {
+    /* Set a width that forces the wrap */
+    width: 300px;
+    max-width: 8ch;
+    margin: 0 auto;
+    line-height: 1.1;
+    text-align: center;
+    word-wrap: normal;
+    overflow-wrap: normal;
+
+    /* Keep your existing centering logic */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .editions-eye-cluster {
+    position: absolute;
+    inset: 0; /* Fills the container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: eyeBlinkClose 5s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .editions-eye-cluster:hover {
+    animation-play-state: paused;
+  }
 }
 
 .edition-link {
@@ -1033,7 +1119,7 @@ duotone-item {
 
 /* SCROLLING POST HERO */
 
- .quote-section {
+.quote-section {
   position: relative;
   height: 200vh;
   /* min-height: 200vh;  */
@@ -1044,7 +1130,7 @@ duotone-item {
   padding-left: 10%;
   padding-right: 10%;
   z-index: 1;
-} 
+}
 
 /* 2. The container that stays visible */
 .quote-sticky-container {
@@ -1060,8 +1146,7 @@ duotone-item {
   /* font-size: clamp(1.4vw, 1.5vw, 1.3vw); */
   font-size: calc(8px + 0.75vw);
   /* line-height: calc(1.2em + 0.5vw); */
-} 
-
+}
 
 .quote-header span {
   position: absolute;
@@ -1106,7 +1191,7 @@ duotone-item {
   margin: 0 auto;
 }  */
 
- /* .quote-section {
+/* .quote-section {
   position: relative;
   padding: 6rem 4rem;
   max-width: 1400px;
@@ -1135,7 +1220,6 @@ duotone-item {
 /* .quote-header button:hover {
   color: var(--blue);
 } */
-
 
 /* 3. Progress Bar Styling */
 .scroll-progress-container {
@@ -1183,7 +1267,6 @@ duotone-item {
    ========================================================================== */
 
 @media (max-width: 1024px) {
-  
   .editions-title {
     font-size: 2.2rem;
   }
@@ -1191,25 +1274,25 @@ duotone-item {
 
 @media (max-width: 768px) {
   section {
-  padding: 1em 0;
-} 
-.theme-content-block h2{
-  text-align: center !important;
-}
-  .theme-content-block p{
+    padding: 1em 0;
+  }
+  .theme-content-block h2 {
+    text-align: center !important;
+  }
+  .theme-content-block p {
     text-align: center;
   }
 
-.theme-content-block{
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-}
+  .theme-content-block {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
   .theme-display .words-layer {
     display: none !important; /* Hides the radial words on mobile */
   }
-  
-  .theme-eye-portal{
+
+  .theme-eye-portal {
     display: none !important;
   }
 
@@ -1246,7 +1329,6 @@ duotone-item {
     width: 100%;
   }
 
-
   /* END TEST */
 
   .col-desc {
@@ -1273,20 +1355,24 @@ duotone-item {
     gap: 8px 15px;
     padding: 20px;
     height: 100vh;
-    
+
     /* Place it behind everything */
     position: absolute;
     inset: -10%;
-    z-index: 1; 
+    z-index: 1;
     opacity: 0.6;
     pointer-events: none;
 
-    animation: drift 10s linear infinite; 
+    animation: drift 10s linear infinite;
   }
 
   @keyframes drift {
-    from { transform: translateY(0); }
-    to { transform: translateY(-50%); }
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
   }
 
   /* 2. Neutralize the individual word positions */
@@ -1297,7 +1383,7 @@ duotone-item {
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    
+
     /* Ensure they are visible and sized correctly */
     display: inline-block !important;
     font-size: 0.9em !important;
@@ -1307,7 +1393,6 @@ duotone-item {
     width: auto !important;
     height: auto !important;
   }
-
 
   h2,
   .theme-main-title,
@@ -1377,7 +1462,7 @@ duotone-item {
     display: flex;
     flex-direction: column;
     overflow: visible !important;
-    font-size: 1em !important; 
+    font-size: 1em !important;
   }
 
   /* 2. Style labels as 'Tabs' */
@@ -1502,16 +1587,21 @@ duotone-item {
   /* 1. Center the block exactly */
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* This pulls the block back by half its own height/width */
-  
+  transform: translate(
+    -50%,
+    -50%
+  ); /* This pulls the block back by half its own height/width */
+
   /* 2. Fix the alignment */
   width: 100%;
   text-align: center; /* Ensures the H2 and P tags inside are centered */
-  
+
   /* 3. Visibility logic */
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .theme-content-block.active {
@@ -1523,61 +1613,59 @@ duotone-item {
 
 /* Piscar */
 .theme-display {
-position: relative;
-/* height: 400vh; */
+  position: relative;
+  /* height: 400vh; */
 }
 
 .theme-container {
-/* position: sticky; */
-top: 0;
-height: auto;
-display: flex;
-flex-direction: column;
+  /* position: sticky; */
+  top: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .theme-visual-zone {
-position: relative;
-overflow: hidden;
-clip-path: ellipse(50% 48% at 50% 50%);
+  position: relative;
+  overflow: hidden;
+  clip-path: ellipse(50% 48% at 50% 50%);
 }
 
 .theme-eye-portal {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none;
-z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
 }
 
 .eye-lid {
-position: absolute;
-left: 0;
-width: 100%;
-height: 52%;
-background: #f1f1f1;
-transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 52%;
+  background: #f1f1f1;
+  transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
 }
 
 .eye-lid.top {
-top: 0;
-transform: translateY(-100%);
-clip-path: ellipse(100% 100% at 50% 0%);
+  top: 0;
+  transform: translateY(-100%);
+  clip-path: ellipse(100% 100% at 50% 0%);
 }
 
 .eye-lid.bottom {
-bottom: 0;
-transform: translateY(100%);
-clip-path: ellipse(100% 100% at 50% 100%);
+  bottom: 0;
+  transform: translateY(100%);
+  clip-path: ellipse(100% 100% at 50% 100%);
 }
-
 
 body.blinking .eye-lid.top,
 body.blinking .eye-lid.bottom {
-transform: translateY(0);
+  transform: translateY(0);
 }
-
 
 .theme-content-block {
   position: absolute;
@@ -1586,15 +1674,69 @@ transform: translateY(0);
   transform: translate(-50%, -50%);
   width: 100%;
 
-
-  display: none; 
+  display: none;
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 50;
-  text-align: center; 
+  text-align: center;
 }
 
 .theme-content-block.active {
-  display: block; 
+  display: block;
   opacity: 1;
+}
+
+/* test for team section redaction */
+/* Team Section Redaction */
+/* .team-section.is-scrolling .member-name,
+.team-section.is-scrolling .member-affiliation,
+.team-section.is-scrolling .member-role {
+  background-color: var(--blue) !important;
+  color: transparent !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  display: inline; 
+  transition: none;
+} */
+
+.team-section.is-scrolling .member-name span,
+.team-section.is-scrolling .member-affiliation span,
+.team-section.is-scrolling .member-role span {
+  background-color: var(--blue) !important;
+  color: transparent !important;
+  padding: 0 6px;
+  margin: 0 -4px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: none;
+}
+
+body.is-scrolling p,
+body.is-scrolling span,
+body.is-scrolling a,
+body.is-scrolling li {
+  &:not(
+    .hero *,
+    .quote-section *,
+    #plural-practices *,
+    #team *
+  ) {
+    background-color: var(--blue) !important;
+    color: transparent !important;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: none !important;
+    animation-play-state: paused !important;
+    pointer-events: none;
+  }
+}
+
+body.is-scrolling #footer {
+  filter: blur(5px);
+}
+
+body.is-scrolling h2 span {
+  background-color: var(--blue) !important;
+  color: transparent !important;
+  transition: none; /* Instant on */
 }
