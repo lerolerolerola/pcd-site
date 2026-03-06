@@ -1188,6 +1188,10 @@ duotone-item {
   visibility: visible;
 }
 
+.menu-item .start{
+  display: none;
+}
+
 /* ==========================================================================
    MOBILE & TABLET REFINEMENTS
    ========================================================================== */
@@ -1200,6 +1204,37 @@ duotone-item {
 }
 
 @media (max-width: 768px) {
+  /* LOGO MENU */
+  #main-logo-badge{
+   position: sticky !important;
+   top: 0;
+   padding-bottom: 5px;
+   padding-top: 5px;
+   margin-left: 47% !important;
+  }
+
+  #menu-circle{
+    position: fixed;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin-left: 37.5% !important;
+  }
+  .menu-item{
+    position: relative  !important;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    top: auto !important;
+    right: auto  !important;
+    left: auto  !important;
+  }
+
+  .menu-item .logo{
+    display: block;
+  }
+
   section {
   padding: 1em 0;
 } 
@@ -1365,9 +1400,6 @@ duotone-item {
     opacity: 0.5;
   }
 
-  #menu-circle {
-    display: none !important;
-  }
 
   /* 2. QUOTE SECTION (DISABLE STICKY ON MOBILE) */
   .quote-section {

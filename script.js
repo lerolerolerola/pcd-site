@@ -405,5 +405,21 @@ function updateBlackout(cat) {
   // Update vertical label active state
   document.querySelectorAll(".quote-header span").forEach((s) => {
     s.classList.toggle("active", s.id === `label-${cat}`);
-  });
-}
+  });}
+
+// LOGO MENU PC/MOBILE
+const logoBadge = document.querySelectorAll("dropdown");
+const logoAnchor = document.getElementById("main-logo-badge");
+
+logoAnchor.addEventListener("click", (e) => {
+    if (window.innerWidth <= 768) {
+        e.preventDefault(); 
+        logoBadge.classList.toggle("open");
+    }
+});
+
+    window.addEventListener("click", (e) => {
+        if (!logoBadge.contains(e.target)) {
+            logoBadge.classList.remove("open");
+        }
+});
