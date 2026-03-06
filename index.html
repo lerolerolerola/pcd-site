@@ -14,21 +14,13 @@
 <body>
 
   <div id="menu-circle">
-    <div class="badge-container menu-item" id="main-logo-badge" data-top="68.5" data-center="true">
-    <a href="#">
-        <img src="images/PCD_LOGO_blue_v02.svg" alt="PCD.26" class="badge-svg-file">
-    </a>
-</div>
-        <span class="menu-item dropdown" data-top="29" data-right="29">
-    <a href="#">TOP</a>
-        </span>
-    <span class="menu-item dropdown" data-top="29" data-right="29">
+    <span class="menu-item" data-top="29" data-right="29">
     <a href="#about">INFO</a>
     </span>
-    <span class="menu-item dropdown" data-top="49" data-right="20.5">
+    <span class="menu-item" data-top="49" data-right="20.5">
     <a href="#program">PROGRAM</a>
     </span>
-    <span class="menu-item dropdown" data-top="64" data-right="13.5">
+    <span class="menu-item" data-top="64" data-right="13.5">
     <a href="#team">TEAM</a>
     </span>
   </div>
@@ -210,8 +202,70 @@
  <section id="program">
     <div class="practices-container">
       <h2 class="practices-title">Program</h2>
-      <p> Full program with workshops and <br> speakers to be announced soon! 
-      Stay tuned </p>
+      <span class="member-name">27th & 28th of April</span>
+      <p>Full program to be announced soon, stay tuned!</p>
+      <br>
+      <span class="member-name">29th of April</span> 
+      <div class="programGeral">
+      <div class="programDiv">
+      <ul class="programUndropped program1">
+        <li class="programCategory">Keynote</li> &nbsp;
+        <li>Sara Orsi</li>&nbsp;
+        <li class="programBold">Dialogues on techno-culture: power, visibility and temporality</li>
+        <li><button  onclick="toggleDropdown(this)">+</button></li>
+      </ul>
+      <div class="programDropped closed">
+          <div class="programImg">
+            <div>
+          <img class="img" src="images/sara-orsi_guillaume-vieira_large.png">
+          </div>
+          <figcaption class="image-caption">Sara Orsi: web designer, creative coder, researcher, and educator</figcaption>
+          </div>
+        <div class="programText"><span>Presented through open</span>
+          <span> dialogues between</span>
+          <span>theoretical approaches</span>
+          <span>a curated&nbsp;</span>
+          <span>selection of artistic practices,</span>
+          <span> the lecture brings</span>
+          <span> voices and gestures to reflect </span>
+          <span> the complexities</span>
+          <span>and ambivalences of techno-culture,</span>
+          <span> examine emerging forms of resistance,</span>
+          <span> and explore practices that reimagine alternative techno-cultural futures.</span></div>
+      </div>
+      </div>
+      <div class="programDiv">
+        <ul class="programUndropped program2">
+          <li class="programCategory">Keynote</li>&nbsp;
+          <li>Filipe Pais</li>&nbsp;
+          <li class="programBold">Resist and compose with friction</li>
+          <li><button onclick="toggleDropdown(this)">+</button></li>
+        </ul>
+        <div class="programDropped closed program2">
+          <div class="programImg">
+            <div>
+          <img class="img" src="images/FPAIS—2016_900x900.png">
+          </div>
+          <figcaption class="image-caption">Filipe Pais: researcher, professor and curator</figcaption>
+          </div>
+          <div class="programText"><span> live in exciting times: on the one hand,</span><span> absorbed by the insatiable Trump Reality</span>
+            <span> Global Show,</span>
+            <span> on the other, suspicious and fascinated</span>
+            <span> by super-intelligent artificial assistants,</span>
+  <span> with their friendly and flattering nature.</span>
+  <span>Polarized, disoriented, and desensitized</span>
+  <span> by an increasingly dense polycrisis,</span>
+  <span> we surrender to the sweetness</span>
+  <span> of smooth design, which lulls us to sleep.</span>
+  <span> Everything works,everything flows, nothing weighs us down.</span>
+  <span>We keep going like this,</span>
+  <span> at cruising speed and on autopilot, occasionally looking up</span>
+  <span> just to check that the horizon</span>
+  <span>hasn't turned into a cliff. Having confirmed that disaster has been averted, we return, almost magnetically, to the small</span> 
+  <span> screen that calls us back. This presentation addresses three ways of resisting and composing with the current digital paradigm, structured by an attention economy</span> 
+  <span> obsessed with fluidity and immersion. These forms, understood here as “frictions,” are linked to three axes of my research: behavioral objects, non-anthropocentric games, and digital rematerializations.</span></div>
+        </div>
+      </div></div>
     </div>
   </section>
 
@@ -379,6 +433,12 @@
     <p class="footer-text">Organized by FBAUP's Undergraduate Programs: LAP, LDC & LeD.</p>
   </div>
 </footer>
+
+<div class="badge-container menu-item" id="main-logo-badge" data-top="68.5" data-center="true">
+    <a href="#">
+        <img src="images/PCD_LOGO_blue_v02.svg" alt="PCD.26" class="badge-svg-file">
+    </a>
+</div>
 
   <script src="script.js"></script>
 

@@ -626,6 +626,87 @@ body {
   margin: 0 auto;
 }
 
+/* PROGRAM */
+/* efeitoEscada */
+.program1{
+padding-left: 0px !important;
+}
+.program2{
+  padding-left:25px !important;
+}
+
+/* undropped*/
+.programGeral{
+  margin-top: 20px;
+}
+.programUndropped{
+  display: flex;
+  list-style-type: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0;
+}
+.programBold{
+  font-weight: bold;
+}
+.programCategory{
+  text-transform: uppercase;
+  color: #0000ff;
+}
+li{
+  padding-right: 30px;
+}
+ul :last-child{
+  color: #0000ff;
+  padding-right: 0px !important;
+  margin-left: -10px !important;
+  font-weight: 600;
+}
+ul button{
+  background-color: transparent;
+  border-width: 0cap;
+}
+button:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+/* dropped */
+.programImg{
+  display: inline;
+  width: 35%;
+  height: 35%;
+  filter: contrast(1.4);
+  padding-right: 40px;
+}
+.programImg div{
+  overflow: hidden;
+}
+.programImg img{
+  width: 100%;
+}
+/* .programImg figcaption{
+  height: 100%;
+} */
+
+.programText{
+  display: inline;
+  width: 60%;
+  margin: 0;
+}
+.programDropped{
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* classes para js */
+.closed{
+  display: none;
+}
+.open{
+  display: block;
+}
+
 /* ==========================================================================
    PLURAL PRACTICES
    ========================================================================== */
@@ -699,6 +780,9 @@ duotone-item {
 
 .plural-practices.is-scrolling .img-box img {
   filter: blur(20px) grayscale(100%) brightness(0.8);
+}
+.is-scrolling .img{
+  filter: blur(20px);
 }
 
 .img-box img {
@@ -1262,10 +1346,6 @@ duotone-item {
   visibility: visible;
 }
 
-.menu-item .start{
-  display: none;
-}
-
 /* ==========================================================================
    MOBILE & TABLET REFINEMENTS
    ========================================================================== */
@@ -1277,37 +1357,6 @@ duotone-item {
 }
 
 @media (max-width: 768px) {
-  /* LOGO MENU */
-  #main-logo-badge{
-   position: sticky !important;
-   top: 0;
-   padding-bottom: 5px;
-   padding-top: 5px;
-   margin-left: 47% !important;
-  }
-
-  #menu-circle{
-    position: fixed;
-    top:0;
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    margin-left: 37.5% !important;
-  }
-  .menu-item{
-    position: relative  !important;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5px;
-    top: auto !important;
-    right: auto  !important;
-    left: auto  !important;
-  }
-
-  .menu-item .logo{
-    display: block;
-  }
-
   section {
     padding: 1em 0;
   }
@@ -1475,6 +1524,9 @@ duotone-item {
     opacity: 0.5;
   }
 
+  #menu-circle {
+    display: none !important;
+  }
 
   /* 2. QUOTE SECTION (DISABLE STICKY ON MOBILE) */
   .quote-section {

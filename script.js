@@ -423,7 +423,7 @@
     const scrollY = window.scrollY;
 
     const redactSections = document.querySelectorAll(
-      ".plural-practices, .team-section",
+      ".plural-practices, .team-section, .img",
     );
     redactSections.forEach((s) => s.classList.add("is-scrolling"));
     document.body.classList.add("is-scrolling");
@@ -562,21 +562,18 @@ function updateBlackout(cat) {
   // Update vertical label active state
   document.querySelectorAll(".quote-header span").forEach((s) => {
     s.classList.toggle("active", s.id === `label-${cat}`);
-  });}
+  });
+}
 
-// LOGO MENU PC/MOBILE
-const logoBadge = document.querySelectorAll("dropdown");
-const logoAnchor = document.getElementById("main-logo-badge");
 
-logoAnchor.addEventListener("click", (e) => {
-    if (window.innerWidth <= 768) {
-        e.preventDefault(); 
-        logoBadge.classList.toggle("open");
-    }
-});
+function toggleDropdown(button) {
+  // Find the sibling div that comes right after the <ul>
+  const content = button.closest('.programUndropped').nextElementSibling;
 
-    window.addEventListener("click", (e) => {
-        if (!logoBadge.contains(e.target)) {
-            logoBadge.classList.remove("open");
-        }
-});
+  content.classList.toggle('closed');
+  if (content.classList.contains("closed")){
+    button.textContent="+";
+  }else{
+    button.textContent="—";
+  }
+}
