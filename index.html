@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PCD 26</title>
-  <link rel="icon" type="image/x-icon" href="/images/favicon_01.svg">
+  <link rel="icon" type="image/x-icon" href="images/favicon_01.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
@@ -81,15 +81,17 @@
         <div class="scroll-progress-container">
           <div id="quote-progress-bar"></div>
         </div>
-        <span id="label-quotes" class="active">QUOTE</span>
+        <!-- <span id="label-quotes" class="active">QUOTE</span> -->
+        <span id="label-theme" class="active">THEME</span>
         <span id="label-about">INFO</span>
         <span id="label-change">2026 EDITION</span>
+        <!-- <span id="label-intro"> THEME</span> -->
       </header>
 
     <div class="quote-grid">
       <div class="quote-col">
         <span class="text about">PCD2026 marks</span>
-        <span class="text quotes">“As [Aldous Huxley] saw it,</span>
+        <span class="text theme">“As [Aldous Huxley] saw it,</span>
         <span class="text about">the sixth edition of an event</span>
         <span class="text change">In 2026, we choose to preserve the acronym PCD,</span> 
         <span class="text about">that originated within the international Processing Community Day network —</span>
@@ -98,20 +100,20 @@
         <span class="text change"><strong>PCD now stands for Poetics of Computational Design.</strong></span>
         <span class="text about">and creative coding practices. Over the years,</span>
         <span class="text change">This shift does not represent a departure from our origins, but rather their natural development.</span>
-        <span class="text quotes">people will come to love their oppression</span>
+        <span class="text theme">people will come to love their oppression</span>
         <span class="text about">PCD@Porto has grown and expanded. What began as an event primarily centred on Processing and p5.js gradually expanded</span>
         <span class="text change">We continue to share the foundational values of the Processing Community Day — openness, inclusivity, knowledge sharing, and a critical spirit — while broadening the scope to embrace</span>
-        <span class="text quotes">to adore the technologies that</span>
+        <span class="text theme">to adore the technologies that undo their capacities to think.”</span>
         <span class="text change">diverse tools, methods, and computational practices.</span>
+        <span class="text theme">— Neil Postman, in Amusing Ourselves to Death (1985)</span>
       </div>
 
       <div class="quote-col">
         <span class="text change">The emphasis shifts from technical procedure to purpose,</span>
         <span class="text about">into a broader space for artistic, design-oriented, and critical explorations of computation.</span>
         <span class="text change">from execution to intention, opening space for reflection on what computation makes possible</span>
-        <span class="text quotes">undo their capacities to think.”</span>
+        <span class="text theme">In a time marked by technological acceleration, automation, and the increasing normalization of systems that shape behaviour, perception, and thought, PCD2026 proposes a moment of pause and reconsideration.</span>
         <span class="text change">— and meaningful. – Computation is approached as a space of intention, questioning, and poetic possibility. Rather than privileging specific languages or platforms, PCD2026 highlights the poetic, cultural, and critical dimensions of computational art and design.<br></span>
-        <span class="text quotes">— Neil Postman, in Amusing Ourselves to Death (1985)</span>
       </div>
     </div>
   </section>
@@ -119,14 +121,14 @@
   <section class="theme-display">
     <div class="theme-container">
 
-      <div class="theme-header">
+      <!-- <div class="theme-header">
         <h2 class="theme-main-title">This Year’s Theme</h2>
         <p class="theme-intro-text">
           In a time marked by technological acceleration, automation, and the
           increasing normalization of systems that shape behaviour, perception, and
           thought, PCD2026 proposes a moment of pause and reconsideration.
         </p>
-      </div>
+      </div> -->
       <div class="theme-visual-zone"> 
         <div class="words-layer">
           <div class="original-words-container">
@@ -166,7 +168,7 @@
   </section>
 
 
-  <section class="plural-practices">
+  <section id="plural-practices" class="plural-practices">
     <div class="practices-container">
       <h2 class="practices-title">A Space for Plural<br>Computational Practices</h2>
       
@@ -316,22 +318,24 @@
 
   <section class="previous-editions">
     <div class="editions-container">
-      <h2 class="editions-title">Previous Editions</h2>
-      <div class="rotating-links-wrapper">
-        <a href="https://pcd.fba.up.pt/2025/" class="edition-link">PCD25@Porto</a>
-        <a href="https://pcd.fba.up.pt/2024/" class="edition-link">PCD24@Porto</a>
-        <a href="https://pcd.fba.up.pt/2023/" class="edition-link">PCD23@Porto</a>
-        <a href="https://pcd.fba.up.pt/2022/" class="edition-link">PCD22@Porto</a>
-        <a href="https://pcd.fba.up.pt/2021/" class="edition-link">PCD21@Porto</a>
-        <a href="https://pcd.fba.up.pt/2020/" class="edition-link">PCD20@Porto</a>
-        <a href="https://pcdcoimbra.dei.uc.pt/2022/" class="edition-link">PCD20@Coimbra</a>
-        <a href="https://pcdcoimbra.dei.uc.pt/2021/" class="edition-link">PCD21@Coimbra</a>
-        <a href="https://pcdcoimbra.dei.uc.pt/2020/" class="edition-link">PCD22@Coimbra</a>
-      </div>
+      <div class="editions-eye-cluster">
+        <h2 class="editions-title">Previous Editions</h2>
+        <div class="rotating-links-wrapper">
+          <a href="https://pcd.fba.up.pt/2025/" class="edition-link">PCD25@Porto</a>
+          <a href="https://pcd.fba.up.pt/2024/" class="edition-link">PCD24@Porto</a>
+          <a href="https://pcd.fba.up.pt/2023/" class="edition-link">PCD23@Porto</a>
+          <a href="https://pcd.fba.up.pt/2022/" class="edition-link">PCD22@Porto</a>
+          <a href="https://pcd.fba.up.pt/2021/" class="edition-link">PCD21@Porto</a>
+          <a href="https://pcd.fba.up.pt/2020/" class="edition-link">PCD20@Porto</a>
+          <a href="https://pcdcoimbra.dei.uc.pt/2022/" class="edition-link">PCD20@Coimbra</a>
+          <a href="https://pcdcoimbra.dei.uc.pt/2021/" class="edition-link">PCD21@Coimbra</a>
+          <a href="https://pcdcoimbra.dei.uc.pt/2020/" class="edition-link">PCD22@Coimbra</a>
+        </div>
+        </div>
     </div>
   </section>
 
-<footer class="main-footer">
+<footer id="footer" class="main-footer">
   <div class="footer-container">
     <div class="footer-top">
       <div class="footer-logo">
