@@ -812,7 +812,7 @@ duotone-item {
   color: #0033ff;
   margin-top: 8px;
   line-height: 1.65;
-  text-align: right;
+  text-align: left;
 }
 
 /* TEST */
@@ -1823,4 +1823,57 @@ body.is-scrolling h2 span {
   background-color: var(--blue) !important;
   color: transparent !important;
   transition: none; /* Instant on */
+}
+
+/* ==========================================================================
+   PROGRAM RESPONSIVENESS QUICK FIX
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Stack the Program Row (Image + Text) */
+  .programDropped {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* 2. Make Image and Text take full width */
+  .programImg, 
+  .programText {
+    width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  /* 3. Handle the "Step" effect (program1, program2) */
+  .program1, 
+  .program2 {
+    padding-left: 0 !important; /* Remove the 25px indent on mobile */
+  }
+
+  /* 4. Make the Horizontal List wrap for long titles */
+  .programUndropped {
+    flex-direction: column; /* Stack Category, Name, Title vertically */
+    align-items: flex-start;
+    gap: 0.2rem;
+    border-bottom: 1px solid rgba(0, 51, 255, 0.2);
+    padding-bottom: 1rem;
+    position: relative;
+  }
+
+  .programUndropped li {
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  /* 5. Position the "+" button to the top right of the block */
+  .programUndropped li:last-child {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  /* 6. Fix font sizes for mobile readability */
+  .programBold {
+    font-size: 1.1rem;
+    margin-top: 0.3rem;
+  }
 }
