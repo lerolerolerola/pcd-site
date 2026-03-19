@@ -527,7 +527,7 @@
   init();
   positionLinks();
 
-  updateBlackout("quotes");
+  updateBlackout("theme"); // Set initial state
 
   // setInterval(cycleThemeText, 4000);
 
@@ -566,14 +566,25 @@ function updateBlackout(cat) {
 }
 
 
-function toggleDropdown(button) {
-  // Find the sibling div that comes right after the <ul>
-  const content = button.closest('.programUndropped').nextElementSibling;
+function toggleDropdown(container) {
+  const content = container.nextElementSibling;
+  const btn = container.querySelector(".toggle-btn");
 
-  content.classList.toggle('closed');
-  if (content.classList.contains("closed")){
-    button.textContent="+";
-  }else{
-    button.textContent="—";
+  content.classList.toggle("closed");
+
+  if (content.classList.contains("closed")) {
+    btn.textContent = "+";
+  } else {
+    btn.textContent = "—";
   }
+
+  // Find the sibling div that comes right after the <ul>
+  // const content = button.closest('.programUndropped').nextElementSibling;
+
+  // content.classList.toggle('closed');
+  // if (content.classList.contains("closed")){
+  //   button.textContent="+";
+  // }else{
+  //   button.textContent="—";
+  // }
 }

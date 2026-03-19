@@ -113,14 +113,6 @@
   <section class="theme-display">
     <div class="theme-container">
 
-      <!-- <div class="theme-header">
-        <h2 class="theme-main-title">This Year’s Theme</h2>
-        <p class="theme-intro-text">
-          In a time marked by technological acceleration, automation, and the
-          increasing normalization of systems that shape behaviour, perception, and
-          thought, PCD2026 proposes a moment of pause and reconsideration.
-        </p>
-      </div> -->
       <div class="theme-visual-zone"> 
         <div class="words-layer">
           <div class="original-words-container">
@@ -208,11 +200,11 @@
       <span class="member-name">29th of April</span> 
       <div class="programGeral">
       <div class="programDiv">
-      <ul class="programUndropped program1">
+      <ul class="programUndropped program1" onclick="toggleDropdown(this)" style="cursor: pointer;">
         <li class="programCategory">Keynote</li> &nbsp;
         <li>Sara Orsi</li>&nbsp;
         <li class="programBold">Dialogues on Techno-Culture: Power, Visibility and Temporality</li>
-        <li><button  onclick="toggleDropdown(this)">+</button></li>
+        <li><button class="toggle-btn">+</button></li>
       </ul>
       <div class="programDropped closed">
           <div class="programImg">
@@ -235,11 +227,11 @@
       </div>
       </div>
       <div class="programDiv">
-        <ul class="programUndropped program2">
+        <ul class="programUndropped program2" onclick="toggleDropdown(this)" style="cursor: pointer;">
           <li class="programCategory">Keynote</li>&nbsp;
           <li>Filipe Pais</li>&nbsp;
           <li class="programBold">Resist and Compose with Friction</li>
-          <li><button onclick="toggleDropdown(this)">+</button></li>
+          <li><button class="toggle-btn">+</button></li>
         </ul>
         <div class="programDropped closed program2">
           <div class="programImg">
@@ -364,8 +356,10 @@
       </div>
   </section>
 
-  <section class="previous-editions">
-    <div class="editions-container">
+<section class="previous-editions">
+  <div class="editions-container">
+    <div>
+
       <div class="editions-eye-cluster">
         <h2 class="editions-title">Previous Editions</h2>
         <div class="rotating-links-wrapper">
@@ -379,9 +373,47 @@
           <a href="https://pcdcoimbra.dei.uc.pt/2021/" class="edition-link">PCD21@Coimbra</a>
           <a href="https://pcdcoimbra.dei.uc.pt/2020/" class="edition-link">PCD22@Coimbra</a>
         </div>
+      </div>
+
+      <div class="theme-eye-portal">
+        <div class="eye-lid top"></div>
+        <div class="eye-lid bottom"></div>
+      </div>
+
+  </div> </div> </section>
+
+  <!-- <section class="theme-display">
+    <div class="theme-container">
+
+      <div class="theme-visual-zone"> 
+        <div class="words-layer">
+          <div class="original-words-container">
+            <span class="theme-word s1" a href="https://pcd.fba.up.pt/2025/">PCD25@Porto</span><span class="theme-word s2">reflect</span><span class="theme-word s3">reflect</span>
+            <span class="theme-word s4">reflect</span><span class="theme-word s5">reflect</span><span class="theme-word resist s6">reflect</span>
+            <span class="theme-word s7">reflect</span><span class="theme-word s8">reflect</span><span class="theme-word resist s9">reflect</span>
+            <span class="theme-word s10">reflect</span><span class="theme-word s11">reflect</span><span class="theme-word resist s12">reflect</span>
+            <span class="theme-word s13">reflect</span><span class="theme-word s14">reflect</span><span class="theme-word resist s15">reflect</span>
+
+            <span class="theme-word reflect f1">reflect</span><span class="theme-word reflect f2">reflect</span><span class="theme-word reflect f3">reflect</span>
+            <span class="theme-word reflect f4">reflect</span><span class="theme-word reflect f5">reflect</span><span class="theme-word reflect f6">reflect</span>
+            <span class="theme-word reflect f7">reflect</span><span class="theme-word reflect f8">reflect</span><span class="theme-word reflect f9">reflect</span>
+            <span class="theme-word reflect f10">reflect</span><span class="theme-word reflect f11">reflect</span><span class="theme-word reflect f12">reflect</span>
+            <span class="theme-word reflect f13">reflect</span><span class="theme-word reflect f14">reflect</span><span class="theme-word reflect f15">reflect</span>
+            <div class="theme-eye-portal">
+            <div class="eye-lid top"></div>
+            <div class="eye-lid bottom"></div>
+            </div>
+          </div>
         </div>
+        <div class="theme-center-stage">
+          <div class="theme-content-block active">
+            <h2 class="col-head editions-title">Previous Editions</h2>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+</section> -->
+
 
 <footer id="footer" class="main-footer">
   <div class="footer-container">
