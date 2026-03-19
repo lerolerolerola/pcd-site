@@ -631,9 +631,9 @@ body {
 .program1{
 padding-left: 0px !important;
 }
-.program2{
+/* .program2{
   padding-left:25px !important;
-}
+} */
 
 /* undropped*/
 .programGeral{
@@ -992,6 +992,8 @@ duotone-item {
   justify-content: center;
   overflow: hidden;
   contain: paint;
+  background-color: #f1f1f1;
+  /* border: 2px solid red;  */
 }
 
 .editions-title {
@@ -1011,6 +1013,8 @@ duotone-item {
   transform: translate(-50%, -50%);
 }
 
+
+
 /* Desktop only media query to make previous editions break into 2 lines */
 
 @media (min-width: 769px) {
@@ -1023,6 +1027,7 @@ duotone-item {
     text-align: center;
     word-wrap: normal;
     overflow-wrap: normal;
+    color: var(--blue);
 
     /* Keep your existing centering logic */
     position: absolute;
@@ -1031,14 +1036,30 @@ duotone-item {
     transform: translate(-50%, -50%);
   }
 
+  .editions-portal {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 600px; 
+  margin: 2rem auto;
+  background-color: var(--blue); /* The Blue inside the Eye */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  /* The Eye Shape (Desktop Only) */
+  /* clip-path: ellipse(50% 45% at 50% 50%); */
+  }
+
   .editions-eye-cluster {
-    position: absolute;
-    inset: 0; /* Fills the container */
+    position: relative; /* Must be relative to stay in the flex flow */
+    z-index: 5; 
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: eyeBlinkClose 5s ease-in-out infinite;
-    transform-origin: center;
   }
 
   .editions-eye-cluster:hover {
@@ -1063,6 +1084,9 @@ duotone-item {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.eye-lid.top { transform: translateY(-100%); }
+.eye-lid.bottom { transform: translateY(100%); }
 
 /* ==========================================================================
    BASE DESKTOP FOOTER
@@ -1183,10 +1207,30 @@ duotone-item {
 
 @media (max-width: 1024px) {
   .practices-layout {
-    flex-direction: column; /* Stacks images under text */
+    /* flex-direction: column;  */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
+  .practices-column-text {
+   display: contents;
+  }
+
+  /* intersperse images and text on mobile only for .practices-column */
+  .practices-column-text p:nth-child(1) { order: 1; } /* Para 1 */
+  .image-wrapper figure:nth-child(1) { order: 2; }    /* Image 1 */
+  
+  .practices-column-text p:nth-child(2) { order: 3; } /* Para 2 */
+  .image-wrapper figure:nth-child(2) { order: 4; }    /* Image 2 */
+  
+  .practices-column-text p:nth-child(3) { order: 5; } /* Para 3 */
+  .image-wrapper figure:nth-child(3) { order: 6; }    /* Image 3 */
+  
+  .practices-column-text p:nth-child(4) { order: 7; } /* Para 4 */
+
   .image-wrapper {
+    display: contents;
     flex: 0 0 auto;
     width: 100%;
     max-width: 500px; /* Prevents images from getting too huge on tablets */
@@ -1712,7 +1756,7 @@ duotone-item {
 .theme-visual-zone {
   position: relative;
   overflow: hidden;
-  clip-path: ellipse(50% 48% at 50% 50%);
+  /* clip-path: ellipse(50% 48% at 50% 50%); */
 }
 
 .theme-eye-portal {
@@ -1815,9 +1859,26 @@ body.is-scrolling li {
   }
 }
 
-body.is-scrolling #footer {
-  filter: blur(5px);
+body.is-scrolling #footer p,
+body.is-scrolling #footer span,
+body.is-scrolling #footer .footer-links a {
+  background-color: #f1f1f1 !important; /* White block */
+  color: transparent !important;         /* Hide text */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: none !important;
+  pointer-events: none;
 }
+
+
+body.is-scrolling .partner-logo img {
+  filter: brightness(0) invert(1) !important; /* Keeps them white/visible during scroll */
+}
+
+
+/* body.is-scrolling #footer {
+  filter: blur(5px);
+} */
 
 body.is-scrolling h2 span {
   background-color: var(--blue) !important;
@@ -1830,28 +1891,25 @@ body.is-scrolling h2 span {
    ========================================================================== */
 
 @media (max-width: 768px) {
-  /* 1. Stack the Program Row (Image + Text) */
   .programDropped {
     flex-direction: column;
     gap: 1.5rem;
   }
 
-  /* 2. Make Image and Text take full width */
   .programImg, 
   .programText {
     width: 100% !important;
     padding-right: 0 !important;
   }
 
-  /* 3. Handle the "Step" effect (program1, program2) */
   .program1, 
   .program2 {
-    padding-left: 0 !important; /* Remove the 25px indent on mobile */
+    padding-left: 0 !important; 
   }
 
   /* 4. Make the Horizontal List wrap for long titles */
   .programUndropped {
-    flex-direction: column; /* Stack Category, Name, Title vertically */
+    flex-direction: column; 
     align-items: flex-start;
     gap: 0.2rem;
     border-bottom: 1px solid rgba(0, 51, 255, 0.2);
@@ -1864,16 +1922,28 @@ body.is-scrolling h2 span {
     margin-left: 0 !important;
   }
 
-  /* 5. Position the "+" button to the top right of the block */
+  
   .programUndropped li:last-child {
     position: absolute;
     right: 0;
     top: 0;
   }
 
-  /* 6. Fix font sizes for mobile readability */
+  
   .programBold {
     font-size: 1.1rem;
     margin-top: 0.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Targeted transition for the redaction effect */
+  body.is-scrolling p, 
+  body.is-scrolling span, 
+  body.is-scrolling a, 
+  body.is-scrolling li {
+    /* We only transition the background and color, not 'all' */
+    transition: background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                color 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
   }
 }
