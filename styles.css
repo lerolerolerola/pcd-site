@@ -1872,7 +1872,8 @@ body.is-scrolling #footer .footer-links a {
 
 
 body.is-scrolling .partner-logo img {
-  filter: brightness(0) invert(1) !important; /* Keeps them white/visible during scroll */
+  /* filter: brightness(0) invert(1) !important; */
+  filter: blur(20px); 
 }
 
 
