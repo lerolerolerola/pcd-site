@@ -1427,11 +1427,11 @@ duotone-item {
   /* TEST */
   .theme-visual-zone {
     height: auto !important;
-    margin-top: 0 !important; /* Remove negative margins if you had them */
+    margin-top: 0 !important; 
     padding: 2rem 0;
   }
 
-  /* 2. Turn the 'Stage' into a simple vertical wrapper */
+  
   .theme-center-stage {
     position: static !important;
     transform: none !important;
@@ -1453,7 +1453,7 @@ duotone-item {
   }
 
   .theme-container {
-    padding: 0 10%; /* Uses 10% of the screen width as a gutter */
+    padding: 0 10%; 
     width: 100%;
   }
 
@@ -1544,22 +1544,30 @@ duotone-item {
   } */
 
   /* Center the title more aggressively since the 'halo' is gone */
+  
   .hero-center {
-    padding: 0 1rem;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center !important;
+    height: 100vh;
+    padding: 20px;
+    position: relative;
   }
 
   .hero h1 {
     display: inline-block !important;
-    font-size: 3rem;
+    font-size: 2.75rem;
     background-color: #f1f1f1;
     opacity: 0.9;
     background-blend-mode: overlay;
-    /* box-shadow: 0 0 0 10px #f1f1f1; */
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     line-height: 1.2;
     z-index: 2;
+    margin: 0;
   }
+
 
   /* Hide the radial 'word-layer' on very small screens to keep it clean */
   /* Or reduce their font-size if you want to keep the 'dust' effect */
@@ -1872,7 +1880,8 @@ body.is-scrolling #footer .footer-links a {
 
 
 body.is-scrolling .partner-logo img {
-  filter: brightness(0) invert(1) !important; /* Keeps them white/visible during scroll */
+  /* filter: brightness(0) invert(1) !important; */
+  filter: blur(20px); 
 }
 
 
@@ -1945,5 +1954,50 @@ body.is-scrolling h2 span {
     /* We only transition the background and color, not 'all' */
     transition: background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
                 color 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  }
+}
+
+@media (max-width: 932px) {
+  /* 1. Target the specific ID causing the overlap */
+  #main-logo-badge {
+    /* Kill the absolute positioning and the data-top/center logic */
+    /* position: relative !important; */
+    top: auto ;
+    /* left: auto !important; */
+    /* transform: none !important; */
+    
+    /* Center it manually in the flow */
+    margin: 0.75em auto ; 
+    display: flex ;
+    justify-content: center;
+    
+    /* Control the size so it doesn't explode horizontally */
+    width: 280px; 
+    z-index: 100;
+  }
+
+  /* 2. Ensure the link and image inside follow suit */
+  #main-logo-badge a, 
+  #main-logo-badge .badge-svg-file {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* 3. Special tweak for Landscape (Horizontal) */
+@media (max-width: 932px) and (orientation: landscape) {
+  #main-logo-badge {
+    margin: 1rem auto !important; /* Tighter margin for short screens */
+    width: 200px !important;      /* Smaller logo for horizontal */
+  }
+
+  .hero-meta{
+    top:2%;
+  }
+
+  .hero h1 {
+    font-size: 2em;
+    margin-bottom: 2.5em;
   }
 }
