@@ -26,6 +26,15 @@ body {
   overflow-x: hidden;
 }
 
+h3{
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.2em;
+  line-height: 1.4;
+  color: var(--black);
+  font-weight: 400;
+  margin-bottom: 0.5em;
+}
+
 :root {
   --blue: #0033ff;
   --light-blue: #66a3ff;
@@ -639,29 +648,52 @@ padding-left: 0px !important;
 .programGeral{
   margin-top: 20px;
 }
+
+.programDiv{
+  border-bottom: 1px solid rgba(0, 51, 255, 0.2);
+  padding: 1rem 0;
+}
+
 .programUndropped{
   display: flex;
+  align-items: flex-start;
   list-style-type: none;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  /* margin-top: 5px;
+  margin-bottom: 5px; */
   padding: 0;
+  margin: 0;
+  width: 100%;
 }
 .programBold{
+  flex-grow: 1;
   font-weight: bold;
 }
 .programCategory{
+  width: 120px;
+  flex-shrink: 0;
   text-transform: uppercase;
   color: #0000ff;
 }
+
+.programUndropped li:last-child {
+  margin-left: auto;
+}
+
+.programUndropped li:nth-child(2) {
+  width: 200px; /* FIXED WIDTH */
+  flex-shrink: 0;
+  color: var(--black);
+}
+
 li{
   padding-right: 30px;
 }
-ul :last-child{
+/* ul :last-child{
   color: #0000ff;
   padding-right: 0px !important;
-  margin-left: -10px !important;
+  margin-left: -10px !important; 
   font-weight: 600;
-}
+} */
 ul button{
   background-color: transparent;
   border-width: 0cap;
@@ -1921,14 +1953,19 @@ body.is-scrolling h2 span {
     flex-direction: column; 
     align-items: flex-start;
     gap: 0.2rem;
-    border-bottom: 1px solid rgba(0, 51, 255, 0.2);
-    padding-bottom: 1rem;
+    /* border-bottom: 1px solid rgba(0, 51, 255, 0.2);
+    padding-bottom: 1rem; */
     position: relative;
   }
 
   .programUndropped li {
     padding-right: 0 !important;
     margin-left: 0 !important;
+  }
+
+  .programCategory, 
+  .programUndropped li:nth-child(2) {
+    width: auto; /* Allow natural width on mobile */
   }
 
   
