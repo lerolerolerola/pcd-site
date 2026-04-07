@@ -970,7 +970,7 @@ duotone-item {
 /* 1. Name: Editorial, Blue */
 .member-name {
   font-family: "editorial", serif;
-  font-size: 1.8rem;
+  font-size: 1.8em;
   color: var(--blue);
   line-height: 1.1;
 }
@@ -1007,7 +1007,7 @@ duotone-item {
   }
 
   .member-name {
-    font-size: 1.5rem; /* Slightly smaller for mobile screens */
+    font-size: 1.75rem; /* Slightly smaller for mobile screens */
   }
 }
 
