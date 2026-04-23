@@ -1,6 +1,7 @@
 /* 1. CORE SETUP & RESET */
 * {
   box-sizing: border-box;
+  /* outline: 1px solid red; */
 }
 
 html {
@@ -1129,6 +1130,13 @@ duotone-item {
   border-top: 1px solid #ddd;
   background-color: var(--blue);
   color: #f1f1f1;
+  -webkit-font-smoothing: antialiased;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  perspective: 1000;
+  -webkit-perspective: 1000;
 }
 
 .footer-container {
@@ -1202,10 +1210,16 @@ duotone-item {
   /* Poetic touch: Logos are grayscale/blue until hovered */
   filter: grayscale(100%) opacity(0.6);
   transition: all 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .partner-logo:hover img {
   filter: grayscale(0%) opacity(1);
+  -webkit-font-smoothing: antialiased;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* ==========================================================================
@@ -1913,7 +1927,10 @@ body.is-scrolling #footer .footer-links a {
 
 body.is-scrolling .partner-logo img {
   /* filter: brightness(0) invert(1) !important; */
-  filter: blur(20px); 
+  filter: blur(20px);
+  -webkit-font-smoothing: antialiased;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; 
 }
 
 
@@ -1922,6 +1939,18 @@ body.is-scrolling .partner-logo img {
 } */
 
 body.is-scrolling h2 span {
+  background-color: var(--blue) !important;
+  color: transparent !important;
+  transition: none; /* Instant on */
+}
+
+body.is-scrolling h3 span {
+  background-color: var(--blue) !important;
+  color: transparent !important;
+  transition: none; /* Instant on */
+}
+
+body.is-scrolling h4 span {
   background-color: var(--blue) !important;
   color: transparent !important;
   transition: none; /* Instant on */
@@ -1961,6 +1990,7 @@ body.is-scrolling h2 span {
   .programUndropped li {
     padding-right: 0 !important;
     margin-left: 0 !important;
+    width: auto;
   }
 
   .programCategory, 
@@ -2036,5 +2066,99 @@ body.is-scrolling h2 span {
   .hero h1 {
     font-size: 2em;
     margin-bottom: 2.5em;
+  }
+}
+
+/* STYLE FOR EXHIBITION SECTION */
+
+/* Container for the whole section */
+
+/* Header typography */
+.exhibition-header {
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.exhibition-header h2 {
+  font-size: 3em;
+  line-height: 1.2;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  font-family: "editorial", serif;
+  color: var(--blue);
+}
+
+.exhibition-header h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.exhibition-header p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  max-width: 800px; /* Keeps line lengths readable */
+}
+
+.exhibition-text {
+  font-size: 0.85em;
+}
+
+/* --- THE FLEXBOX MAGIC --- */
+.exhibition-grid {
+  display: flex;
+  flex-direction: column; /* Stack vertically on mobile */
+  gap: 2.5rem; /* Space between the items */
+}
+
+/* Individual project cards */
+.exhibition-item {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+/* Image styling */
+.exhibition-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1; 
+  object-fit: cover; 
+  margin-bottom: 1.5rem;
+  
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Project text content */
+.item-content h4 {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.item-meta {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.item-content p {
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Responsive Breakpoint for Desktop */
+@media (min-width: 768px) {
+  .exhibition-grid {
+    flex-direction: row; /* Place items side-by-side */
+    align-items: flex-start; /* Aligns items to the top */
+  }
+  
+  .exhibition-item {
+    flex: 1; /* Tells each item to take up an equal 1/3 of the space */
   }
 }
